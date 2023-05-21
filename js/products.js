@@ -200,38 +200,51 @@ let productsDetails = (idProduct) => {
 }
 
 // Search products 
-const searchProducts = (query) => {
-    // Convert the query to lowercase for case-insensitive matching
-    const searchTerm = query.toLowerCase()
+const searchProducts = (searchName) => {
+    const productContain = document.getElementById("products-area")
+    let productHTML = ""
 
-    // Filter the products based on the search query
-    const filteredProducts = products.filter((product) => {
-        // Convert the product title to lowercase for case-insensitive matching
-        const title = product.title.toLowerCase()
+    // Filter the products based on the search searchName
+    const filteredProducts = products.filter((product) =>
+        product.title.toLowerCase().includes(searchName.toLowerCase()))
 
-        // Check if the product title contains the search query
-        return title.includes(searchTerm)
+    filteredProducts.forEach((product) => {
+        const { id, title, price, description, image, sale, details, amount } = product
+        productHTML += `
+        <div onclick="productsDetails(${id})" class="col l-6 m-6 c-12 product-details">
+            <a href="${details}" target="_self" class="product product--space ${sale}">
+                <img src="${image}" alt="Image" class="product-img"/>
+                <span class="product-desc">${title}</span>
+                <span class="product-price">${price}</span>
+            </a>
+        </div>
+        `
     })
 
-    // Render the filtered products
-    renderProducts(filteredProducts)
+    productContain.innerHTML = productHTML
 }
 
-// Usage example:
 const searchInput = document.querySelector('.header-search__input')
 const searchButton = document.querySelector('.header-search__btn')
 
+// Render searched products when user clicked to the search button 
 searchButton.addEventListener('click', () => {
     const query = searchInput.value
-    searchProducts(query)
+    if (query !== "")
+        searchProducts(query)
+    else
+        renderProducts(products)
 })
 
+// Render searched producs when user pressed enter 
 searchInput.addEventListener('keydown', (event) => {
     const query = searchInput.value
-    if (event.key === "Enter")
-        searchProducts(query)
+    if (query !== "") {
+        if (event.key === "Enter")
+            searchProducts(query)
+    } else
+        renderProducts(products)
 })
-
 
 // Set products to local storage 
 const setProducts = (products) => {
