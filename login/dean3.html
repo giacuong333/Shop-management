@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Quên mật khẩu</title>
+        <link rel="stylesheet" href="../assets/css/main.css">
+        <link rel="stylesheet" href="../assets/css/style.css">
+        <link rel="stylesheet" href="../assets/css/grid.css">
+        <link rel="stylesheet" href="../assets/fonts/themify-icons/themify-icons.css">
+        <link rel="stylesheet" href="../assets/css/resposive_home.css">
+    </head>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        #main #b2 {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        #main #b1 {
+            width: 100%;
+            cursor: pointer;
+            background-color: #1e87d2;
+            border: none;
+            color: #fff;
+            outline: none;
+            border-radius: 4px;
+        }
+
+        #main #b1:hover {
+            background-color: #607d8b;
+            transition: all ease .4s
+        }
+
+        #main #b3 {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        #main #noidung {
+            text-align: center;
+            font-size: 30px;
+        }
+
+
+        .container {
+            font-size: 20px;
+            margin: auto;
+            background-color: rgb(248, 248, 255);
+            padding: 30px;
+            min-height: 100px;
+            border-radius: 6px;
+        }
+
+        input[type="email"] {
+            border-radius: 4px;
+            border: none;
+            outline: 1px solid #ccc;
+        }
+
+        #header {
+            font-size: 30px;
+            text-align: center;
+            background: rgb(0, 167, 230);
+            color: White;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 60px;
+        }
+
+        .search {
+            background: #dfe6e9;
+            padding: 10px 0 0 0;
+        }
+
+        .form-search {
+            width: 98%;
+            margin-bottom: 0;
+            margin-left: 10px;
+            border-radius: 5px;
+        }
+
+        #modau {
+            border-radius: 4px;
+            margin: 10px;
+            background: rgb(248, 248, 255);
+            padding: 10px;
+            font-size: 18px;
+        }
+
+        #modau a {
+            color: #000;
+            opacity: .7;
+            text-decoration: none;
+        }
+
+        #modau a:hover {
+            color: var(--primary-color);
+            transition: all ease .4s;
+        }
+
+        #noidung {
+            padding: 20px 0 30px;
+        }
+
+        .input-form {
+            width: 100%;
+            padding: 10px 20px;
+            border-style: none;
+            font-size: 25px;
+            letter-spacing: 1px;
+            color: #607d8b;
+            background: transparent;
+            display: block;
+            background-color: white
+        }
+
+        #b2,
+        #b1,
+        #b3 {
+            font-size: 20px;
+            padding: 10px;
+        }
+
+        #b3 {
+            margin-bottom: 10px;
+        }
+
+        #b3 a {
+            text-decoration: none;
+            color: #000;
+            transition: all ease .3s;
+        }
+
+        #b3 a:hover {
+            color: var(--primary-color);
+        }
+
+        .header-nav__link {
+            text-decoration: none;
+            display: block;
+            color: var(--white-color);
+            font-weight: 500;
+            font-size: 2rem;
+            padding-left: 14px;
+        }
+
+        .container {
+            background-color: rgb(248, 248, 255);
+            border-radius: 6px;
+            max-width: 700px;
+            padding: 30px;
+            margin: 30px auto;
+        }
+    </style>
+
+    <body>
+        <div class="header-nav">
+            <a href="../index.html" class="header-nav__link">Trang chủ</a>
+            <a href="../index.html" target="_self" class="header-nav__name">Shop FIVE GUYS</a>
+            <a href="../cart.html" target="_self" class="header-nav__cart"><i
+                    class="header-nav__cart-icon ti-shopping-cart"></i></a>
+        </div>
+
+        <div id="main" class="grid wide">
+            <div class="container">
+                <div class="container-wrap">
+                    <div>
+                        <h1 id="noidung">Quên mật khẩu</h1>
+                    </div>
+                    <div>
+                        <input id="b2" type="email" placeholder="Email" required>
+                    </div>
+                    <div>
+                        <input id="b1" type="submit" name="btn_login" value="Lấy lại mật khẩu">
+                    </div>
+                    <div>
+                        <p id="b3">Đã có tài khoản? <a href="./dean1.html">Đăng nhập </a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="footer">
+            <div class="grid wide">
+                <div class="footer__social">
+                    <div class="row">
+                        <div class="col l-6 m-6 c-12">
+                            <div class="info">
+                                <h2 class="info__heading">THEO DÕI CHÚNG TÔI</h2>
+                                <div class="info__subinfo">
+                                    <a href="" class="info__subinfo-icon info__subinfo-icon--space ti-facebook"></a>
+                                    <a href="" class="info__subinfo-icon info__subinfo-icon--space ti-twitter"></a>
+                                    <a href="" class="info__subinfo-icon info__subinfo-icon--space ti-google"></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col l-6 m-6 c-12">
+                            <div class="info">
+                                <h2 class="info__heading">HOTLINE</h2>
+                                <div class="info__subinfo">
+                                    <a href="tel: 0948800918" class="info__subinfo-icon">0948 800 918</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer__contact">
+                    <h3 class="footer__contact-heading">
+                        ĐĂNG KÝ NHẬN TIN MỚI TỪ SHOP FIVE GUYS
+                    </h3>
+                    <p class="footer__contact-subheading">
+                        Nhập vào email của bạn và bạn sẽ nhận được sớm nhất những thông tin khuyến mại từ chúng tôi
+                    </p>
+                    <form action="" method="get" class="footer__contact-form">
+                        <input type="text" placeholder="Email của bạn" class="footer__contact-form-input">
+                    </form>
+                </div>
+
+                <div class="footer__policy">
+                    <div class="footer__policy-content">
+                        <span class="footer__policy-account">Tài khoản</span>
+                        <a href="" class="footer__policy-content-link ti-plus"></a>
+                    </div>
+                    <div class="footer__policy-content">
+                        <span class="footer__policy-account">Hướng dẫn</span>
+                        <a href="" class="footer__policy-content-link ti-plus"></a>
+                    </div>
+                    <div class="footer__policy-content">
+                        <span class="footer__policy-account">Chính sách</span>
+                        <a href="" class="footer__policy-content-link ti-plus"></a>
+                    </div>
+                    <div class="footer__policy-content">
+                        <span class="footer__policy-account">Liên hệ</span>
+                        <a href="" class="footer__policy-content-link ti-plus"></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__copyright">
+                <p class="footer__copyright-desc">
+                    Bản quyền thuộc về Five Guys team
+                </p>
+            </div>
+        </div>
+    </body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TÚI XÁCH THỜI TRANG NẮP GẬP</title>
+    <link rel="stylesheet" type="text/css" href="sanpham.css">
+</head>
+
+<body class="than">
+    <p class="trangchu">
+        <a href="../index.html">Trang chủ</a>
+    </p>
+    <form>
+        <table class="bang">
+            <tr>
+                <td width="40%" class="ten">TÚI XÁCH THỜI TRANG NẮP GẬP</td>
+                <td width="60%"></td>
+            </tr>
+            <tr>
+                <td class="anh-wrap"><img class="anh" src="./anh do an/tui xach thoi trang nap gap.jpg"></td>
+                <td valign="top">
+                    <p class="gia">250.000đ</p>
+                    <p class="chitiet">Túi da thời trang - Chất liệu da tổng hợp - Kích thước 35cm x 27cm x 12cm - Quai
+                        xách đôi, cao 16cm - Quai xách đơn, dạng mắc xích, cao 29cm -...</p>
+                    <p>
+                        <input class="soluong" type="number" min="1" value="1">
+                    </p>
+                    <input class="mua" type="submit" value="MUA HÀNG">
+                    <input class="goi" type="submit" value="GỌI">
+                </td>
+            </tr>
+            <tr>
+                <td class="chitiet" colspan="2">
+                    <div class="accordion">HƯỚNG DẪN SỬ DỤNG</div>
+                    <div class="panel">
+                        <p>
+                            Túi da thời trang
+                            <br><br>- Chất liệu da tổng hợp
+                            <br><br>- Kích thước 35cm x 27cm x 12cm
+                            <br><br>- Quai xách đôi, cao 16cm
+                            <br><br>- Quai xách đơn, dạng mắc xích, cao 29cm
+                            <br><br>- Khóa kéo miệng
+                            <br><br>- Trang trí khóa kéo nổi 2 bên hông
+                            <br><br>- Phối họa tiết kim loại
+                            <br><br>- Thiết kế bên trong 2 ngăn chính lớn và 4 ngăn phụ có khóa kéo
+                            <br><br>- Mặt sau có ngăn nhỏ và khóa kéo
+                        </p>
+                    </div>
+                    <script>
+                        var acc = document.getElementsByClassName("accordion");
+                        var i;
+                        for (i = 0; i < acc.length; i++) {
+                            acc[i].addEventListener("click", function () {
+                                this.classList.toggle("active");
+                                var panel = this.nextElementSibling;
+                                if (panel.style.maxHeight) {
+                                    panel.style.maxHeight = null;
+                                }
+                                else {
+                                    panel.style.maxHeight = panel.scrollHeight + "px";
+                                }
+                            });
+                        }
+                    </script>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>

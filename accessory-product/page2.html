@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Phụ kiện</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="stylesheet" href="../assets/css/grid.css" />
+  <link rel="stylesheet" href="../assets/fonts/themify-icons/themify-icons.css" />
+  <link rel="stylesheet" href="../assets/css/cart.css" />
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <link rel="stylesheet" href="../assets/css/responsive_cart.css" />
+  <link rel="stylesheet" href="../assets/css/store.css" />
+  <link rel="stylesheet" href="../assets/css/resposive_home.css">
+</head>
+
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="header-nav">
+        <label for="header-nav__input-pc" class="header-nav__menu">
+          <i class="header-nav__menu-icon ti-align-justify"></i>
+        </label>
+
+        <a href="../index.html" class="header-nav__name">Shop FIVE GUYS</a>
+
+        <a href="../cart.html" class="header-nav__cart">
+          <i class="header-nav__cart-icon ti-shopping-cart"></i>
+        </a>
+      </div>
+      <form action="" role="" method="get" class="header-search">
+        <input type="text" placeholder="Tìm kiếm sản phẩm..." class="header-search__input" />
+
+        <div class="header-search__btn">
+          <button class="header-search__icon ti-search"></button>
+        </div>
+      </form>
+    </header>
+
+    <!-- content -->
+    <div class="content">
+      <div class="content-navigation">
+        <div class="grid wide">
+          <div class="content-naviation__wrap">
+            <a href="../index.html" target="_self" class="content-navigation__link">Trang chủ</a>
+            <span style="font-size: 1.8rem; margin: 0 4px; color: #adadad">/</span>
+            <a href="#" class="content-navigation__link content-navigation__link--active">Giỏ hàng</a>
+          </div>
+        </div>
+      </div>
+      <div class="content-cart">
+        <div class="grid wide">
+          <div class="content-cart__wrap">
+            <h2 class="content-cart__heading">PHỤ KIỆN</h2>
+            <span class="content-cart__quantity">Tìm thấy <b style="color: var(--black-color)">15</b> sản
+              phẩm</span>
+          </div>
+
+          <!-- products -->
+          <div class="row">
+            <div class="col l-4 m-6 c-12">
+              <a href="" class="product product--space">
+                <img src="../assets/img/product/pk13.png" alt="" class="product-img" />
+                <span class="product-desc">Đông hồ đeo tay Titan Raga</span>
+                <span class="product-price">190.000<u>đ</u></span>
+              </a>
+            </div>
+            <div class="col l-4 m-6 c-12">
+              <a href="" class="product product--space">
+                <img src="../assets/img/product/pk14.png" alt="" class="product-img" />
+                <span class="product-desc">Đồng hồ đeo tay cao cấp Casio</span>
+                <span class="product-price">310.000<u>đ</u></span>
+              </a>
+            </div>
+          </div>
+
+          <span class="content-cart__pagination">
+            <a href="" class="content-cart__pagination-before">Trang trước</a>
+            <div onclick="dropDown()" class="content-cart__pagination-num">
+              <span onclick="dropDown()" class="content-cart__pagination-num__current">2
+              </span>
+              / 2
+              <ul class="content-cart__pagination-num__list" id="myDropDown">
+                <li class="content-cart__pagination-num__list-item">
+                  <a href="./page1.html">1</a>
+                </li>
+              </ul>
+            </div>
+            <a href="" class="content-cart__pagination-after">Trang sau</a>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- footer -->
+    <div class="footer">
+      <div class="grid wide">
+        <div class="footer__social">
+          <div class="row">
+            <div class="col l-6 m-6 c-12">
+              <div class="info">
+                <h2 class="info__heading">THEO DÕI CHÚNG TÔI</h2>
+                <div class="info__subinfo">
+                  <a href="" class="info__subinfo-icon info__subinfo-icon--space ti-facebook"></a>
+                  <a href="" class="info__subinfo-icon info__subinfo-icon--space ti-twitter"></a>
+                  <a href="" class="info__subinfo-icon info__subinfo-icon--space ti-google"></a>
+                </div>
+              </div>
+            </div>
+            <div class="col l-6 m-6 c-12">
+              <div class="info">
+                <h2 class="info__heading">HOTLINE</h2>
+                <div class="info__subinfo">
+                  <a href="tel: 0948800918" class="info__subinfo-icon">0948 800 918</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer__contact">
+          <h3 class="footer__contact-heading">
+            ĐĂNG KÝ NHẬN TIN MỚI TỪ SHOP FIVE GUYS
+          </h3>
+          <p class="footer__contact-subheading">
+            Nhập vào email của bạn và bạn sẽ nhận được sớm nhất những thông
+            tin khuyến mại từ chúng tôi
+          </p>
+          <form action="" method="get" class="footer__contact-form">
+            <input type="text" placeholder="Email của bạn" class="footer__contact-form-input" />
+          </form>
+        </div>
+
+        <div class="footer__policy">
+          <div class="footer__policy-content">
+            <span class="footer__policy-account">Tài khoản</span>
+            <a href="" class="footer__policy-content-link ti-plus"></a>
+          </div>
+          <div class="footer__policy-content">
+            <span class="footer__policy-account">Hướng dẫn</span>
+            <a href="" class="footer__policy-content-link ti-plus"></a>
+          </div>
+          <div class="footer__policy-content">
+            <span class="footer__policy-account">Chính sách</span>
+            <a href="" class="footer__policy-content-link ti-plus"></a>
+          </div>
+          <div class="footer__policy-content">
+            <span class="footer__policy-account">Liên hệ</span>
+            <a href="" class="footer__policy-content-link ti-plus"></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__copyright">
+        <p class="footer__copyright-desc">
+          Bản quyền thuộc về Five Guys team
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- overlay and menu-->
+  <input type="checkbox" name="" hidden class="header-nav__input" id="header-nav__input-pc" />
+  <label for="header-nav__input-pc" class="overlay"></label>
+
+  <nav class="nav">
+    <!-- <label for="header-nav__input-pc"></label>  -->
+    <form action="" role="" method="get" class="header-search">
+      <input type="text" placeholder="Tìm kiếm sản phẩm..." class="header-search__input" />
+
+      <div class="header-search__btn">
+        <button class="header-search__icon ti-search"></button>
+      </div>
+    </form>
+    <div class="nav-sign">
+      <div class="row">
+        <div class="col l-6 m-6 c-12">
+          <div class="nav-sign-btn">
+            <a href="../login/dean1.html" class="btn btn--sign-in">Đăng nhập</a>
+          </div>
+        </div>
+        <div class="col l-6 m-6 c-12">
+          <div class="nav-sign-btn">
+            <a href="../login/dean2.html" class="btn btn--sign-out">Đăng ký</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- menu -->
+    <ul class="nav-list">
+      <li class="nav-list__item">
+        <a href="../index.html" target="_self" class="nav-list__item-link">Trang chủ</a>
+      </li>
+      <li class="nav-list__item">
+        <a href="" class="nav-list__item-link">Sản phẩm</a>
+        <i class="nav-list__item-icon ti-angle-right"></i>
+        <!-- child navigation -->
+        <ul class="nav-list__item-child">
+          <li class="nav-list__item">
+            <div href="" class="nav-list__item-link">Thời trang nữ</div>
+            <ul class="nav-list__item-child2">
+              <li class="nav-list__item">
+                <a href="" class="nav-list__item-link">Quần áo</a>
+              </li>
+              <li class="nav-list__item">
+                <a href="" class="nav-list__item-link">Túi xách</a>
+              </li>
+              <li class="nav-list__item">
+                <a href="" class="nav-list__item-link">Giày</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-list__item">
+            <a href="../male-product/index.html" class="nav-list__item-link">Thời trang nam</a>
+          </li>
+          <li class="nav-list__item">
+            <a href="" class="nav-list__item-link">Phụ kiện</a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-list__item">
+        <a href="../introduction.html" class="nav-list__item-link">Giới thiệu</a>
+      </li>
+    </ul>
+  </nav>
+  <!-- end overlay -->
+</body>
+
+</html>
+
+<script src="../toggle.js"></script>

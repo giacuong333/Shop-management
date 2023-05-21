@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ÁO LEN KIMONO SM</title>
+    <link rel="stylesheet" type="text/css" href="sanpham.css">
+</head>
+
+<body class="than">
+    <p class="trangchu">
+        <a href="../index.html">Trang chủ</a>
+    </p>
+    <form>
+        <table class="bang">
+            <tr>
+                <td width="40%" class="ten">ÁO LEN KIMONO SM</td>
+                <td width="60%"></td>
+            </tr>
+            <tr>
+                <td class="anh-wrap"><img class="anh" src="../product/img/ao len kimono sm.jpg"></td>
+                <td valign="top">
+                    <p class="gia">400.000đ</p>
+                    <p class="chitiet">Chiếc áo len này của Kimono Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo
+                        hàng ngày của bạn. - Chất liệu: cotton/nylon; lớp lót: polyester - Có thể giặt máy - Kiểu...</p>
+                    <p>
+                        <input class="soluong" type="number" min="1" value="1">
+                    </p>
+                    <input class="mua" type="submit" value="MUA HÀNG">
+                    <input class="goi" type="submit" value="GỌI">
+                </td>
+            </tr>
+            <tr>
+                <td class="chitiet" colspan="2">
+                    <div class="accordion">HƯỚNG DẪN SỬ DỤNG</div>
+                    <div class="panel">
+                        <p>
+                            Chiếc áo len này của Kimono Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày
+                            của bạn.
+                            <br><br>- Chất liệu: cotton/nylon; lớp lót: polyester
+                            <br><br>- Có thể giặt máy
+                            <br><br>- Kiểu áo chui đầu, cổ tròn, không tay
+                            <br><br>- Áo ren, có lớp lót
+                            <br><br>- Dài trên đùi
+                            <br><br>Charter Club là thương hiệu thời trang cao cấp giá cả vừa tầm được ưa chuộng hàng
+                            đầu tại Mỹ và nhiều nước trên thế giới. Các sản phẩm của Charter Club bao gồm quần áo, váy
+                            đầm, phụ kiện, trang sức và đặc biệt là đồ over size luôn nổi bật với chất liệu bền đẹp,
+                            thiết kế hiện đại, thời trang, đáp ứng nhu cầu về tính tiện dụng, thoải mái. Charter Club đã
+                            dần khẳng định là thương hiệu thời trang hàng đầu thế giới hướng tới tất cả khách hàng mọi
+                            lứa tuổi, mang đến cho người sử dụng vẻ đẹp tinh tế, sang trọng và đa phong cách.
+                            <br><br>Charter Club được biết đến là thương hiệu thời trang mang phong cách cổ điển ở Mỹ
+                            với đa dạng các sản phẩm quần áo, phụ kiện, đồ trang sức… Với màu sắc tươi vui và chi tiết
+                            tinh xảo, các sản phẩm thời trang của Charter Club thích hợp cho tất cả các dịp.
+                        </p>
+                    </div>
+                    <script>
+                        var acc = document.getElementsByClassName("accordion");
+                        var i;
+                        for (i = 0; i < acc.length; i++) {
+                            acc[i].addEventListener("click", function () {
+                                this.classList.toggle("active");
+                                var panel = this.nextElementSibling;
+                                if (panel.style.maxHeight) {
+                                    panel.style.maxHeight = null;
+                                }
+                                else {
+                                    panel.style.maxHeight = panel.scrollHeight + "px";
+                                }
+                            });
+                        }
+                    </script>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>

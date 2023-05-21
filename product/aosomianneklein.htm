@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ÁO SƠMI ANNE KLEIN</title>
+    <link rel="stylesheet" type="text/css" href="sanpham.css">
+</head>
+
+<body class="than">
+    <p class="trangchu">
+        <a href="../index.html">Trang chủ</a>
+    </p>
+    <form>
+        <table class="bang">
+            <tr>
+                <td width="40%" class="ten">ÁO SƠMI ANNE KLEIN</td>
+                <td width="60%"></td>
+            </tr>
+            <tr>
+                <td class="anh-wrap"><img class="anh" src="../product/img/ao so mi anne klein.jpg"></td>
+                <td valign="top">
+                    <p class="gia">450.000đ</p>
+                    <p class="chitiet">Phong cách đơn giản và không bao giờ lỗi mốt, chiếc áo sơmi dài tay này của Anne
+                        Klein kết hợp tuyệt vời với tất cả mọi thứ, từ váy bút chì cho đến chiếc quần jean yêu...</p>
+                    <p>
+                        <input class="soluong" type="number" min="1" value="1">
+                    </p>
+                    <input class="mua" type="submit" value="MUA HÀNG">
+                    <input class="goi" type="submit" value="GỌI">
+                </td>
+            </tr>
+            <tr>
+                <td class="chitiet" colspan="2">
+                    <div class="accordion">HƯỚNG DẪN SỬ DỤNG</div>
+                    <div class="panel">
+                        <p>
+                            Phong cách đơn giản và không bao giờ lỗi mốt, chiếc áo sơmi dài tay này của Anne Klein kết
+                            hợp tuyệt vời với tất cả mọi thứ, từ váy bút chì cho đến chiếc quần jean yêu thích của bạn.
+                            <br><br>- Chất liệu: polyester
+                            <br><br>- Giặt khô
+                            <br><br>- Cổ Tàu
+                            <br><br>- Kiểu áo cài cúc ở phía trước
+                            <br><br>- Tay áo dài và có cúc để xắn lên
+                            <br><br>- 2 túi có nắp đậy ở trước ngực
+                            <br><br>- Dáng xuông
+                            <br><br>- Áo dài ngang hông
+                            <br><br>Anne Klein (AK) là thương hiệu thời trang nổi tiếng được sáng lập bởi nhà thiết kế
+                            người Mỹ cùng tên vào năm 1968. Những thiết kế quần áo, giày dép, đồng hồ và túi xách mang
+                            nhãn hiệu Anne Klein luôn mang đến phong cách sáng tạo, ấn tượng và sang trọng nhất cho các
+                            tín đồ thời trang. Vẻ đẹp cổ điển và tinh tế trong những thiết kế của Anne Klein cũng nhanh
+                            chóng chinh phục được các quý bà chuộng hàng hiệu.
+                            <br><br>Quần áo, giày dép và các phụ kiện của Anne Klein với các tính năng hiện đại ngày một
+                            được công nhận và tạo nên các thiết kế theo xu hướng trên thế giới. Anne Klein mang đến các
+                            bộ sưu tập dành cho phụ nữ linh hoạt cả về kích cỡ, màu sắc lẫn phong cách. Sản phẩm của
+                            Anne Klein tạo nên mẫu người phụ nữ với phong cách cuốn hút vượt thời gian.
+                            <br><br>Anne Klein hiểu rõ xu hướng thời trang hiện nay. Quần áo, giày dép và đồng hồ Anne
+                            Klein chỉ đơn giản là thích hợp một cách hoàn hảo, không làm mất đi phong cách và sự thoải
+                            mái mà chúng đem đến cho bạn.
+                        </p>
+                    </div>
+                    <script>
+                        var acc = document.getElementsByClassName("accordion");
+                        var i;
+                        for (i = 0; i < acc.length; i++) {
+                            acc[i].addEventListener("click", function () {
+                                this.classList.toggle("active");
+                                var panel = this.nextElementSibling;
+                                if (panel.style.maxHeight) {
+                                    panel.style.maxHeight = null;
+                                }
+                                else {
+                                    panel.style.maxHeight = panel.scrollHeight + "px";
+                                }
+                            });
+                        }
+                    </script>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>

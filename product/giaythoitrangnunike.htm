@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIÀY THỜI TRANG NỮ NIKE</title>
+    <link rel="stylesheet" type="text/css" href="sanpham.css">
+</head>
+
+<body class="than">
+    <p class="trangchu">
+        <a href="../index.html">Trang chủ</a>
+    </p>
+    <form>
+        <table class="bang">
+            <tr>
+                <td width="40%" class="ten">GIÀY THỜI TRANG NỮ NIKE</td>
+                <td width="60%"></td>
+            </tr>
+            <tr>
+                <td class="anh-wrap"><img class="anh" src="./img/giay thoi trang nu nike.jpg"></td>
+                <td valign="top">
+                    <p class="gia">35.000đ</p>
+                    <p class="chitiet">Giày thể thao nữ đẹp da màu nâu cao cấp, thanh lịch từ thương hiệu Converse® Chất
+                        liệu giày bằng da bò mềm với chi tiết mũi giày cap-toe Mắt xỏ dây âm với dây cột nylon Lót
+                        trong...</p>
+                    <p>
+                        <input class="soluong" type="number" min="1" value="1">
+                    </p>
+                    <input class="mua" type="submit" value="MUA HÀNG">
+                    <input class="goi" type="submit" value="GỌI">
+                </td>
+            </tr>
+            <tr>
+                <td class="chitiet" colspan="2">
+                    <div class="accordion">HƯỚNG DẪN SỬ DỤNG</div>
+                    <div class="panel">
+                        <p>
+                            Giày thể thao nữ đẹp da màu nâu cao cấp, thanh lịch từ thương hiệu Converse®
+                            <br><br>Chất liệu giày bằng da bò mềm với chi tiết mũi giày cap-toe
+                            <br><br>Mắt xỏ dây âm với dây cột nylon
+                            <br><br>Lót trong bằng da thoáng khí tự nhiên
+                            <br><br>Đệm lót giày bằng da bọc thoải mái và hỗ trợ chân
+                            <br><br>Đế ngoài băng cao su hấp thụ sốc tốt và bám tốt trên mọi bề mặt
+                            <br><br>Được thành lập vào năm 1978, thương hiệu Nine West xuất phát từ địa chỉ ở thành phố
+                            New York. Trong 30 năm, Nine West đã phát triển và trở thành người đứng đầu trong lĩnh vực
+                            thời trang nổi tiếng thế giới. Ngày nay, giầy - túi xách - trang sức Nine West được yêu mến
+                            bởi phụ nữ trên toàn thế giới và được xem như một chuyên gia tư vấn đáng tin cậy trong mọi
+                            lĩnh vực thời trang, bao gồm cả thời trang trẻ em.
+                        </p>
+                    </div>
+                    <script>
+                        var acc = document.getElementsByClassName("accordion");
+                        var i;
+                        for (i = 0; i < acc.length; i++) {
+                            acc[i].addEventListener("click", function () {
+                                this.classList.toggle("active");
+                                var panel = this.nextElementSibling;
+                                if (panel.style.maxHeight) {
+                                    panel.style.maxHeight = null;
+                                }
+                                else {
+                                    panel.style.maxHeight = panel.scrollHeight + "px";
+                                }
+                            });
+                        }
+                    </script>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>

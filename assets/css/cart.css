@@ -1,0 +1,201 @@
+.content-navigation {
+    background-color: var(--white-color);
+}
+
+.content-naviation__wrap {
+    padding: 12px 0;
+}
+
+.content-navigation__link {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 1.8rem;
+    transition: all ease .3s;
+}
+
+.content-naviation__wrap>.content-navigation__link:hover {
+    color: var(--primary-color);
+}
+
+
+.content-naviation__wrap>.content-navigation__link {
+    color: #adadad;
+    font-weight: 500;
+}
+
+.content-navigation__link--active {
+    color: var(--text-color) !important;
+}
+
+.content-cart__heading {
+    font-size: 2.6rem;
+    letter-spacing: .1rem;
+    margin: 20px 0;
+    color: #363636;
+}
+
+.content-cart__amount {
+    padding: 18px 14px;
+    color: var(--white-color);
+    background-color: var(--primary-color);
+    border-radius: 6px;
+    font-size: 2rem;
+}
+
+.content-cart__amount:hover {
+    opacity: .85;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+.content-cart__amount-number {
+    font-size: 2rem;
+}
+
+.content-cart__desc {
+    font-size: 2rem;
+    line-height: 3rem;
+    border-bottom: 1px #ddd solid;
+    display: block;
+    color: var(--text-color);
+}
+
+.content-cart__link {
+    text-decoration: none;
+    color: #999;
+}
+
+.content-cart__link:hover {
+    color: var(--primary-color);
+    transition: all .3s ease;
+}
+
+.content-cart-product {
+    display: flex;
+    padding: 30px;
+    background-color: var(--white-color);
+}
+
+.content-cart-product__img-link {
+    --size-of-img: 120px;
+    display: block;
+    text-decoration: none;
+    color: transparent;
+    width: var(--size-of-img);
+    height: var(--size-of-img);
+}
+
+.content-cart-product__img-link img {
+    width: 100%;
+    height: 100%;
+}
+
+.content-cart-product__info {
+    width: 100%;
+    margin-left: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+input[type="number"] {
+    border-width: 0.1rem;
+    outline: none;
+    border: 1px #ddd solid;
+    border-radius: 4px;
+    font-size: 2rem;
+    max-width: 100px;
+    padding: 8px 0;
+    text-align: center;
+}
+
+.content-cart-product__info-title {
+    display: block;
+    font-size: 2rem;
+    margin-bottom: 4px;
+    color: var(--primary-color);
+}
+
+.content-cart-product__info-price {
+    font-weight: 600;
+}
+
+.content-cart-product__info-wrap-icon {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.content-cart-product__infor-icon {
+    text-decoration: none;
+    color: #ccc;
+    font-size: 3rem;
+    transition: all ease-in-out 0.2s;
+}
+
+.content-cart-product__infor-icon:hover {
+    color: var(--primary-color);
+}
+
+.pay-product {
+    padding: 30px;
+    background-color: var(--white-color);
+    display: block;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+.pay-product__total-product, .pay-product__ship, .pay-product__total-bill {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 2rem;
+    padding: 10px 0;
+    margin: 10px 0;
+}
+
+.pay-product__total-product-title, .pay-product__total-bill-title, .pay-product__ship-title, .pay-product__total-product-price {
+    font-weight: 500;
+}
+
+.pay-product__total-product-price {
+    color: #ff7348;
+}
+
+.option-cart {
+    display: block;
+    margin-top: 14px;
+}
+
+.option-cart__btn {
+    font-size: 1.8rem;
+    display: block;
+    border: none;
+    padding: 14px;
+    margin-top: 10px;
+    width: 100%;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 6px;
+    transition: all ease-in-out .2s;
+}
+
+.option-cart__btn:hover {
+    opacity: .8;
+}
+
+.option-cart__btn:first-child {
+    background-color: var(--white-color);
+    color: var(--text-color);
+}
+
+.option-cart__btn:first-child:hover {
+    background-color: var(--primary-color);
+}
+
+.pay-product__ship-price, .pay-product__total-bill-price {
+    font-weight: 500;
+    color: var(--text-color);
+}

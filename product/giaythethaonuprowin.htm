@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIÀY THỂ THAO NỮ PROWIN</title>
+    <link rel="stylesheet" type="text/css" href="sanpham.css">
+</head>
+
+<body class="than">
+    <p class="trangchu">
+        <a href="../index.html">Trang chủ</a>
+    </p>
+    <form>
+        <table class="bang">
+            <tr>
+                <td width="40%" class="ten">GIÀY THỂ THAO NỮ PROWIN</td>
+                <td width="60%"></td>
+            </tr>
+            <tr>
+                <td class="anh-wrap"><img class="anh" src="../product/img/giay the thao nu prowin.jpg"></td>
+                <td valign="top">
+                    <p class="gia">390.000đ</p>
+                    <p class="chitiet">Giày thể thao nữ Prowin thiết kế thời trang và kiểu dáng chắc chắn, sẽ mang đến
+                        cho phái đẹp những giờ phút luyện tập vui vẻ và thoải mái. Sản phẩm được làm từ chất liệu da...
+                    </p>
+                    <p>
+                        <input class="soluong" type="number" min="1" value="1">
+                    </p>
+                    <input class="mua" type="submit" value="MUA HÀNG">
+                    <input class="goi" type="submit" value="GỌI">
+                </td>
+            </tr>
+            <tr>
+                <td class="chitiet" colspan="2">
+                    <div class="accordion">HƯỚNG DẪN SỬ DỤNG</div>
+                    <div class="panel">
+                        <p>
+                            Giày thể thao nữ Prowin thiết kế thời trang và kiểu dáng chắc chắn, sẽ mang đến cho phái đẹp
+                            những giờ phút luyện tập vui vẻ và thoải mái. Sản phẩm được làm từ chất liệu da tổng hợp, đế
+                            giày bằng cao su và nhựa, bên trong giày có một lớp lót thấm hút mồ hôi tốt
+                            <br><br>Lưu ý: Đối với sản phẩm giày thể thao nữ Prowin size giày sẽ nhỏ hơn form chân thực
+                            tế 1 size vì thế khách hàng nên đặt size giày lớn hơn form chân một size. Ví dụ: Thông
+                            thường bạn mang giày size 37, với giày thể thao nữ Prowin bạn sẽ đặt size 38.
+                        </p>
+                    </div>
+                    <script>
+                        var acc = document.getElementsByClassName("accordion");
+                        var i;
+                        for (i = 0; i < acc.length; i++) {
+                            acc[i].addEventListener("click", function () {
+                                this.classList.toggle("active");
+                                var panel = this.nextElementSibling;
+                                if (panel.style.maxHeight) {
+                                    panel.style.maxHeight = null;
+                                }
+                                else {
+                                    panel.style.maxHeight = panel.scrollHeight + "px";
+                                }
+                            });
+                        }
+                    </script>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>

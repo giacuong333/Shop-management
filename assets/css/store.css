@@ -1,0 +1,93 @@
+.content-cart__wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.content-cart__quantity {
+    color: #a6a6ad;
+    font-size: 2rem;
+}
+
+.content-cart__pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 18px;
+}
+
+.content-cart__pagination-before,
+.content-cart__pagination-after {
+    text-decoration: none;
+    color: var(--text-color);
+    margin: 0 14px;
+    font-size: 2rem;
+}
+
+.content-cart__pagination-before:hover,
+.content-cart__pagination-after:hover {
+    color: var(--primary-color);
+    transition: all ease .3s;
+}
+
+.content-cart__pagination-num {
+    cursor: pointer;
+    font-size: 2rem;
+    background-color: var(--white-color);
+    padding: 14px 34px;
+    border-radius: 4px;
+    position: relative;
+}
+
+/* .content-cart__pagination-num:hover .content-cart__pagination-num__list {
+    display: block;
+} */
+
+.content-cart__pagination-num__current {
+    color: var(--primary-color);
+}
+
+.content-cart__pagination-num__list {
+    list-style-type: none;
+    padding: 0;
+    position: absolute;
+    z-index: 1;
+    top: calc(100% + 2px);
+    left: 0;
+    font-size: 2rem;
+    background-color: var(--white-color);
+    border-radius: 4px;
+    display: none;
+    box-shadow: 0 1px 8px -3px rgb(0 0 0/ 30%);
+}
+
+.content-cart__pagination-num__list::before {
+    content: "";
+    display: block;
+    width: 106px;
+    height: 10px;
+    background-color: transparent;
+    position: absolute;
+    top: -9px;
+    left: 0;
+}
+
+.content-cart__pagination-num__list-item {}
+
+.content-cart__pagination-num__list-item a {
+    display: block;
+    padding: 10px 47.4px;
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.content-cart__pagination-num__list-item a:hover {
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: all ease .3s;
+}
+
+/* to show the dropDown content when users r clicking using js */
+.show {
+    display: block;
+}
