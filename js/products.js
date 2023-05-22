@@ -202,11 +202,15 @@ let productsDetails = (idProduct) => {
 // Search products 
 const searchProducts = (searchName) => {
     const productContain = document.getElementById("products-area")
+
     let productHTML = ""
 
     // Filter the products based on the search searchName
-    const filteredProducts = products.filter((product) =>
-        product.title.toLowerCase().includes(searchName.toLowerCase()))
+    const filteredProducts = products.filter((product) => product.title.toLowerCase().includes(searchName.toLowerCase()))
+
+    // If no products found
+    if (filteredProducts.length === 0)
+        productHTML += `<div class="no-products-found">No products found!</div>`
 
     filteredProducts.forEach((product) => {
         const { id, title, price, description, image, sale, details, amount } = product

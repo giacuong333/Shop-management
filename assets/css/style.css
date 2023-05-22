@@ -310,7 +310,7 @@ input[class="header-search__input"]::placeholder {
   list-style-type: none;
 }
 
-.nav-list > .nav-list__item:hover .nav-list__item-child {
+.nav-list>.nav-list__item:hover .nav-list__item-child {
   display: block;
   transition: all 0.3s ease;
 }
@@ -352,7 +352,7 @@ input[class="header-search__input"]::placeholder {
   -webkit-user-select: none;
 }
 
-.nav-list__item:hover > .nav-list__item-icon {
+.nav-list__item:hover>.nav-list__item-icon {
   transform: rotate(90deg);
   transition: all 0.3s ease;
 }
@@ -386,4 +386,13 @@ input[class="header-search__input"]::placeholder {
 
 .nav-list__item-child:hover .nav-list__item-child2 {
   display: block;
+}
+
+.no-products-found {
+  text-align: center;
+  font-size: 3rem;
+  color: var(--text-color);
+  font-weight: 700;
+  margin: 0 auto;
+  line-height: 5.2rem;
 }
