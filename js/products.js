@@ -162,6 +162,179 @@ const products = [
     },
 ]
 
+const outstandingProduct = [
+    {
+        id: 1,
+        title: "Túi xách thời trang nắp gậy",
+        price: "250.000đ",
+        description: "Giày chạy bộ này của NX Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
+        image: "../assets/img/product/pk1.png",
+        sale: "product--sale",
+        amount: 100,
+    },
+    {
+        id: 2,
+        title: "Túi xách thời trang CurvStar",
+        price: "750.000đ",
+        description: "Giày chạy bộ này của NX Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
+        image: "../assets/img/product/pk2.png",
+        sale: "product--sale",
+        amount: 100,
+    },
+    {
+        id: 3,
+        title: "Túi xách thời trang Chenal",
+        price: "750.000đ",
+        description: "Giày chạy bộ này của NX Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
+        image: "../assets/img/product/pk3.png",
+        amount: 100,
+    },
+    {
+        id: 4,
+        title: "Túi xách thời trang Gucci",
+        price: "750.000đ",
+        description: "Giày chạy bộ này của NX Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
+        image: "../assets/img/product/pk4.png",
+        amount: 100,
+    },
+    {
+        id: 5,
+        title: "Ví nữ cầm tay Bandolini",
+        price: "486.000đ",
+        description: "Giày chạy bộ này của NX Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
+        image: "../assets/img/product/pk5.png",
+        sale: "product--sale",
+        amount: 100,
+    },
+    {
+        id: 6,
+        title: "Thắt lưng da cá sấu",
+        price: "940.000đ",
+        description: "Giày chạy bộ này của NX Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
+        image: "../assets/img/product/pk6.png",
+        amount: 100,
+    },
+    {
+        id: 7,
+        title: "Thắt lưng something borrowed",
+        price: "199.000đ",
+        description: "Giày chạy bộ này của NX Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
+        image: "../assets/img/product/pk7.png",
+        amount: 100,
+    },
+    {
+        id: 8,
+        title: "Túi xách thời trang Madam",
+        price: "720.000đ",
+        description: "Giày chạy bộ này của NX Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
+        image: "../assets/img/product/pk8.png",
+        amount: 100,
+        sale: "product--sale",
+    },
+    {
+        id: 9,
+        title: "Túi xách thời trang cao cấp Gucci",
+        price: "750.000đ",
+        description: "Giày chạy bộ này của NX Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
+        image: "../assets/img/product/pk9.png",
+        amount: 100,
+    },
+    {
+        id: 10,
+        title: "Túi xách thời trang Michael Kors",
+        price: "1.300.000đ",
+        description: "Giày chạy bộ này của NX Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
+        image: "../assets/img/product/pk10.png",
+        amount: 100,
+    },
+]
+
+const bestSellerProducts = [
+    {
+        id: 1,
+        title: "Giày thời trang nữ Nike",
+        price: "35.000đ",
+        description: "Giày thời trang nữ này của Nike Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
+        image: "./product/img/giay thoi trang nu nike.jpg",
+        amount: 100,
+        sale: "product--sale",
+        details: "./product/giaythoitrangnunike.htm",
+    },
+    {
+        id: 2,
+        title: "Giày thời trang Creative",
+        price: "45.000đ",
+        description: "Giày thời trang nữ này của Nike Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
+        image: "../assets/img/product/29.png",
+        amount: 100,
+    },
+    {
+        id: 3,
+        title: "Giày thời trang nữ DT",
+        price: "45.000đ",
+        description: "Giày thời trang nữ này của Nike Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
+        image: "../assets/img/product/30.png",
+        amount: 100,
+        sale: "product--sale",
+    },
+    {
+        id: 4,
+        title: "Giày cao cổ Prowin",
+        price: "1.200.000đ",
+        description: "Giày thời trang nữ này của Nike Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
+        image: "../assets/img/product/31.png",
+        amount: 100,
+    },
+    {
+        id: 5,
+        title: "Giày bóng đá nam Codad ROCKET",
+        price: "410.000đ",
+        description: "Giày thời trang nữ này của Nike Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
+        image: "../assets/img/product/32.png",
+        amount: 100,
+    },
+    {
+        id: 6,
+        title: "Giày cầu lông động lực PROMAX",
+        price: "590.000đ",
+        description: "Giày thời trang nữ này của Nike Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
+        image: "../assets/img/product/33.png",
+        amount: 100,
+    },
+    {
+        id: 7,
+        title: "Giày thể thao nữ Prowin",
+        price: "390.000đ",
+        description: "Giày thời trang nữ này của Nike Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
+        image: "../assets/img/product/34.png",
+        amount: 100,
+    },
+    {
+        id: 8,
+        title: "Giày chạy bộ NX",
+        price: "540.000đ",
+        description: "Giày thời trang nữ này của Nike Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
+        image: "../assets/img/product/35.png",
+        amount: 100,
+    },
+    {
+        id: 9,
+        title: "Giày chạy bộ NX-11872",
+        price: "567.000đ",
+        description: "Giày thời trang nữ này của Nike Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
+        image: "../assets/img/product/34.png",
+        amount: 100,
+    },
+    {
+        id: 10,
+        title: "Giày bóng đá lining",
+        price: "1.899.966đ",
+        description: "Giày thời trang nữ này của Nike Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
+        image: "../assets/img/product/37.png",
+        amount: 100,
+    },
+]
+
 // Render products
 const renderProducts = (products) => {
     const productList = document.querySelector("#products-area")
@@ -187,12 +360,113 @@ const renderProducts = (products) => {
     productList.innerHTML = productHTML
 }
 
+// Render outstanding products 
+const renderOutStandingProducts = (outstandingProduct) => {
+    const productList = document.querySelector("#products-area")
+    productList.innerHTML = ""
+    let productHTML = ""
+
+    outstandingProduct.forEach((product) => {
+        const { id, title, price, description, image, sale, details } = product
+        productHTML += `
+        <div onclick="productsDetails(${id})" class="col l-6 m-6 c-12 product-details">
+            <a href="${details}" target="_self" class="product product--space ${sale}">
+                <img src="${image}" alt="Image" class="product-img"/>
+                <span class="product-desc">${title}</span>
+                <span class="product-price">${price}</span>
+            </a>
+        </div>
+        `
+    })
+
+    productHTML += `<h2 class="product-name">SẢN PHẨM HOT</h2>`
+
+    products.forEach((product) => {
+        const { id, title, price, description, image, sale, details } = product
+        if (id >= 10)
+            productHTML += `
+            <div onclick="productsDetails(${id})" class="col l-6 m-6 c-12 product-details">
+                <a href="${details}" target="_self" class="product product--space ${sale}">
+                    <img src="${image}" alt="Image" class="product-img"/>
+                    <span class="product-desc">${title}</span>
+                    <span class="product-price">${price}</span>
+                </a>
+            </div>
+            `
+    })
+
+    productList.innerHTML = productHTML
+}
+
+// Render products
+const renderBestSellerProducts = (bestSellerProducts) => {
+    const productList = document.querySelector("#products-area")
+    productList.innerHTML = ""
+    let productHTML = ""
+
+    bestSellerProducts.forEach((product) => {
+        const { id, title, price, description, image, sale, details } = product
+        productHTML += `
+        <div onclick="productsDetails(${id})" class="col l-6 m-6 c-12 product-details">
+            <a href="${details}" target="_self" class="product product--space ${sale}">
+                <img src="${image}" alt="Image" class="product-img"/>
+                <span class="product-desc">${title}</span>
+                <span class="product-price">${price}</span>
+            </a>
+        </div>
+        `
+    })
+
+    productHTML += `<h2 class="product-name">SẢN PHẨM HOT</h2>`
+
+    products.forEach((product) => {
+        const { id, title, price, description, image, sale, details } = product
+        if (id >= 10)
+            productHTML += `
+            <div onclick="productsDetails(${id})" class="col l-6 m-6 c-12 product-details">
+                <a href="${details}" target="_self" class="product product--space ${sale}">
+                    <img src="${image}" alt="Image" class="product-img"/>
+                    <span class="product-desc">${title}</span>
+                    <span class="product-price">${price}</span>
+                </a>
+            </div>
+            `
+    })
+
+    productList.innerHTML = productHTML
+}
+
 const createProducts = () => {
     renderProducts(products)
 }
 
 // Render all products by default
 window.onload = createProducts
+
+const outstandingButton = document.querySelector("#outstanding-btn")
+const newButton = document.querySelector("#new-btn")
+const bestSellerButton = document.querySelector("#best-seller-btn")
+
+outstandingButton.addEventListener('click', () => {
+    renderOutStandingProducts(outstandingProduct)
+    outstandingButton.classList.add("btn--active")
+    newButton.classList.remove("btn--active")
+    bestSellerButton.classList.remove("btn--active")
+})
+
+newButton.addEventListener('click', () => {
+    createProducts()
+    newButton.classList.add("btn--active")
+    outstandingButton.classList.remove("btn--active")
+    bestSellerButton.classList.remove("btn--active")
+})
+
+bestSellerButton.addEventListener('click', () => {
+    renderBestSellerProducts(bestSellerProducts)
+    bestSellerButton.classList.add("btn--active")
+    newButton.classList.remove("btn--active")
+    outstandingButton.classList.remove("btn--active")
+})
 
 // Go to product details
 let productsDetails = (idProduct) => {
