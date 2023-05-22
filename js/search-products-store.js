@@ -48,3 +48,7 @@ searchInput.addEventListener('keydown', (event) => {
                     else
                               renderProducts()
 })
+
+
+
+

@@ -376,7 +376,7 @@ const renderOutStandingProducts = (outstandingProduct) => {
     let productHTML = ""
 
     outstandingProduct.forEach((product) => {
-        const { id, title, price, description, image, sale, details } = product
+        const { id, title, price, oldPrice, description, image, sale, details } = product
 
         let tempPrice = ""
         if (oldPrice !== undefined)
