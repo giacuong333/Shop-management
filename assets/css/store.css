@@ -22,6 +22,8 @@
     color: var(--text-color);
     margin: 0 14px;
     font-size: 2rem;
+    border: none;
+    cursor: pointer;
 }
 
 .content-cart__pagination-before:hover,
