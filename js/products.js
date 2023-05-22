@@ -12,6 +12,7 @@ const products = [
         id: 1,
         title: "Áo len Kimono SM",
         price: "330.000đ",
+        oldPrice: "400.000đ",
         description: "Chiếc áo len này của Kimono Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
         image: "./product/img/ao len kimono sm.jpg",
         amount: 100,
@@ -22,6 +23,7 @@ const products = [
         id: 2,
         title: "Áo len KSUMI",
         price: "330.000đ",
+        oldPrice: "400.000đ",
         description: "Chiếc áo len này của KSUMI Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
         image: "./product/img/ao len ksumi.jpg",
         amount: 100,
@@ -32,6 +34,7 @@ const products = [
         id: 3,
         title: "Áo khoát gió Moza",
         price: "330.000đ",
+        oldPrice: "400.000đ",
         description: "Chiếc áo len này của Moza Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
         image: "./product/img/ao-khoat-gio-moza.png",
         amount: 100,
@@ -321,6 +324,7 @@ const bestSellerProducts = [
         id: 9,
         title: "Giày chạy bộ NX-11872",
         price: "567.000đ",
+        oldPrice: "600.000đ",
         description: "Giày thời trang nữ này của Nike Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
         image: "../assets/img/product/34.png",
         amount: 100,
@@ -342,9 +346,13 @@ const renderProducts = (products) => {
     let productHTML = ""
 
     products.forEach((product) => {
-        const { id, title, price, description, image, sale, details } = product
+        const { id, title, price, oldPrice, description, image, sale, details } = product
         if (id === 10)
             productHTML += `<h2 class="product-name">SẢN PHẨM HOT</h2>`
+
+        let tempPrice = ""
+        if (oldPrice !== undefined)
+            tempPrice = oldPrice
 
         productHTML += `
         <div onclick="productsDetails(${id})" class="col l-6 m-6 c-12 product-details">
@@ -352,6 +360,7 @@ const renderProducts = (products) => {
                 <img src="${image}" alt="Image" class="product-img"/>
                 <span class="product-desc">${title}</span>
                 <span class="product-price">${price}</span>
+                <span class="product-price-old">${tempPrice}</span>
             </a>
         </div>
         `
@@ -368,12 +377,18 @@ const renderOutStandingProducts = (outstandingProduct) => {
 
     outstandingProduct.forEach((product) => {
         const { id, title, price, description, image, sale, details } = product
+
+        let tempPrice = ""
+        if (oldPrice !== undefined)
+            tempPrice = oldPrice
+
         productHTML += `
         <div onclick="productsDetails(${id})" class="col l-6 m-6 c-12 product-details">
             <a href="${details}" target="_self" class="product product--space ${sale}">
                 <img src="${image}" alt="Image" class="product-img"/>
                 <span class="product-desc">${title}</span>
                 <span class="product-price">${price}</span>
+                <span class="product-price-old">${tempPrice}</span>
             </a>
         </div>
         `
@@ -382,7 +397,7 @@ const renderOutStandingProducts = (outstandingProduct) => {
     productHTML += `<h2 class="product-name">SẢN PHẨM HOT</h2>`
 
     products.forEach((product) => {
-        const { id, title, price, description, image, sale, details } = product
+        const { id, title, price, oldPrice, description, image, sale, details } = product
         if (id >= 10)
             productHTML += `
             <div onclick="productsDetails(${id})" class="col l-6 m-6 c-12 product-details">
@@ -405,13 +420,19 @@ const renderBestSellerProducts = (bestSellerProducts) => {
     let productHTML = ""
 
     bestSellerProducts.forEach((product) => {
-        const { id, title, price, description, image, sale, details } = product
+        const { id, title, price, oldPrice, description, image, sale, details } = product
+
+        let tempPrice = ""
+        if (oldPrice !== undefined)
+            tempPrice = oldPrice
+
         productHTML += `
         <div onclick="productsDetails(${id})" class="col l-6 m-6 c-12 product-details">
             <a href="${details}" target="_self" class="product product--space ${sale}">
                 <img src="${image}" alt="Image" class="product-img"/>
                 <span class="product-desc">${title}</span>
                 <span class="product-price">${price}</span>
+                <span class="product-price-old">${tempPrice}</span>
             </a>
         </div>
         `
