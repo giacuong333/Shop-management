@@ -220,6 +220,16 @@
             .container-wrap__forgot-save-check {
                 margin-bottom: 12px;
             }
+
+            input[type=password],
+            input[type=email] {
+                border: none;
+            }
+
+            input[type=password]:focus,
+            input[type=email]:focus {
+                border: 1px #ddd solid;
+            }
         </style>
     </head>
 
@@ -236,7 +246,7 @@
                 <form action="../index.html" class="container-wrap">
                     <h1 id="noidung">Đăng nhập</h1>
                     <input id="email" type="email" placeholder="Email" required>
-                    <input id="pw" type="password" placeholder="Nhập Mật Khẩu" required>
+                    <input id="pw" type="password" placeholder="Mật khẩu" required>
                     <div class="container-wrap__forgot-save">
                         <div class="container-wrap__forgot-save-check">
                             <input type="checkbox" id="checked">
@@ -244,8 +254,7 @@
                             <span id="forgot-pw"> <a href="./dean3.html">Quên mật khẩu </a></span>
                         </div>
                         <div class="wrap-login">
-                            <input id="dangnhap" type="submit" name="btn_login" value="Đăng nhập" onclick="login()"
-                                onkeydown="login()">
+                            <input id="dangnhap" type="submit" name="btn_login" value="Đăng nhập">
                             <p id="b1">Chưa có tài khoản? <a href="./dean2.html">Đăng ký</a></p>
                         </div>
                     </div>

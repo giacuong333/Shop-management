@@ -1,27 +1,37 @@
 const loginBtn = document.querySelector("#sign-in nav-sign-btn a")
 const logoutBtn = document.querySelector("#sign-out .nav-sign-btn a")
 
-var check = false
-
 const login = () => {
           // Get data input from user 
-          const userInputEmail = document.querySelector("#email")
-          const userInputPasswrod = document.querySelector("#pw")
+          const userInputEmail = document.querySelector("#email").value
+          const userInputPassword = document.querySelector("#pw").value
+
+          console.log(userInputEmail)
+          console.log(userInputPassword)
 
           // Get data email and password from local storage
           const getEmail = localStorage.getItem('userEmail')
           const getPassword = localStorage.getItem('userPassword')
 
-          if (userInputEmail.value === getEmail) {
-                    if (userInputPasswrod.value === getPassword) {
-                              alert("Login successfully!")
-                              check = true
-                    }
-                    else {
-                              alert("The password is incorrect!")
-                    }
+          if (userInputEmail === getEmail && userInputPassword === getPassword) {
+                    alert("Login successfully!")
+                    loginBtn.remove()
+                    logoutBtn.remove()
+          } else if (userInputEmail.length === 0 || userInputPassword.length === 0)
+                    alert("Email and password are not empty!")
+          else
+                    alert("Email or password is incorrect!")
 
-          } else
-                    alert("Invalid email!")
 }
+
+const loginListener = document.querySelector("#dangnhap")
+
+if (loginListener !== null) {
+          loginListener.addEventListener('click', login)
+          loginListener.addEventListener('keydown', (event) => {
+                    if (event.key === "Enter")
+                              login()
+          })
+}
+
 
