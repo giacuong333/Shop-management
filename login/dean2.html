@@ -39,26 +39,8 @@
                 margin: 0 0 20px;
             }
 
-            #main #ho {
-                width: 100%;
-                margin-bottom: 10px;
-            }
-
-            #main #ten {
-                width: 100%;
-                margin-bottom: 10px;
-            }
-
-            #main #email {
-                width: 100%;
-                margin-bottom: 10px;
-            }
-
-            #main #sdt {
-                width: 100%;
-                margin-bottom: 10px;
-            }
-
+            #main #email,
+            #main #sdt,
             #main #matkhau {
                 width: 100%;
                 margin-bottom: 10px;
@@ -217,7 +199,7 @@
     </head>
 
     <body>
-        <form name="frm_login" action="./dean1.html">
+        <form name="frm_login" action="">
             <div class="header-nav">
                 <a href="../index.html" class="header-nav__link">Trang chủ</a>
                 <a href="../index.html" target="_self" class="header-nav__name">Shop FIVE GUYS</a>
@@ -232,12 +214,9 @@
                             <h1 id="noidung">Tạo tài khoản</h1>
                         </div>
                         <div>
-                            <input id="ho" type="text" name="txt_id" placeholder="Họ" required>
-                            <input id="ten" type="text" name="txt_id" placeholder="Tên" required>
                             <input id="email" type="email" placeholder="Email" required>
                             <input id="sdt" type="text" placeholder="Số điện thoại" required>
                             <input id="matkhau" type="password" name="txt_pass" placeholder="Mật khẩu" required>
-                            <div id="error" style="color:#ff7348"></div>
                         </div>
                         <div>
                             <input id="dangky" type="submit" name="btn_login" value="Đăng Ký">
