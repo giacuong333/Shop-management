@@ -1,5 +1,5 @@
-const loginBtn = document.querySelector("#sign-in nav-sign-btn a")
-const logoutBtn = document.querySelector("#sign-out .nav-sign-btn a")
+const loginBtn = document.querySelector("#sign-in button")
+const logoutBtn = document.querySelector("#sign-out button")
 
 const login = () => {
           // Get data input from user 
@@ -25,7 +25,6 @@ const login = () => {
 }
 
 const loginListener = document.querySelector("#dangnhap")
-
 if (loginListener !== null) {
           loginListener.addEventListener('click', login)
           loginListener.addEventListener('keydown', (event) => {
