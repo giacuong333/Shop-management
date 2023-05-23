@@ -71,6 +71,9 @@ html {
 .btn.btn--sign-in,
 .btn.btn--sign-out {
   display: block;
+  outline: none;
+  border: none;
+  width: 100%;
   text-decoration: none;
   text-align: center;
   font-size: 2rem;

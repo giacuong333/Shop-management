@@ -1,3 +1,6 @@
+const hideLoginButton = document.querySelector("#sign-in a")
+const convertTextRegisterBtn = document.querySelector("#sign-out a")
+
 const login = () => {
           // Get data input from user 
           const userInputEmail = document.querySelector("#email").value
@@ -8,18 +11,25 @@ const login = () => {
           const getPassword = localStorage.getItem('userPassword')
 
           if (userInputEmail === getEmail) {
-                    if (userInputPasswrod === getPassword)
+                    if (userInputPasswrod === getPassword) {
                               alert("Login successfully!")
-                    else
+                              hideLoginButton.style.display = "none"
+                              convertTextRegisterBtn.textContent = "Đăng xuất"
+                    }
+                    else {
                               alert("The password is incorrect!")
+                    }
+
           } else
                     alert("Invalid email!")
 }
 
 const loginButton = document.querySelector("#dangnhap")
 
-loginButton.addEventListener('click', login)
-loginButton.addEventListener('keydown', (event) => {
-          if (event.key === "Enter")
-                    login()
-})
+if (loginButton !== null) {
+          loginButton.addEventListener('click', login)
+          loginButton.addEventListener('keydown', (event) => {
+                    if (event.key === "Enter")
+                              login()
+          })
+}

@@ -21,8 +21,10 @@ function registration() {
 
 const register = document.querySelector("#dangky")
 
-register.addEventListener('click', registration)
-register.addEventListener('keydown', (event) => {
-          if (event.key === "Enter")
-                    registration()
-})
+if (register !== null) {
+          register.addEventListener('click', registration)
+          register.addEventListener('keydown', (event) => {
+                    if (event.key === "Enter")
+                              registration()
+          })
+}
