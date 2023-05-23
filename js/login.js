@@ -1,20 +1,21 @@
-const hideLoginButton = document.querySelector("#sign-in a")
-const convertTextRegisterBtn = document.querySelector("#sign-out a")
+const loginBtn = document.querySelector("#sign-in nav-sign-btn a")
+const logoutBtn = document.querySelector("#sign-out .nav-sign-btn a")
+
+var check = false
 
 const login = () => {
           // Get data input from user 
-          const userInputEmail = document.querySelector("#email").value
-          const userInputPasswrod = document.querySelector("#pw").value
+          const userInputEmail = document.querySelector("#email")
+          const userInputPasswrod = document.querySelector("#pw")
 
           // Get data email and password from local storage
           const getEmail = localStorage.getItem('userEmail')
           const getPassword = localStorage.getItem('userPassword')
 
-          if (userInputEmail === getEmail) {
-                    if (userInputPasswrod === getPassword) {
+          if (userInputEmail.value === getEmail) {
+                    if (userInputPasswrod.value === getPassword) {
                               alert("Login successfully!")
-                              hideLoginButton.style.display = "none"
-                              convertTextRegisterBtn.textContent = "Đăng xuất"
+                              check = true
                     }
                     else {
                               alert("The password is incorrect!")
@@ -24,12 +25,3 @@ const login = () => {
                     alert("Invalid email!")
 }
 
-const loginButton = document.querySelector("#dangnhap")
-
-if (loginButton !== null) {
-          loginButton.addEventListener('click', login)
-          loginButton.addEventListener('keydown', (event) => {
-                    if (event.key === "Enter")
-                              login()
-          })
-}
