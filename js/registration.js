@@ -3,7 +3,7 @@ import Accounts from "./local-storage.js";
 let accounts = new Accounts()
 accounts.init()
 
-document.addEventListener("DOMContentLoaded", e => {
+document.addEventListener("DOMContentLoaded", () => {
           let formRegister = document.querySelector("#frm_login")
 
           if (formRegister !== null) {
@@ -39,6 +39,5 @@ document.addEventListener("DOMContentLoaded", e => {
                                         window.location.href = "../login/dean1.html"
                               }
                     })
-
           }
 })

@@ -40,7 +40,6 @@ document.addEventListener("DOMContentLoaded", () => {
                                         window.location.href = "../"
                               } else
                                         alert("Invalid email or password")
-
                     })
           }
 })

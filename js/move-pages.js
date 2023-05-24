@@ -21,15 +21,12 @@ const previousPage = () => {
 }
 
 // Move page (Login-Logout)
-const loginButton = document.querySelector("#sign-in")
-const logoutButton = document.querySelector("#sign-out")
-
 const loginPage = () => {
-          window.location.href = "./login/dean1.html"
+          window.location.href = "../login/dean1.html"
 }
 
-const logoutPage = () => {
-          window.location.href = "./login/dean2.html"
+const registerPage = () => {
+          window.location.href = "../login/dean2.html"
 }
 
 
