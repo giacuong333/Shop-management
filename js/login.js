@@ -1,42 +1,46 @@
-const loginBtn = document.querySelector("#sign-in button")
-const logoutBtn = document.querySelector("#sign-out button")
+import Accounts from "./local-storage.js"
 
-const getAccounts = () => localStorage.getItem('accounts') ? JSON.parse(localStorage.getItem('accounts')) : []
+let account = new Accounts()
+account.init()
 
-const setAccounts = (accounts) => localStorage.setItem('accounts', JSON.stringify(accounts))
+// DOMContentLoaded used to ensure that your JS code runs after the HTML
+// document has been fully loaded, allowing you to safely access and manipulate the DOM elements    
+document.addEventListener("DOMContentLoaded", () => {
+          let getUserEmail = document.querySelector("#email")
+          let getUserPassword = document.querySelector("#pw")
 
-const login = () => {
-          // Get data input from user 
-          const userInputEmail = document.querySelector("#email").value
-          const userInputPassword = document.querySelector("#pw").value
+          if (getUserEmail !== null && getUserPassword !== null) {
+                    // Login page
 
-          // Get email and password from local storage
-          const accounts = getAccounts()
+                    if (account.getCurrentUser() !== null)
+                              window.location.href = "../"
 
-          console.log(accounts.length)
+                    document.querySelector("#dangnhap").addEventListener("click", e => {
+                              e.preventDefault()
 
-          accounts.array.forEach(element => {
-                    const getEmail = element.email
-                    const getPassword = element.password
+                              // Get user array from local storage
+                              let users = account.getUsers()
+                              let user
+                              let isValid = false
 
-                    if (userInputEmail === getEmail && userInputPassword === getPassword) {
-                              alert("Login successfully!")
-                              loginBtn.remove()
-                              logoutBtn.remove()
-                    } else if (userInputEmail.length === 0 || userInputPassword.length === 0)
-                              alert("Email and password are not empty!")
-                    else
-                              alert("Email or password is incorrect!")
-          });
-}
+                              for (let i = 0; i < users.length; i++) {
+                                        user = users[i]
 
-const loginListener = document.querySelector("#dangnhap")
-if (loginListener !== null) {
-          loginListener.addEventListener('click', login)
-          loginListener.addEventListener('keydown', (event) => {
-                    if (event.key === "Enter")
-                              login()
-          })
-}
+                                        isValid = false
+                                        isValid = (user.email === getUserEmail.value) ? true : false
+                                        isValid = (user.password === getUserPassword.value) ? true : false
 
+                                        if (isValid)
+                                                  break
+                              }
 
+                              if (isValid) {
+                                        account.setCurrentUser(user)
+                                        alert("Login successfully!")
+                                        window.location.href = "../"
+                              } else
+                                        alert("Invalid email or password")
+
+                    })
+          }
+})

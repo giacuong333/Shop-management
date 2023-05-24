@@ -1,47 +1,44 @@
-const accounts = [
-          {
-                    email: "legiacuong789@gmail",
-                    phoneNumber: "0948800917",
-                    password: "121003"
-          },
-]
+import Accounts from "./local-storage.js";
 
-const getAccounts = () => localStorage.getItem('accounts') ? JSON.parse(localStorage.getItem('accounts')) : []
+let accounts = new Accounts()
+accounts.init()
 
-const setAccounts = (accounts) => localStorage.setItem('accounts', JSON.stringify(accounts))
+document.addEventListener("DOMContentLoaded", e => {
+          let formRegister = document.querySelector("#frm_login")
 
-// Set accounts to local storage
-setAccounts(accounts)
+          if (formRegister !== null) {
+                    // Login page
 
-function registration() {
-          var email = document.querySelector("#email").value
-          var phoneNumber = document.querySelector("#sdt").value
-          var password = document.querySelector("#matkhau").value
+                    if (accounts.getCurrentUser() !== null)
+                              window.location.href = "../"
 
+                    formRegister.addEventListener("submit", e => {
+                              e.preventDefault()
 
+                              // Get all input tags
+                              const inputValues = document.querySelectorAll("#frm_login input")
+                              let obj = {}
 
-          // The first way to store data in local storage 
-          accounts.push({
-                    firstName, lastName, email, phoneNumber, password
-          })
-          setAccounts(accounts)
-          alert("Register successfully!")
+                              inputValues.forEach(element => {
+                                        if (typeof element.dataset.type !== "undefined")
+                                                  obj[element.dataset.type] = element.value
+                              })
 
-          // The second way
-          // localStorage.userEmail = email
-          // localStorage.userPassword = password
-}
+                              let users = accounts.getUsers()
+                              let isExisted = false
+                              users.forEach(element => {
+                                        if (element.email === obj.email)
+                                                  isExisted = true
+                              })
 
+                              if (isExisted)
+                                        alert("User existed!")
+                              else {
+                                        accounts.addUser(obj)
+                                        alert("Register successfully!")
+                                        window.location.href = "../login/dean1.html"
+                              }
+                    })
 
-const register = document.querySelector("#dangky")
-if (register !== null) {
-          register.addEventListener('click', registration)
-          register.addEventListener('keydown', (event) => {
-                    if (event.key === "Enter")
-                              registration()
-          })
-}
-
-
-
-
+          }
+})
