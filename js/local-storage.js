@@ -34,4 +34,3 @@ export default function Accounts() {
 
           this.removeCurrentUser = () => localStorage.removeItem("currentUser")
 }
-
