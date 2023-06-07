@@ -1,6 +1,8 @@
 // Move page (store)
 const pageLinks = document.querySelectorAll(".content-cart__pagination-num__list-item a")
 const pageCurrent = document.querySelector(".content-cart__pagination-num__current")
+const pageAfter = document.querySelector(".content-cart__pagination-after")
+const pageBefore = document.querySelector(".content-cart__pagination-before")
 
 // Move forward
 const nextPage = () => {
@@ -20,7 +22,12 @@ const previousPage = () => {
           }
 }
 
-// Move page (Login-Logout)
+document.addEventListener("DOMContentLoaded", () => {
+          pageBefore.addEventListener("click", () => previousPage())
+          pageAfter.addEventListener("click", () => nextPage())
+})
+
+// Move page(Login - Logout)
 const loginPage = () => {
           window.location.href = "../login/dean1.html"
 }
