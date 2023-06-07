@@ -23,8 +23,10 @@ const previousPage = () => {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-          pageBefore.addEventListener("click", () => previousPage())
-          pageAfter.addEventListener("click", () => nextPage())
+          if (pageBefore !== null && pageAfter !== null) {
+                    pageBefore.addEventListener("click", () => previousPage())
+                    pageAfter.addEventListener("click", () => nextPage())
+          }
 })
 
 // Move page(Login - Logout)

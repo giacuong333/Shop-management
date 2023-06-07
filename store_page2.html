@@ -230,15 +230,17 @@
                 </div>
             </form>
             <div class="nav-sign">
-                <div class="row">
-                    <div class="col l-6 m-6 c-12">
-                        <div class="nav-sign-btn">
-                            <a href="./login/dean1.html" class="btn btn--sign-in">Đăng nhập</a>
+                <!-- Use for logout -->
+                <div class="pagesLoginOut"></div>
+                <div class="row wrap-login-logout">
+                    <div class="col l-6 m-6 c-12 login-button">
+                        <div class="nav-sign-btn" id="sign-in" onclick="loginPage()">
+                            <button type="button" class="btn btn--sign-in">Đăng nhập</button>
                         </div>
                     </div>
-                    <div class="col l-6 m-6 c-12">
-                        <div class="nav-sign-btn">
-                            <a href="./login/dean2.html" class="btn btn--sign-out">Đăng ký</a>
+                    <div class="col l-6 m-6 c-12 logout-button">
+                        <div class="nav-sign-btn" id="sign-out" onclick="registerPage()">
+                            <button type="button" class="btn btn--sign-out">Đăng ký</button>
                         </div>
                     </div>
                 </div>
@@ -286,6 +288,9 @@
         <script src="./js/toggle.js"></script>
         <script src="./js/move-pages.js"></script>
         <script src="./js/search-products-store.js"></script>
+        <script src="./js/log-out.js" type="module"></script>
+        <script src="./js/login.js" type="module"></script>
+        <script src="./js/registration.js" type="module"></script>
     </body>
 
 </html>

@@ -8,6 +8,8 @@ account.init()
 document.addEventListener("DOMContentLoaded", () => {
           let getUserEmail = document.querySelector("#email")
           let getUserPassword = document.querySelector("#pw")
+          let loginButton = document.querySelector(".btn--sign-in")
+          let logoutButton = document.querySelector(".btn-sign-out")
 
           if (getUserEmail !== null && getUserPassword !== null) {
                     // Login page
