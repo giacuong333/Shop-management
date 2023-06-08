@@ -340,12 +340,12 @@ const bestSellerProducts = [
 ]
 
 // Render products
-const renderProducts = (products) => {
+const renderProducts = products => {
     const productList = document.querySelector("#products-area")
     productList.innerHTML = ""
     let productHTML = ""
 
-    products.forEach((product) => {
+    products.forEach(product => {
         const { id, title, price, oldPrice, description, image, sale, details } = product
         if (id === 10)
             productHTML += `<h2 class="product-name">SẢN PHẨM HOT</h2>`
@@ -370,12 +370,12 @@ const renderProducts = (products) => {
 }
 
 // Render outstanding products 
-const renderOutStandingProducts = (outstandingProduct) => {
+const renderOutStandingProducts = outstandingProduct => {
     const productList = document.querySelector("#products-area")
     productList.innerHTML = ""
     let productHTML = ""
 
-    outstandingProduct.forEach((product) => {
+    outstandingProduct.forEach(product => {
         const { id, title, price, oldPrice, description, image, sale, details } = product
 
         let tempPrice = ""
@@ -396,7 +396,7 @@ const renderOutStandingProducts = (outstandingProduct) => {
 
     productHTML += `<h2 class="product-name">SẢN PHẨM HOT</h2>`
 
-    products.forEach((product) => {
+    products.forEach(product => {
         const { id, title, price, oldPrice, description, image, sale, details } = product
         if (id >= 10)
             productHTML += `
@@ -414,12 +414,12 @@ const renderOutStandingProducts = (outstandingProduct) => {
 }
 
 // Render products
-const renderBestSellerProducts = (bestSellerProducts) => {
+const renderBestSellerProducts = bestSellerProducts => {
     const productList = document.querySelector("#products-area")
     productList.innerHTML = ""
     let productHTML = ""
 
-    bestSellerProducts.forEach((product) => {
+    bestSellerProducts.forEach(product => {
         const { id, title, price, oldPrice, description, image, sale, details } = product
 
         let tempPrice = ""
@@ -440,7 +440,7 @@ const renderBestSellerProducts = (bestSellerProducts) => {
 
     productHTML += `<h2 class="product-name">SẢN PHẨM HOT</h2>`
 
-    products.forEach((product) => {
+    products.forEach(product => {
         const { id, title, price, description, image, sale, details } = product
         if (id >= 10)
             productHTML += `
@@ -457,9 +457,7 @@ const renderBestSellerProducts = (bestSellerProducts) => {
     productList.innerHTML = productHTML
 }
 
-const createProducts = () => {
-    renderProducts(products)
-}
+const createProducts = () => renderProducts(products)
 
 // Render all products by default
 window.onload = createProducts
@@ -490,12 +488,10 @@ bestSellerButton.addEventListener('click', () => {
 })
 
 // Go to product details
-let productsDetails = (idProduct) => {
-    window.location.href = products[idProduct].details
-}
+let productsDetails = idProduct => window.location.href = products[idProduct].details
 
 // Search products 
-const searchProducts = (searchName) => {
+const searchProducts = searchName => {
     const productContain = document.getElementById("products-area")
 
     let productHTML = ""
@@ -536,7 +532,7 @@ searchButton.addEventListener('click', () => {
 })
 
 // Render searched producs when user pressed enter 
-searchInput.addEventListener('keydown', (event) => {
+searchInput.addEventListener('keydown', event => {
     const query = searchInput.value
     if (query !== "") {
         if (event.key === "Enter")
@@ -546,7 +542,7 @@ searchInput.addEventListener('keydown', (event) => {
 })
 
 // Set products to local storage 
-const setProducts = (products) => {
+const setProducts = products => {
     localStorage.setItem('products', JSON.stringify(products))
 }
 

@@ -18,9 +18,9 @@ export default function Accounts() {
 
           Accounts.prototype.getUsers = () => JSON.parse(localStorage.getItem("users"))
 
-          this.setUsers = (userArr) => localStorage.setItem("users", JSON.stringify(userArr))
+          this.setUsers = userArr => localStorage.setItem("users", JSON.stringify(userArr))
 
-          this.addUser = (userObj) => {
+          this.addUser = userObj => {
                     // Get from local storage 
                     let users = this.getUsers()
                     users.push(userObj)
@@ -28,7 +28,7 @@ export default function Accounts() {
                     this.setUsers(users)
           }
 
-          this.setCurrentUser = (userObj) => localStorage.setItem("currentUser", JSON.stringify(userObj))
+          this.setCurrentUser = userObj => localStorage.setItem("currentUser", JSON.stringify(userObj))
 
           this.getCurrentUser = () => localStorage.getItem("currentUser")
 
