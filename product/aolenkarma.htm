@@ -6,7 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>ÁO LEN KARMA</title>
+        <link rel="stylesheet" href="../assets/fonts/themify-icons/themify-icons.css">
         <link rel="stylesheet" type="text/css" href="sanpham.css">
+        <link rel="stylesheet" type="text/css" href="../assets/css/main.css">
     </head>
 
     <body class="than">
@@ -27,11 +29,13 @@
                             mạo
                             hàng ngày của bạn. - Chất liệu: cotton/nylon; lớp lót: polyester - Có thể giặt máy - Kiểu...
                         </p>
-                        <p>
+                        <div>
                             <input onclick="getQuantity()" class="soluong" type="number" min="1" value="1">
-                        </p>
-                        <input class="mua" type="submit" value="MUA HÀNG">
-                        <input class="goi" type="submit" value="GỌI">
+                        </div>
+                        <div class="button-wrap">
+                            <label for="header-nav__input-pc" class="button-wrap__label mua">Mua</label>
+                            <label for="" class="button-wrap__label goi">Gọi</label>
+                        </div>
                     </td>
                 </tr>
                 <tr>
@@ -65,27 +69,60 @@
                                 tinh xảo, các sản phẩm thời trang của Charter Club thích hợp cho tất cả các dịp.
                             </p>
                         </div>
-
+                        <script>
+                            var acc = document.getElementsByClassName("accordion");
+                            var i;
+                            for (i = 0; i < acc.length; i++) {
+                                acc[i].addEventListener("click", function () {
+                                    this.classList.toggle("active");
+                                    var panel = this.nextElementSibling;
+                                    if (panel.style.maxHeight) {
+                                        panel.style.maxHeight = null;
+                                    }
+                                    else {
+                                        panel.style.maxHeight = panel.scrollHeight + "px";
+                                    }
+                                });
+                            }
+                        </script>
                     </td>
                 </tr>
             </table>
         </form>
-        <script>
-            var acc = document.getElementsByClassName("accordion");
-            var i;
-            for (i = 0; i < acc.length; i++) {
-                acc[i].addEventListener("click", function () {
-                    this.classList.toggle("active");
-                    var panel = this.nextElementSibling;
-                    if (panel.style.maxHeight) {
-                        panel.style.maxHeight = null;
-                    }
-                    else {
-                        panel.style.maxHeight = panel.scrollHeight + "px";
-                    }
-                });
-            }
-        </script>
+        <!-- Begin overlay -->
+        <input type="checkbox" name="" hidden class="header-nav__input" id="header-nav__input-pc">
+        <label for="header-nav__input-pc" class="overlay"></label>
+
+        <!-- annouce menu -->
+        <div class="annouce-wrap">
+            <div class="annouce-head">
+                <div class="annouce-head__heading">
+                    <p class="annouce-head__title">
+                        <i class="ti-check annouce-head__check-icon"></i>
+                        Thêm vào giỏ hàng thành công
+                    </p>
+                    <i class="ti-close annouce-head__close-icon"></i>
+                </div>
+                <div class="annouce-head__body">
+                    <div class="annouce-head__body-img">
+                        <img src="../product/img/ao len karma.jpg" alt="">
+                    </div>
+                    <div class="annouce-head__body-content">
+                        <div class="annouce-head__body-name">Áo sơmi Calvin Klein</div>
+                        <div class="annouce-head__body-amount">Số lượng: <span>1</span></div>
+                        <div class="annouce-head__body-total">Tổng tiền: <span>500.000đ</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="annouce-middle">
+                <button type="button" class="annouce-middle__content">Tiếp tục mua hàng</button>
+            </div>
+            <div class="annouce-tail">
+                <a href="../cart.html" type="button" class="annouce-tail__check-cart">Kiểm tra giỏ hàng</a>
+            </div>
+        </div>
+        <!-- End overlay -->
+
         <script src="../js/products.js"></script>
     </body>
 
