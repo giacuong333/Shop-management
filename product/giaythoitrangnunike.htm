@@ -7,12 +7,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>GIÀY THỜI TRANG NỮ NIKE</title>
         <link rel="stylesheet" type="text/css" href="sanpham.css">
+        <link rel="stylesheet" href="../assets/css/main.css">
+        <link rel="stylesheet" href="../assets/fonts/themify-icons/themify-icons.css">
+        <link rel="stylesheet" href="../assets/css/style.css">
     </head>
 
     <body class="than">
-        <p class="trangchu">
-            <a href="../index.html">Trang chủ</a>
-        </p>
+        <!-- header -->
+        <div class="header-nav">
+            <a href="../index.html" class="header-nav__link">Trang chủ</a>
+            <a href="../index.html" target="_self" class="header-nav__name">Shop FIVE GUYS</a>
+            <a href="../cart.html" target="_self" class="header-nav__cart"><i
+                    class="header-nav__cart-icon ti-shopping-cart"></i></a>
+        </div>
+
         <form>
             <table class="bang">
                 <tr>
@@ -30,8 +38,10 @@
                         <p>
                             <input class="soluong" type="number" min="1" value="1">
                         </p>
-                        <input class="mua" type="submit" value="MUA HÀNG">
-                        <input class="goi" type="submit" value="GỌI">
+                        <div class="button-wrap">
+                            <label for="header-nav__input-pc" class="button-wrap__label mua">Mua</label>
+                            <label for="" class="button-wrap__label goi">Gọi</label>
+                        </div>
                     </td>
                 </tr>
                 <tr>
@@ -56,22 +66,6 @@
                                 lĩnh vực thời trang, bao gồm cả thời trang trẻ em.
                             </p>
                         </div>
-                        <script>
-                            var acc = document.getElementsByClassName("accordion");
-                            var i;
-                            for (i = 0; i < acc.length; i++) {
-                                acc[i].addEventListener("click", function () {
-                                    this.classList.toggle("active");
-                                    var panel = this.nextElementSibling;
-                                    if (panel.style.maxHeight) {
-                                        panel.style.maxHeight = null;
-                                    }
-                                    else {
-                                        panel.style.maxHeight = panel.scrollHeight + "px";
-                                    }
-                                });
-                            }
-                        </script>
                     </td>
                 </tr>
             </table>
@@ -92,7 +86,7 @@
                 </div>
                 <div class="annouce-head__body">
                     <div class="annouce-head__body-img">
-                        <img src="../product/img/ao len karma.jpg" alt="">
+                        <img src="../product/img/giay thoi trang nu nike.jpg" alt="">
                     </div>
                     <div class="annouce-head__body-content">
                         <div class="annouce-head__body-name">Áo sơmi Calvin Klein</div>
@@ -109,6 +103,49 @@
             </div>
         </div>
         <!-- End overlay -->
+
+        <script>
+            var acc = document.getElementsByClassName("accordion");
+            var i;
+            for (i = 0; i < acc.length; i++) {
+                acc[i].addEventListener("click", function () {
+                    this.classList.toggle("active");
+                    var panel = this.nextElementSibling;
+                    if (panel.style.maxHeight) {
+                        panel.style.maxHeight = null;
+                    }
+                    else {
+                        panel.style.maxHeight = panel.scrollHeight + "px";
+                    }
+                });
+            }
+
+            document.addEventListener("DOMContentLoaded", e => {
+                e.preventDefault()
+
+                // close, open annouce-wrap
+                var closeButton = document.querySelector(".annouce-head__close-icon")
+                var annoucePanel = document.querySelector(".annouce-wrap")
+                var overlayPanel = document.querySelector(".overlay")
+                var buyButton = document.querySelector(".mua")
+
+                console.log(closeButton)
+                console.log(annoucePanel)
+                console.log(overlayPanel)
+
+                closeButton.addEventListener("click", () => {
+                    annoucePanel.style.transform = "scale(0)"
+                    annoucePanel.style.opacity = "0"
+                    overlayPanel.style.display = "none"
+                })
+
+                buyButton.addEventListener("click", () => {
+                    annoucePanel.style.transform = "scale(1)"
+                    annoucePanel.style.opacity = "1"
+                    overlayPanel.style.display = "block"
+                })
+            })
+        </script>
     </body>
 
 </html>
