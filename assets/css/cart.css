@@ -131,10 +131,53 @@ input[type="number"] {
     color: #ccc;
     font-size: 3rem;
     transition: all ease-in-out 0.2s;
+    cursor: pointer;
 }
 
 .content-cart-product__infor-icon:hover {
     color: var(--primary-color);
+}
+
+/* Annouce deleted product */
+
+.annouce-delete-product {
+    position: fixed;
+    top: 20%;
+    right: 120px;
+    left: 120px;
+    bottom: 20%;
+    z-index: 2;
+    display: none;
+    transition: all .3s ease-in-out;
+}
+
+.annouce-delete-product__header {}
+
+.annouce-delete-product__header-text {
+    background-color: var(--white-color);
+    font-size: 3.8rem;
+    padding: 48px;
+    text-align: center;
+    color: var(--text-color);
+    border-radius: 6px;
+}
+
+.annouce-delete-product__body {}
+
+.annouce-delete-product__body-text:hover, .annouce-delete-product__footer-text:hover {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.annouce-delete-product__body-text, .annouce-delete-product__footer-text {
+    font-size: 3rem;
+    transition: all .2s ease-in-out;
+    background-color: var(--white-color);
+    text-align: center;
+    padding: 20px;
+    margin-top: 6px;
+    border-radius: 6px;
+    cursor: pointer;
 }
 
 .pay-product {

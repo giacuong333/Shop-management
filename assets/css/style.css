@@ -16,6 +16,8 @@
   cursor: pointer;
 }
 
+/* Cart */
+
 .header-nav__cart {
   position: relative;
   display: block;

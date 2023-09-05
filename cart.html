@@ -60,13 +60,14 @@
                         </div>
 
                         <!-- If there are no products in the cart -->
-                        <span class="content-cart__desc">
+                        <!-- <span class="content-cart__desc">
                             Không có sản phẩm nào trong giỏ hàng. Quay lại <a href="./store_page1.html"
                                 class="content-cart__link">cửa
                                 hàng</a> để tiếp tục mua sắm
-                        </span>
+                        </span> -->
+
                         <!-- If there are products in the cart -->
-                        <!-- <span class="content-cart__desc">
+                        <span class="content-cart__desc">
                             <div class="content-cart-product">
                                 <div class="content-cart-product__img">
                                     <a href="./product/aolenkarma.htm" class="content-cart-product__img-link">
@@ -80,9 +81,9 @@
                                     </div>
                                     <div class="content-cart-product__info-wrap-icon">
                                         <input type="number" min="1" value="1">
-                                        <a href="" class="content-cart-product__infor-icon">
+                                        <label for="" href="" class="content-cart-product__infor-icon">
                                             <i class="content-cart-product__infor-wrap-icon-link ti-trash"></i>
-                                        </a>
+                                        </label>
                                     </div>
                                 </div>
                             </div>
@@ -101,9 +102,9 @@
                                     </div>
                                     <div class="content-cart-product__info-wrap-icon">
                                         <input type="number" min="1" value="1">
-                                        <a href="" class="content-cart-product__infor-icon">
+                                        <label class="content-cart-product__infor-icon" for="header-nav__input-pc">
                                             <i class="content-cart-product__infor-wrap-icon-link ti-trash"></i>
-                                        </a>
+                                        </label>
                                     </div>
                                 </div>
                             </div>
@@ -123,10 +124,28 @@
                             </div>
                         </span>
                         <span class="option-cart">
-                            <button type="button" class="option-cart__btn">Tiếp tục mua sắm</button>
+                            <button type="butto
+                            n" class="option-cart__btn">Tiếp tục mua sắm</button>
                             <button type="button" class="option-cart__btn">Cập nhật giỏ hàng</button>
                             <button type="button" class="option-cart__btn">Tiến hành thanh toán</button>
-                        </span> -->
+                        </span>
+
+                        <!-- Begin overlay -->
+                        <input type="checkbox" hidden name="" class="header-nav__input" id="header-nav__input-pc">
+                        <label for="header-nav__input-pc" class="overlay"></label>
+
+                        <div class="annouce-delete-product">
+                            <div class="annouce-delete-product__header">
+                                <p class="annouce-delete-product__header-text">Bạn muốn xóa sản phẩm khỏi giỏ hàng?</p>
+                            </div>
+                            <div class="annouce-delete-product__body">
+                                <p class="annouce-delete-product__body-text">Có</p>
+                            </div>
+                            <div class="annouce-delete-product__footer">
+                                <p class="annouce-delete-product__footer-text">Không</p>
+                            </div>
+                        </div>
+                        <!-- End overlay -->
                     </div>
                 </div>
             </div>
@@ -273,6 +292,7 @@
         <script src="./js/login.js" type="module"></script>
         <script src="./js/registration.js" type="module"></script>
         <script src="./js/log-out.js" type="module"></script>
+        <script src="./js/closePanel.js"></script>
     </body>
 
 </html>
