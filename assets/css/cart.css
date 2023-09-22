@@ -160,6 +160,7 @@ input[type="number"] {
     text-align: center;
     color: var(--text-color);
     border-radius: 6px;
+    line-height: 4rem;
 }
 
 .annouce-delete-product__body {}
@@ -178,6 +179,8 @@ input[type="number"] {
     margin-top: 6px;
     border-radius: 6px;
     cursor: pointer;
+    width: 100%;
+    border: none;
 }
 
 .pay-product {

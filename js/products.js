@@ -71,7 +71,7 @@ const products = [
         title: "Áo váy Free People cổ truyền",
         price: "430.000đ",
         description: "Áo váy này của Free Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
-        image: "./product/img/ao vay free people co thuyen.jpg",
+        image: "../product/img/ao vay free people co thuyen.jpg",
         amount: 100,
         details: "./product/aovayfreepeoplecothuyen.htm",
     },

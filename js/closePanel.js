@@ -13,4 +13,5 @@ var trashIcon = document.querySelector(".content-cart-product__infor-wrap-icon-l
 trashIcon.addEventListener("click", () => {
           annouceProductPanel.style.display = "block"
           overlayPanel.style.display = "block"
+
 })

@@ -136,7 +136,7 @@
   color: #444;
   cursor: pointer;
   padding: 25px;
-  width: 1120px;
+  /* width: 1120px; */
   border: 1px solid #dddddd;
   text-align: left;
   outline: none;
@@ -166,7 +166,7 @@
   max-height: 0;
   background-color: white;
   overflow: hidden;
-  width: 1120px;
+  /* width: 1120px; */
   transition: max-height 0.2s ease-out;
   border-radius: 5px;
 }
@@ -195,7 +195,7 @@
   z-index: 2;
   transition: all ease-in-out .3s;
   opacity: 0;
-  transform: scale(0);
+  display: none;
 }
 
 .annouce-head {

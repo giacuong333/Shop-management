@@ -17,23 +17,28 @@
 }
 
 /* Cart */
-
 .header-nav__cart {
-  position: relative;
   display: block;
-  padding-right: 1.4rem;
+  padding: 2px 4px;
+  margin-right: 10px;
+  background-color: white;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
 }
 
-.header-nav__cart::after {
-  content: "0";
-  position: absolute;
-  top: -4px;
-  right: 4px;
-  color: var(--white-color);
-  font-size: 1.7rem;
-  border-radius: 2rem;
-  padding: 0.2rem 0.8rem;
-  background-color: #004b7f;
+.ti-shopping-cart {
+  padding: 0 5px;
+  color: var(--primary-color);
+}
+
+.header-nav__cart-count {
+  font-size: 2.2rem;
+  color: var(--primary-color);
+  padding: 0 5px;
+
 }
 
 .header-nav__menu,
