@@ -1,42 +1,47 @@
+// To make sure that every elemetns in DOM is loaded
+const item = document.querySelector(".content-cart__desc")
+const innerItem = document.querySelector(".content-cart-product")
+const yesButton = document.querySelector(".annouce-delete-product__body-text")
+const trashButton = document.querySelector(".content-cart-product__infor-icon")
+const annouce = document.querySelector(".annouce-delete-product")
+const closeButton = document.querySelector(".annouce-head__close-icon")
+const overlay = document.querySelector(".overlay")
+const carryOnButton = document.querySelector('.annouce-middle__content')
+const amountCart = document.querySelector('.header-nav__cart-count')
+
+const buyButton = document.querySelector(".mua")
+const productName = document.querySelector(".ten")
+const productImage = document.querySelector(".annouce-head__body-img img")
+const productAmount = document.querySelector(".soluong")
+const productPrice = document.querySelector(".gia")
+const annouceAddToCart = document.querySelector(".annouce-wrap")
+
 // push cart onto local storage
-pushCart = (products) => localStorage.setItem("products", JSON.stringify(products))
+pushProduct = (products) => localStorage.setItem("products", JSON.stringify(products))
 
 // get cart from local storage 
-getCart = () => localStorage.getItem("products") ? JSON.parse(localStorage.getItem("products")) : []
+getProduct = () => localStorage.getItem("products") ? JSON.parse(localStorage.getItem("products")) : []
 
-// To make sure that every elemetns in DOM is loaded
-let item = document.querySelector(".content-cart__desc")
-let innerItem = document.querySelector(".content-cart-product")
-let yesButton = document.querySelector(".annouce-delete-product__body-text")
-let trashButton = document.querySelector(".content-cart-product__infor-icon")
-let annouce = document.querySelector(".annouce-delete-product")
-let closeButton = document.querySelector(".annouce-head__close-icon")
-let overlay = document.querySelector(".overlay")
-let carryOnButton = document.querySelector('.annouce-middle__content')
+// get cart from local storage
+getCart = () => localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : []
 
-let buyButton = document.querySelector(".mua")
-let productName = document.querySelector(".ten")
-let productImage = document.querySelector(".annouce-head__body-img img")
-let productAmount = document.querySelector(".soluong")
-let productPrice = document.querySelector(".gia")
-let annouceAddToCart = document.querySelector(".annouce-wrap")
+// push cart onto local storage
+pushCart = (cart) => localStorage.setItem('cart', JSON.stringify(cart))
 
-// remove product when clicking the trash button
-if (yesButton) {
-          yesButton.addEventListener("click", (event) => {
-                    event.preventDefault() // prevent loading page from clicking the trash button
+let cart = getCart() || []
 
-                    innerItem.style.display = "none"
-                    overlay.style.display = "none"
-                    annouce.style.display = "none"
-          })
+// add product to cart
+function addToCart(product) {
+          cart.push(product)
+          pushCart(cart)
+          setQuantity()
 }
 
 // get cart
-let cart = getCart()
+const getImageProduct = getProduct()
 
 // find title of image
-findTitle = () => cart.find(currentItem => currentItem.title.toLowerCase() == productName.textContent.toLowerCase())
+findTitle = () => getImageProduct.find(currentItem => currentItem.title.toLowerCase() == productName.textContent.toLowerCase())
 
 // set image
 setImage = () => {
@@ -51,37 +56,82 @@ setImage = () => {
                     console.log('Image not found')
 }
 
+function caculateTotalQuantity(cart) {
+          return cart.reduce((accumulate, currentItem) => {
+                    return accumulate += currentItem.amount
+          }, 0)
+}
+
+let totalQuantity = caculateTotalQuantity(cart)
+amountCart.textContent = totalQuantity + ''
+
+// set quantity when clicking on the add to cart button
+function setQuantity() {
+          totalQuantity = caculateTotalQuantity(cart);
+          amountCart.textContent = totalQuantity + '';
+          localStorage.setItem('cartTotalQuantity', totalQuantity)
+}
+
+function updateCartOnPageLoad() {
+          const storedTotalQuantity = localStorage.getItem('cartTotalQuantity')
+          if (storedTotalQuantity !== null)
+                    amountCart.textContent = storedTotalQuantity
+}
+
+updateCartOnPageLoad()
+
 // open annouce-wrap
 if (buyButton) {
           buyButton.addEventListener("click", (event) => {
                     event.preventDefault()
 
+                    // open panel
                     annouceAddToCart.style.display = "block"
                     annouceAddToCart.style.opacity = "1"
                     annouceAddToCart.style.transition = "all 3s linear"
                     overlay.style.display = "block"
 
-                    let name = document.querySelector(".annouce-head__body-name")
-                    let amount = document.querySelector(".quantity")
-                    let price = document.querySelector(".total")
+                    const name = document.querySelector(".annouce-head__body-name")
+                    const amount = document.querySelector(".quantity")
+                    const price = document.querySelector(".total")
 
                     name.textContent = productName.textContent
                     price.textContent = Number.parseFloat(productPrice.textContent) * Number.parseFloat(productAmount.value)
-                    document.addEventListener("input", () => amount.textContent = productAmount.value)
+                    const initialQuantity = productAmount.value
+                    amount.textContent = initialQuantity
+
+                    setQuantity()
+
+                    document.addEventListener("change", () => {
+                              const updatedQuantity = productAmount.value
+                              amount.textContent = updatedQuantity
+                              setQuantity(Number.parseInt(updatedQuantity))
+                    })
+
                     setImage()
+
+                    // create object to accomodate product information
+                    const productInfo = {
+                              name: productName.textContent,
+                              amount: Number.parseInt(productAmount.value),
+                              price: Number.parseInt(price.textContent),
+                              image: productImage.src,
+                    }
+
+                    addToCart(productInfo)
           })
 } else {
           console.log("Buy button not found")
 }
 
 if (carryOnButton) {
-          carryOnButton.addEventListener('click', event => {
+          carryOnButton.addEventListener('click', () => {
                     annouceAddToCart.style.display = "none"
                     overlay.style.display = "none"
           })
-} else {
+} else
           console.log('Carry on button not found')
-}
+
 
 // close annouce-wrap
 closeButton.addEventListener("click", () => {
@@ -89,4 +139,14 @@ closeButton.addEventListener("click", () => {
           overlay.style.display = "none"
 })
 
+// remove product when clicking the trash button
+if (yesButton) {
+          yesButton.addEventListener("click", (event) => {
+                    event.preventDefault() // prevent loading page from clicking the trash button
+
+                    innerItem.style.display = "none"
+                    overlay.style.display = "none"
+                    annouce.style.display = "none"
+          })
+}
 
