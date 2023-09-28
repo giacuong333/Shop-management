@@ -1,0 +1,86 @@
+[
+    {
+        "id": 19,
+        "title": "Giày thời trang nữ Nike",
+        "price": "35.000đ",
+        "description": "Giày thời trang nữ này của Nike Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
+        "image": "./product/img/giay thoi trang nu nike.jpg",
+        "amount": 0,
+        "sale": "product--sale",
+        "details": "./product/giaythoitrangnunike.htm"
+    },
+    {
+        "id": 20,
+        "title": "Giày thời trang Creative",
+        "price": "45.000đ",
+        "description": "Giày thời trang nữ này của Nike Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
+        "image": "../assets/img/product/29.png",
+        "amount": 0
+    },
+    {
+        "id": 21,
+        "title": "Giày thời trang nữ DT",
+        "price": "45.000đ",
+        "description": "Giày thời trang nữ này của Nike Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
+        "image": "../assets/img/product/30.png",
+        "amount": 0,
+        "sale": "product--sale"
+    },
+    {
+        "id": 22,
+        "title": "Giày cao cổ Prowin",
+        "price": "1.200.000đ",
+        "description": "Giày thời trang nữ này của Nike Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
+        "image": "../assets/img/product/31.png",
+        "amount": 0
+    },
+    {
+        "id": 23,
+        "title": "Giày bóng đá nam Codad ROCKET",
+        "price": "410.000đ",
+        "description": "Giày thời trang nữ này của Nike Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
+        "image": "../assets/img/product/32.png",
+        "amount": 0
+    },
+    {
+        "id": 24,
+        "title": "Giày cầu lông động lực PROMAX",
+        "price": "590.000đ",
+        "description": "Giày thời trang nữ này của Nike Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
+        "image": "../assets/img/product/33.png",
+        "amount": 0
+    },
+    {
+        "id": 25,
+        "title": "Giày thể thao nữ Prowin",
+        "price": "390.000đ",
+        "description": "Giày thời trang nữ này của Nike Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
+        "image": "../assets/img/product/34.png",
+        "amount": 0
+    },
+    {
+        "id": 26,
+        "title": "Giày chạy bộ NX",
+        "price": "540.000đ",
+        "description": "Giày thời trang nữ này của Nike Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
+        "image": "../assets/img/product/35.png",
+        "amount": 0
+    },
+    {
+        "id": 27,
+        "title": "Giày chạy bộ NX-11872",
+        "price": "567.000đ",
+        "oldPrice": "600.000đ",
+        "description": "Giày thời trang nữ này của Nike Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
+        "image": "../assets/img/product/34.png",
+        "amount": 0
+    },
+    {
+        "id": 28,
+        "title": "Giày bóng đá lining",
+        "price": "1.899.966đ",
+        "description": "Giày thời trang nữ này của Nike Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
+        "image": "../assets/img/product/37.png",
+        "amount": 0
+    }
+]
