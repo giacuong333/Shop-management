@@ -1,3 +1,7 @@
+.header {
+  position: relative;
+}
+
 .header-nav {
   height: 56px;
   background-color: var(--primary-color);
@@ -57,6 +61,7 @@
   display: block;
   padding: 0.2rem 1.4rem;
   overflow: hidden;
+  position: relative;
 }
 
 .header-search__input {
@@ -66,6 +71,11 @@
   padding: 1rem 0 1rem 2.4rem;
   font-size: 1.8rem;
   border-radius: 4px;
+  transition: all linear .1s;
+}
+
+.header-search__input:focus {
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, .4);
 }
 
 input[class="header-search__input"]::placeholder {
@@ -73,21 +83,85 @@ input[class="header-search__input"]::placeholder {
   font-weight: 400;
 }
 
-.header-search__btn {
-  position: relative;
-}
-
 .header-search__icon {
   position: absolute;
-  top: -44px;
-  right: 0;
+  top: 18px;
+  right: 16px;
   font-size: 2.8rem;
   color: #a6a6ad;
   border: none;
-  background-color: var(--white-color);
+  background-color: transparent;
   cursor: pointer;
   padding: 0 1rem;
   z-index: 1;
+  transition: all ease .1s;
+}
+
+.header-search__icon:hover {
+  color: var(--primary-color);
+}
+
+.header-search__items-list {
+  position: absolute;
+  top: calc(100% - 3px);
+  left: 16px;
+  right: 16px;
+  z-index: 1000;
+  background-color: var(--white-color);
+  border-radius: 6px;
+  /* padding: 12px; */
+  /* box-shadow: 0 4px 10px 2px rgba(0, 0, 0, .5); */
+  max-height: 400px;
+  overflow-y: scroll;
+}
+
+/* Hide scrollbar */
+.header-search__items-list::-webkit-scrollbar {
+  display: none;
+}
+
+.header-search__items {
+  color: var(--black-color);
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  border-radius: 6px;
+  background-color: var(--primary-color);
+  cursor: pointer;
+  padding: 6px 0;
+  transition: all ease .1s;
+  text-decoration: none;
+
+}
+
+.header-search__items:hover {
+  background-color: var(--secondary-color);
+}
+
+.header-search__items:hover .header-search__items-details {
+  color: var(--black-color);
+}
+
+.header-search__items img {
+  --dimension: 80px;
+  width: var(--dimension);
+  height: var(--dimension);
+  object-fit: cover;
+  object-position: center;
+  border-radius: 6px;
+  margin-left: 20px;
+}
+
+.header-search__items-details {
+  font-size: 1.6rem;
+  text-align: left;
+  color: var(--white-color);
+  margin-left: 20px;
+}
+
+.header-search__items-details h3:nth-child(2) {
+  font-size: 1.4rem;
+  margin-top: 6px;
 }
 
 .slider {
@@ -160,7 +234,8 @@ input[class="header-search__input"]::placeholder {
 .product-img {
   height: 200px;
   width: 180px;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center;
 }
 
 .product-desc {

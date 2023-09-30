@@ -19,6 +19,7 @@
     <script src="./js/log-out.js" type="module"></script>
     <script src="./js/registration.js" type="module"></script>
     <script src="./js/cart.js" defer></script>
+    <script src="./js/search-products.js" defer></script>
   </head>
 
   <body onload="renderProducts('new')">
@@ -36,10 +37,19 @@
           </a>
         </div>
         <div class="header-search">
-          <input type="text" placeholder="Tìm kiếm sản phẩm..." class="header-search__input" />
+          <input type="text" name="" placeholder="Tìm kiếm sản phẩm..." class="header-search__input" />
           <div class="header-search__btn">
             <button type="button" class="header-search__icon ti-search"></button>
           </div>
+        </div>
+        <div class="header-search__items-list">
+          <!-- <a href="" class="header-search__items">
+            <img src="./assets/img/slider_1.png" alt="">
+            <div class="header-search__items-details">
+              <h3>Hoodie zip</h3>
+              <h3>$20.00</h3>
+            </div>
+          </a> -->
         </div>
       </header>
 
