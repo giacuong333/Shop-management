@@ -2,7 +2,7 @@
     {
         "id": 1,
         "title": "Áo len Karma",
-        "price": "550.000đ",
+        "price": "550.000",
         "description": "Chiếc áo len này của Karma Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
         "image": "./product/img/ao len karma.jpg",
         "quantity": 0,
@@ -11,8 +11,8 @@
     {
         "id": 2,
         "title": "Áo len Kimono SM",
-        "price": "330.000đ",
-        "oldPrice": "400.000đ",
+        "price": "330.000",
+        "oldPrice": "400.000",
         "description": "Chiếc áo len này của Kimono Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
         "image": "./product/img/ao len kimono sm.jpg",
         "quantity": 0,
@@ -22,8 +22,8 @@
     {
         "id": 3,
         "title": "Áo len KSUMI",
-        "price": "330.000đ",
-        "oldPrice": "400.000đ",
+        "price": "330.000",
+        "oldPrice": "400.000",
         "description": "Chiếc áo len này của KSUMI Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
         "image": "./product/img/ao len ksumi.jpg",
         "quantity": 0,
@@ -33,8 +33,8 @@
     {
         "id": 4,
         "title": "Áo khoát gió Moza",
-        "price": "330.000đ",
-        "oldPrice": "400.000đ",
+        "price": "330.000",
+        "oldPrice": "400.000",
         "description": "Chiếc áo len này của Moza Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
         "image": "./product/img/ao-khoat-gio-moza.png",
         "quantity": 0,
@@ -43,7 +43,7 @@
     {
         "id": 5,
         "title": "Giày thể thao nữ Prowin",
-        "price": "390.000đ",
+        "price": "390.000",
         "description": "Giày thể thao này của Prowin Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
         "image": "./product/img/giay the thao nu prowin.jpg",
         "quantity": 0,
@@ -61,7 +61,7 @@
     {
         "id": 7,
         "title": "Túi xách thời trang Madam",
-        "price": "720.000đ",
+        "price": "720.000",
         "description": "Túi xách này của Madam Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
         "image": "./product/img/tui-xach-thoi-trang-madam.png",
         "quantity": 0
@@ -69,7 +69,7 @@
     {
         "id": 8,
         "title": "Áo váy Free People cổ truyền",
-        "price": "430.000đ",
+        "price": "430.000",
         "description": "Áo váy này của Free Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
         "image": "../product/img/ao vay free people co thuyen.jpg",
         "quantity": 0,
@@ -78,7 +78,7 @@
     {
         "id": 9,
         "title": "Áo sơ mi Calvin Klein",
-        "price": "500.000đ",
+        "price": "500.000",
         "description": "Áo sơ mi này của Calvin Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
         "image": "./product/img/ao-so-mi-calvin-klein.png",
         "quantity": 0
@@ -86,7 +86,7 @@
     {
         "id": 10,
         "title": "Áo sơ mi Anne Klein",
-        "price": "450.000đ",
+        "price": "450.000",
         "description": "Áo sơ mi này của Klein Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
         "image": "./product/img/ao so mi anne klein.jpg",
         "quantity": 0,
@@ -95,7 +95,7 @@
     {
         "id": 11,
         "title": "Giày thời trang nữ Nike",
-        "price": "35.000đ",
+        "price": "35.000",
         "description": "Giày thời trang nữ này của Nike Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
         "image": "./product/img/giay thoi trang nu nike.jpg",
         "quantity": 0,
@@ -105,7 +105,7 @@
     {
         "id": 12,
         "title": "Giày thời trang Creative",
-        "price": "450.000đ",
+        "price": "450.000",
         "description": "Giày creative của Creative Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
         "image": "./product/img/giay-thoi-trang-creative.png",
         "quantity": 0
@@ -113,7 +113,7 @@
     {
         "id": 13,
         "title": "Giày thể thao nữ DT",
-        "price": "45.000đ",
+        "price": "45.000",
         "description": "Giày DT này của DT Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
         "image": "./product/img/giay the thao nu dt.jpg",
         "sale": "product--sale",
@@ -123,7 +123,7 @@
     {
         "id": 14,
         "title": "Giày cao cổ Prowin",
-        "price": "1.200.000đ",
+        "price": "1.200.000",
         "description": "Giày cao cổ này của Prowin Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
         "image": "./product/img/giay-cao-co-prowin.png",
         "quantity": 0
@@ -131,7 +131,7 @@
     {
         "id": 15,
         "title": "Giày bóng đá nam Codad ROCKET",
-        "price": "410.000đ",
+        "price": "410.000",
         "description": "Giày bóng đá này của Codad Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
         "image": "./product/img/giay-bong-da-nam-codad-rocket.png",
         "sale": "product--sale",
@@ -140,7 +140,7 @@
     {
         "id": 16,
         "title": "Giày cầu lông động lực Promax",
-        "price": "590.000đ",
+        "price": "590.000",
         "description": "Giày cầu lông động lực này của Promax Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
         "image": "./product/img/giay-cau-long-dong-luc-promax.png",
         "sale": "product--sale",
@@ -149,7 +149,7 @@
     {
         "id": 17,
         "title": "Giày thể thao nữ Prowin",
-        "price": "390.000đ",
+        "price": "390.000",
         "description": "Giày thể thao nữ này của Prowin Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
         "image": "./product/img/giay the thao nu prowin.jpg",
         "quantity": 0,
@@ -158,7 +158,7 @@
     {
         "id": 18,
         "title": "Giày chạy bộ NX",
-        "price": "540.000đ",
+        "price": "540.000",
         "description": "Giày chạy bộ này của NX Club sẽ giúp tăng thêm cảm giác mềm mại cho diện mạo hàng ngày của bạn. - Chất liệu: cotton/nylon lớp lót: polyester - Có thể giặt máy - Kiểu...",
         "image": "./product/img/giay-chay-bo-nu-nx.png",
         "quantity": 0
