@@ -58,6 +58,10 @@
     border-bottom: 1px #ddd solid;
     display: block;
     color: var(--text-color);
+    padding: 10px 0;
+    background-color: var(--white-color);
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
 }
 
 .content-cart__link {
@@ -74,6 +78,14 @@
     display: flex;
     padding: 30px;
     background-color: var(--white-color);
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all ease .1s;
+}
+
+.content-cart-product:hover {
+    box-shadow: 0 0 14px 5px rgba(0, 0, 0, .3);
+    border-radius: 6px;
 }
 
 .content-cart-product__img-link {
@@ -142,7 +154,7 @@ input[type="number"] {
 
 .annouce-delete-product {
     position: fixed;
-    top: 20%;
+    top: 30%;
     right: 120px;
     left: 120px;
     bottom: 20%;
@@ -156,11 +168,12 @@ input[type="number"] {
 .annouce-delete-product__header-text {
     background-color: var(--white-color);
     font-size: 3.8rem;
-    padding: 48px;
+    padding: 34px;
     text-align: center;
     color: var(--text-color);
     border-radius: 6px;
     line-height: 4rem;
+
 }
 
 .annouce-delete-product__body {}
@@ -175,7 +188,7 @@ input[type="number"] {
     transition: all .2s ease-in-out;
     background-color: var(--white-color);
     text-align: center;
-    padding: 20px;
+    padding: 10px;
     margin-top: 6px;
     border-radius: 6px;
     cursor: pointer;

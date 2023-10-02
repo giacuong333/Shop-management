@@ -76,6 +76,7 @@
   border-radius: 4px;
   border: 1px solid #ccc;
   outline: none;
+  box-shadow: 0 8px 18px 4px rgba(0, 0, 0, 0.1);
 }
 
 .gia, .chitiet, .soluong {

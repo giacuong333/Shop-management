@@ -1,10 +1,15 @@
 const getProducts = JSON.parse(localStorage.getItem("products")) || []
 const getOutStandingProducts = JSON.parse(localStorage.getItem("outstanding")) || []
 const getBestellerProducts = JSON.parse(localStorage.getItem("bestseller")) || []
+
 let searchBox = document.querySelector(".header-search__input")
 let header = document.querySelector(".header")
 let containerSearchItem = document.querySelector(".header-search__items-list")
 let productItem = document.querySelector(".header-search__items")
+
+const getAllProducts = [...getProducts]
+getAllProducts.push(...getOutStandingProducts)
+getAllProducts.push(...getBestellerProducts)
 
 // Create panel to contain the searched item (only create once)
 const divElement = document.createElement("div")
@@ -14,11 +19,6 @@ header.appendChild(divElement)
 function searchProduct() {
           let productName = searchBox.value.trim().toUpperCase()
           let html = ""
-          const allProducts = [...getProducts]
-          allProducts.push(...getOutStandingProducts)
-          allProducts.push(...getBestellerProducts)
-
-
 
           if (productName === "") {
                     divElement.innerHTML = ""
@@ -27,7 +27,7 @@ function searchProduct() {
                     return
           }
 
-          allProducts.forEach(product => {
+          getAllProducts.forEach(product => {
                     const { id, title, image, price } = product
                     if (title.toUpperCase().indexOf(productName) > -1) {
                               html += `
