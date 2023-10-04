@@ -23,20 +23,28 @@
           <label for="header-nav__input-pc" class="header-nav__menu">
             <i class="header-nav__menu-icon ti-align-justify"></i>
           </label>
-
-          <a href="../index.html" class="header-nav__name">Shop FIVE GUYS</a>
-
-          <a href="../cart.html" class="header-nav__cart">
+          <a href="../index.html" target="_self" class="header-nav__name">Shop FIVE GUYS</a>
+          <a href="../cart.html" target="_self" class="header-nav__cart">
             <i class="header-nav__cart-icon ti-shopping-cart"></i>
+            <h2 class="header-nav__cart-count">0</h2>
           </a>
         </div>
-        <form action="" role="" method="get" class="header-search">
-          <input type="text" placeholder="Tìm kiếm sản phẩm..." class="header-search__input" />
-
+        <div class="header-search">
+          <input type="text" name="" placeholder="Tìm kiếm sản phẩm..." class="header-search__input" />
           <div class="header-search__btn">
-            <button class="header-search__icon ti-search"></button>
+            <button type="button" class="header-search__icon ti-search"></button>
           </div>
-        </form>
+        </div>
+        <!-- Show searched products -->
+        <!-- <div class="header-search__items-list">
+                <a href="" class="header-search__items">
+                  <img src="./assets/img/slider_1.png" alt="">
+                  <div class="header-search__items-details">
+                    <h3>Hoodie zip</h3>
+                    <h3>$20.00</h3>
+                  </div>
+                </a>
+              </div> -->
       </header>
 
       <!-- content -->
@@ -59,92 +67,122 @@
             </div>
 
             <!-- products -->
-            <div class="row">
-              <div class="col l-4 m-6 c-12">
+            <div class="row list-items">
+              <div class="col l-4 m-6 c-12 item" data-id="39">
                 <a href="" class="product product--space">
                   <img src="../assets/img/product/28.png" alt="" class="product-img" />
                   <span class="product-desc">Giày thời trang nữ Nike</span>
                   <span class="product-price">35.000<u>đ</u></span>
                 </a>
               </div>
-              <div class="col l-4 m-6 c-12">
+              <div class="col l-4 m-6 c-12 item" data-id="40">
                 <a href="" class="product product--space">
                   <img src="../assets/img/product/29.png" alt="" class="product-img" />
                   <span class="product-desc">Giày thời trang Creative</span>
                   <span class="product-price">45.000<u>đ</u></span>
                 </a>
               </div>
-              <div class="col l-4 m-6 c-12">
+              <div class="col l-4 m-6 c-12 item">
                 <a href="" class="product product--space">
                   <img src="../assets/img/product/30.png" alt="" class="product-img" />
                   <span class="product-desc">Giày thể thao nữ DT</span>
                   <span class="product-price">45.000<u>đ</u></span>
                 </a>
               </div>
-              <div class="col l-4 m-6 c-12">
+              <div class="col l-4 m-6 c-12 item">
                 <a href="" class="product product--space">
                   <img src="../assets/img/product/31.png" alt="" class="product-img" />
                   <span class="product-desc">Giày cao cổ Prowin</span>
                   <span class="product-price">1.200.000<u>đ</u></span>
                 </a>
               </div>
-              <div class="col l-4 m-6 c-12">
+              <div class="col l-4 m-6 c-12 item">
                 <a href="" class="product product--space">
                   <img src="../assets/img/product/32.png" alt="" class="product-img" />
                   <span class="product-desc">Giày bóng đá nam Codad ROCKET</span>
                   <span class="product-price">410.000<u>đ</u></span>
                 </a>
               </div>
-              <div class="col l-4 m-6 c-12">
+              <div class="col l-4 m-6 c-12 item">
                 <a href="" class="product product--space">
                   <img src="../assets/img/product/33.png" alt="" class="product-img" />
                   <span class="product-desc">Giày cầu lông động lực Promax</span>
                   <span class="product-price">590.000<u>đ</u></span>
                 </a>
               </div>
-              <div class="col l-4 m-6 c-12">
+              <div class="col l-4 m-6 c-12 item">
                 <a href="../product/giaythethaonuprowin.htm" class="product product--space">
                   <img src="../assets/img/product/34.png" alt="" class="product-img" />
                   <span class="product-desc">Giày thể thao nữ Prowin</span>
                   <span class="product-price">390.000<u>đ</u></span>
                 </a>
               </div>
-              <div class="col l-4 m-6 c-12">
+              <div class="col l-4 m-6 c-12 item">
                 <a href="" class="product product--space">
                   <img src="../assets/img/product/35.png" alt="" class="product-img" />
                   <span class="product-desc">Giày chạy bộ NX</span>
                   <span class="product-price">540.000<u>đ</u></span>
                 </a>
               </div>
-              <div class="col l-4 m-6 c-12">
+              <div class="col l-4 m-6 c-12 item">
                 <a href="" class="product product--space">
                   <img src="../assets/img/product/35.png" alt="" class="product-img" />
                   <span class="product-desc">Giày chạy bộ NX</span>
+                  <span class="product-price">540.000<u>đ</u></span>
+                </a>
+              </div>
+              <div class="col l-4 m-6 c-12 item">
+                <a href="" class="product product--space">
+                  <img src="../assets/img/product/pk6.png" alt="" class="product-img" />
+                  <span class="product-desc">Thắt lưng da cá sấu</span>
+                  <span class="product-price">590.000<u>đ</u></span>
+                </a>
+              </div>
+              <div class="col l-4 m-6 c-12 item">
+                <a href="../product/giaythethaonuprowin.htm" class="product product--space">
+                  <img src="../assets/img/product/pk7.png" alt="" class="product-img" />
+                  <span class="product-desc">Thắt lưng Something Borrowed</span>
+                  <span class="product-price">390.000<u>đ</u></span>
+                </a>
+              </div>
+              <div class="col l-4 m-6 c-12 item">
+                <a href="" class="product product--space">
+                  <img src="../assets/img/product/pk8.png" alt="" class="product-img" />
+                  <span class="product-desc">Túi xách thời trang Madam</span>
+                  <span class="product-price">540.000<u>đ</u></span>
+                </a>
+              </div>
+              <div class="col l-4 m-6 c-12 item">
+                <a href="" class="product product--space">
+                  <img src="../assets/img/product/pk9.png" alt="" class="product-img" />
+                  <span class="product-desc">Túi xách thời trang cao cấp Gucci</span>
+                  <span class="product-price">540.000<u>đ</u></span>
+                </a>
+              </div>
+              <div class="col l-4 m-6 c-12 item">
+                <a href="" class="product product--space">
+                  <img src="../assets/img/product/pk10.png" alt="" class="product-img" />
+                  <span class="product-desc">Túi xách thời trang Michael Kors</span>
+                  <span class="product-price">540.000<u>đ</u></span>
+                </a>
+              </div>
+              <div class="col l-4 m-6 c-12 item">
+                <a href="" class="product product--space">
+                  <img src="../assets/img/product/pk11.png" alt="" class="product-img" />
+                  <span class="product-desc">Túi da cá sấu Calvin Klein</span>
                   <span class="product-price">540.000<u>đ</u></span>
                 </a>
               </div>
             </div>
 
-            <span class="content-cart__pagination">
-              <a href="" class="content-cart__pagination-before">Trang trước</a>
-              <div onclick="dropDown()" class="content-cart__pagination-num">
-                <span onclick="dropDown()" class="content-cart__pagination-num__current">1
-                </span>
-                / 4
-                <ul class="content-cart__pagination-num__list" id="myDropDown">
-                  <li class="content-cart__pagination-num__list-item">
-                    <a href="../sotre_page2.html">2</a>
-                  </li>
-                  <li class="content-cart__pagination-num__list-item">
-                    <a href="../store_page3.html">3</a>
-                  </li>
-                  <li class="content-cart__pagination-num__list-item">
-                    <a href="../store_page4.html">4</a>
-                  </li>
-                </ul>
-              </div>
-              <a href="" class="content-cart__pagination-after">Trang sau</a>
-            </span>
+            <div class="content-cart__pagination">
+              <!-- <a href="" class="content-cart__pagination-before">Trang trước</a>
+                          <div class="content-cart__pagination-num content-cart__pagination-num--active">1</div>
+                          <div class="content-cart__pagination-num">2</div>
+                          <div class="content-cart__pagination-num">3</div>
+                          <a href="" class="content-cart__pagination-after">Trang sau</a> -->
+            </div>
+
           </div>
         </div>
       </div>
@@ -282,8 +320,8 @@
       </ul>
     </nav>
     <!-- end overlay -->
+    <script src="../js/toggle.js" defer></script>
+    <script src="../js/products.js" defer></script>
   </body>
 
 </html>
-
-<script src="../toggle.js"></script>

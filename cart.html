@@ -12,23 +12,15 @@
         <link rel="stylesheet" href="./assets/css/cart.css">
         <link rel="stylesheet" href="./assets/css/main.css">
         <link rel="stylesheet" href="./assets/css/responsive_cart.css">
-        <script src="./js/cart.js" defer></script>
-        <script src="./js/search-products.js" defer></script>
-        <script src="./js/login.js" type="module"></script>
-        <script src="./js/registration.js" type="module"></script>
-        <script src="./js/log-out.js" type="module"></script>
-        <script src="./js/closePanel.js" defer></script>
-        <script src="./js/cart.js" defer></script>
-        <script src="./js/products.js" defer></script>
     </head>
 
     <body>
         <div class="app">
             <header class="header">
                 <div class="header-nav">
-                    <label for="header-nav__input-pc" class="header-nav__menu">
+                    <div class="header-nav__menu">
                         <i class="header-nav__menu-icon ti-align-justify"></i>
-                    </label>
+                    </div>
 
                     <a href="./index.html" class="header-nav__name">Shop FIVE GUYS</a>
 
@@ -138,8 +130,7 @@
                         </span>
 
                         <!-- Begin overlay -->
-                        <label for="header-nav__input-pc" class="overlay"></label>
-
+                        <div class="overlay"></div>
                         <div class="annouce-delete-product">
                             <div class="annouce-delete-product__header">
                                 <p class="annouce-delete-product__header-text">Bạn muốn xóa sản phẩm khỏi giỏ hàng?</p>
@@ -151,6 +142,70 @@
                                 <button type="button" class="annouce-delete-product__footer-text">Không</button>
                             </div>
                         </div>
+                        <!-- Right panel -->
+                        <nav class="nav">
+                            <form action="" role="" method="get" class="header-search">
+                                <input type="text" placeholder="Tìm kiếm sản phẩm..." class="header-search__input" />
+
+                                <div class="header-search__btn">
+                                    <button class="header-search__icon ti-search"></button>
+                                </div>
+                            </form>
+                            <div class="nav-sign">
+                                <div class="row">
+                                    <div class="col l-6 m-6 c-12">
+                                        <div class="nav-sign-btn">
+                                            <a href="../login/dean1.html" class="btn btn--sign-in">Đăng nhập</a>
+                                        </div>
+                                    </div>
+                                    <div class="col l-6 m-6 c-12">
+                                        <div class="nav-sign-btn">
+                                            <a href="../login/dean2.html" class="btn btn--sign-out">Đăng ký</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- menu -->
+                            <ul class="nav-list">
+                                <li class="nav-list__item">
+                                    <a href="../index.html" target="_self" class="nav-list__item-link">Trang chủ</a>
+                                </li>
+                                <li class="nav-list__item">
+                                    <a href="" class="nav-list__item-link">Sản phẩm</a>
+                                    <i class="nav-list__item-icon ti-angle-right"></i>
+                                    <!-- child navigation -->
+                                    <ul class="nav-list__item-child">
+                                        <li class="nav-list__item">
+                                            <div class="nav-list__item-link">Thời trang nữ</div>
+                                            <ul class="nav-list__item-child2">
+                                                <li class="nav-list__item">
+                                                    <a href="./clothes/index.html" class="nav-list__item-link">Quần
+                                                        áo</a>
+                                                </li>
+                                                <li class="nav-list__item">
+                                                    <a href="./bag/index.html" class="nav-list__item-link">Túi xách</a>
+                                                </li>
+                                                <li class="nav-list__item">
+                                                    <a href="./sneakers/index.html" class="nav-list__item-link">Giày</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="nav-list__item">
+                                            <a href="./male-product/index.html" class="nav-list__item-link">Thời trang
+                                                nam</a>
+                                        </li>
+                                        <li class="nav-list__item">
+                                            <a href="./accessory-product/index.html" class="nav-list__item-link">Phụ
+                                                kiện</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-list__item">
+                                    <a href="../introduction.html" class="nav-list__item-link">Giới thiệu</a>
+                                </li>
+                            </ul>
+                        </nav>
                         <!-- End overlay -->
                     </div>
                 </div>
@@ -223,7 +278,14 @@
                 </div>
             </div>
         </div>
-        <!-- end overlay -->
+        <script src="./js/cart.js" defer></script>
+        <script src="./js/search-products.js" defer></script>
+        <script src="./js/login.js" type="module"></script>
+        <script src="./js/registration.js" type="module"></script>
+        <script src="./js/log-out.js" type="module"></script>
+        <script src="./js/closePanel.js" defer></script>
+        <script src="./js/cart.js" defer></script>
+        <script src="./js/products.js" defer></script>
     </body>
 
 </html>

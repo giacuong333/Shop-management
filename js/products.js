@@ -20,11 +20,15 @@ async function fetchDataAndParse(url, key) {
 fetchDataAndParse("../JSON/products.json", "products")
 fetchDataAndParse("../JSON/outstandingProduct.json", "outstanding")
 fetchDataAndParse("../JSON/bestsellerProduct.json", "bestseller")
+fetchDataAndParse("../JSON/accessoryProduct.json", "accessory")
+fetchDataAndParse("../JSON/maleProduct.json", "male")
 
 const products = JSON.parse(localStorage.getItem("products")) || []
 const outstandingProducts = JSON.parse(localStorage.getItem("outstanding")) || []
 const bestsellerProducts = JSON.parse(localStorage.getItem("bestseller")) || []
 let cart = JSON.parse(localStorage.getItem("cart")) || []
+const accessoryProduct = JSON.parse(localStorage.getItem("accessory")) || []
+const maleProducts = JSON.parse(localStorage.getItem("male")) || []
 
 // ============================================ RENDER PRODUCTS ============================================
 
@@ -109,9 +113,9 @@ const urlParams = new URLSearchParams(window.location.search)
 const productId = urlParams.get("productId")
 
 function fetchProductDetails(productId) {
-    let productCategory = productId >= 1 && productId <= 18 ? "new" : productId >= 19 && productId <= 28 ? "bestseller" : "outstanding"
+    let productCategory = productId >= 1 && productId <= 18 ? "new" : productId >= 19 && productId <= 28 ? "bestseller" : productId >= 39 && productId <= 52 ? "accessory" : productId >= 53 && productId <= 66 ? "male" : "outstanding"
 
-    const categoryProducts = productCategory === "new" ? products : productCategory === "outstanding" ? outstandingProducts : bestsellerProducts
+    const categoryProducts = productCategory === "new" ? products : productCategory === "outstanding" ? outstandingProducts : productCategory === "accessory" ? accessoryProduct : productCategory === "male" ? maleProducts : bestsellerProducts
 
     // Find the product with the matching ID
     const product = categoryProducts.find(product => product.id === parseInt(productId))
@@ -153,6 +157,8 @@ const allProducts = []
 allProducts.push(...products)
 allProducts.push(...outstandingProducts)
 allProducts.push(...bestsellerProducts)
+allProducts.push(...accessoryProduct)
+allProducts.push(...maleProducts)
 
 function addItemsToCart(product, quantity, totalPrice, image) {
     const existingItem = cart.findIndex(item => item.id === product.id)
@@ -209,7 +215,6 @@ function displayInformation(productId) {
 
     // Get the selected product
     const product = allProducts.find((item) => item.id === parseInt(productId))
-    console.log(product)
 
     if (!product) {
         console.log(`The product with the ID ${productId} not found!`)
@@ -273,18 +278,19 @@ function displayProductCart() {
     const productPay = document.querySelector(".pay-product")
     const optionCart = document.querySelector(".option-cart")
 
-    if (parseInt(cartQuantity.textContent) <= 0) {
-        noProductsPanel.innerHTML = `
+    if (noProductsPanel) {
+        if (parseInt(cartQuantity.textContent) <= 0) {
+            noProductsPanel.innerHTML = `
             Không có sản phẩm nào trong giỏ hàng. Quay lại
             <a href="./store_page1.html" class="content-cart__link">cửahàng</a> để tiếp tục mua sắm
             `
-        productPay.style.display = "none"
-        optionCart.style.display = "none"
-    } else {
-        let html = ""
-        cart.forEach(item => {
-            const { id, title, image, totalPrice, quantity } = item
-            html += `
+            productPay.style.display = "none"
+            optionCart.style.display = "none"
+        } else {
+            let html = ""
+            cart.forEach(item => {
+                const { id, title, image, totalPrice, quantity } = item
+                html += `
             <div class="content-cart-product">
                 <div class="content-cart-product__img">
                     <a href="../details.html?productId=${id}" target="_self" class="content-cart-product__img-link">
@@ -305,33 +311,34 @@ function displayProductCart() {
                 </div>
             </div>
             `
-            noProductsPanel.innerHTML = html
-        })
+                noProductsPanel.innerHTML = html
+            })
 
-        let totalPrice = cart.reduce((accumulate, item) => {
-            return item.totalPrice === "Liên Hệ" ? accumulate + 0 : accumulate + parseFloat(item.totalPrice)
-        }, 0)
+            let totalPrice = cart.reduce((accumulate, item) => {
+                return item.totalPrice === "Liên Hệ" ? accumulate + 0 : accumulate + parseFloat(item.totalPrice)
+            }, 0)
 
-        totalPrice = new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(totalPrice)
+            totalPrice = new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(totalPrice)
 
-        productPay.innerHTML = `
-        <div class="pay-product__total-product">
-            <p class="pay-product__total-product-title">Thành tiền</p>
-            <p class="pay-product__total-product-price">${totalPrice}</p>
-        </div >
-        <div class="pay-product__ship">
-            <p class="pay-product__ship-title">Phí vận chuyển</p>
-            <p class="pay-product__ship-price">Tính lúc thanh toán</p>
-        </div>
-        <div class="pay-product__total-bill">
-            <p class="pay-product__total-bill-title">Tổng tiền</p>
-            <p class="pay-product__total-bill-price">Tính lúc thanh toán</p>
-        </div>
-        `
-        optionCart.innerHTML = `
-            <button onclick="carryOnShopping()" type="button" class="option-cart__btn go-on">Tiếp tục mua sắm</button>
-            <button type="button" class="option-cart__btn">Tiến hành thanh toán</button>
-        `
+            productPay.innerHTML = `
+            <div class="pay-product__total-product">
+                <p class="pay-product__total-product-title">Thành tiền</p>
+                <p class="pay-product__total-product-price">${totalPrice}</p>
+            </div >
+            <div class="pay-product__ship">
+                <p class="pay-product__ship-title">Phí vận chuyển</p>
+                <p class="pay-product__ship-price">Tính lúc thanh toán</p>
+            </div>
+            <div class="pay-product__total-bill">
+                <p class="pay-product__total-bill-title">Tổng tiền</p>
+                <p class="pay-product__total-bill-price">Tính lúc thanh toán</p>
+            </div>
+            `
+            optionCart.innerHTML = `
+                <button onclick="carryOnShopping()" type="button" class="option-cart__btn go-on">Tiếp tục mua sắm</button>
+                <button type="button" class="option-cart__btn">Tiến hành thanh toán</button>
+            `
+        }
     }
 }
 
@@ -378,5 +385,26 @@ function removeProduct(productId) {
     updateCartCount()
 }
 
+// ============================================ CATEGORY ============================================
+const menuIcon = document.querySelector(".header-nav__menu-icon")
+const menuPanel = document.querySelector(".nav")
+menuIcon.addEventListener("click", (e) => {
+    e.stopPropagation()
+    menuPanel.style.transform = "translateX(0)"
+    menuPanel.style.opacity = "1"
+    overlay.style.display = "block"
+})
 
+document.body.addEventListener("click", (e) => {
+    if (e.target !== menuPanel && e.target !== menuIcon) {
+        menuPanel.style.transform = "translateX(-100%)"
+        menuPanel.style.opacity = "0"
+        overlay.style.display = "none"
+    }
+})
+
+// prevent capturing phase in the Propagation event
+menuPanel.addEventListener("click", (e) => {
+    e.stopPropagation()
+})
 

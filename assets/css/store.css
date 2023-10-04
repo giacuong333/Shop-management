@@ -36,9 +36,16 @@
     cursor: pointer;
     font-size: 2rem;
     background-color: var(--white-color);
-    padding: 14px 34px;
-    border-radius: 4px;
+    padding: 14px 24px;
+    border-radius: 6px;
     position: relative;
+    transition: .3s;
+    margin: 0 6px;
+}
+
+.content-cart__pagination-num--active {
+    background-color: var(--primary-color);
+    color: #fff;
 }
 
 /* .content-cart__pagination-num:hover .content-cart__pagination-num__list {
