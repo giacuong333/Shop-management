@@ -1,14 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/fonts/themify-icons/themify-icons.css" />
+    <link rel="stylesheet" href="./assets/css/grid.css" />
+    <link rel="stylesheet" href="./assets/css/main.css" />
+    <title>Thanh toán</title>
+  </head>
 
-          <head>
-                    <meta charset="UTF-8">
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <title>Thanh toán</title>
-          </head>
-
-          <body>
-
-          </body>
-
+  <body>
+    <div class="payment-container">
+      <div class="row">
+        <!-- Left panel -->
+        <div class="col l-8 m-6 c-12 payment-left-side">
+          <div class="payment-header">
+            <a href="./index.html">Shop Five Guys</a>
+          </div>
+          <div class="row">
+            <div class="col l-6 m-3 c-12">
+              <div class="payment-customer-info">
+                <div class="payment-customer-info__head">
+                  <span>Thông tin nhận hàng</span>
+                  <i class="ti-user">
+                    <span>Đăng nhập</span>
+                  </i>
+                </div>
+                <div class="form-group">
+                  <input type="email" name="email" id="" placeholder="Email" />
+                  <div class="error-message"></div>
+                </div>
+                <div class="form-group">
+                  <input type="text" name="name" id="" placeholder="Họ và tên" />
+                  <div class="error-message"></div>
+                </div>
+                <input type="tel" name="phone-number" id="" placeholder="Số điện thoại (tùy chọn)" />
+                <input type="text" name="address" id="" placeholder="Địa chỉ (tùy chọn)" />
+                <div class="form-group">
+                  <input type="text" name="province" id="" placeholder="Tỉnh thành" />
+                  <div class="error-message"></div>
+                </div>
+                <input type="text" name="district" id="" placeholder="Quận huyện (tùy chọn)" />
+                <input type="text" name="note" id="" placeholder="Ghi chú (tùy chọn)" />
+              </div>
+            </div>
+            <div class="col l-6 m-3 c-12 payment-customer-delivery">
+              <div class="payment-customer-delivery__info">
+                <span>Vận chuyển</span>
+              </div>
+              <div class="payment-customer-delivery__desc">Vui lòng nhập thông tin giao hàng</div>
+              <div class="payment-customer-delivery__pay">
+                <span>Thanh toán</span>
+              </div>
+              <div class="payment-customer-delivery__method">
+                <input type="radio" name="" id="radio-delivery-method" />
+                <label for="radio-delivery-method">Thanh toán khi nhận hàng</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Right panel -->
+        <div class="col l-4 m-6 c-12 payment-right-side">
+          <div class="payment-right-header"></div>
+          <div class="payment-right-body">
+            <div class="payment-right-body-contain-products">
+              <!-- <div class="payment-right-body__products">
+                                                                      <div class="payment-right-body__products-wrap">
+                                                                                <img src="./product/img/ao len kimono sm.jpg"
+                                                                                          alt=""
+                                                                                          class="payment-right-body__products-image">
+                                                                                <p
+                                                                                          class="payment-right-body__products-name">
+                                                                                          Áo
+                                                                                          len Kimono SM</p>
+                                                                      </div>
+                                                                      <p class="payment-right-body__products-price">
+                                                                                330.000đ</p>
+                                                                      </div> -->
+            </div>
+            <div class="payment-right-body__discount">
+              <input type="text" name="" id="" class="payment-right-body__discount-input" placeholder="Nhập mã giảm giá" />
+              <button type="button" class="payment-right-body__discount-apply-button">Áp dụng</button>
+            </div>
+            <div class="payment-right-body__estimate">
+              <div class="payment-right-body__estimate-price">
+                <p>Tạm tính</p>
+                <p></p>
+              </div>
+              <div class="payment-right-body__estimate-delivery">
+                <p>Phí vận chuyển</p>
+                <p></p>
+              </div>
+            </div>
+            <div class="payment-right-body__total">
+              <p>Tổng cộng</p>
+              <p></p>
+            </div>
+          </div>
+          <div class="payment-right-body__footer">
+            <a href="./cart.html" class="payment-right-body__footer-back"> &lt Quay về giỏ hàng</a>
+            <button type="button" class="payment-right-body__footer-order-btn">Đặt hàng</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./js/products.js" defer></script>
+  </body>
 </html>

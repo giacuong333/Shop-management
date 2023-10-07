@@ -136,20 +136,14 @@ fetchProductDetails(productId)
 // ============================================ ADD PRODUCTS TO THE CART ============================================
 const buyBtn = document.querySelector(".mua")
 const quantityInput = document.querySelector(".soluong")
-
 const productName = document.querySelector(".annouce-head__body-name")
 const price = document.querySelector(".annouce-head__body-amount")
 const total = document.querySelector(".annouce-head__body-total")
-
 const overlay = document.querySelector(".overlay")
 const body = document.querySelector(".than")
-
 const closeBtn = document.querySelector(".annouce-head__close-icon")
 const goOnShopping = document.querySelector(".annouce-middle__content")
-
 const cartQuantity = document.querySelector(".header-nav__cart-count")
-
-// 
 const noProductsPanel = document.querySelector(".content-cart__desc")
 const productQuantityInCart = document.querySelector(".content-cart__amount-number")
 
@@ -183,7 +177,8 @@ function addItemsToCart(product, quantity, totalPrice, image) {
 
 function updateCartCount() {
     const cartCount = cart.reduce((accumulate, item) => accumulate + item.quantity, 0)
-    cartQuantity.textContent = cartCount
+    if (cartQuantity)
+        cartQuantity.textContent = cartCount
     if (productQuantityInCart)
         productQuantityInCart.textContent = cartCount
 }
@@ -195,10 +190,6 @@ function hideInformation() {
     body.removeChild(annouceWrap)
     overlay.style.display = "none"
     isInformationDisplayed = false
-}
-
-if (overlay) {
-    overlay.style.display = "None"
 }
 
 // Initialize a flag keep track of whether the information is displayed
@@ -336,7 +327,7 @@ function displayProductCart() {
             `
             optionCart.innerHTML = `
                 <button onclick="carryOnShopping()" type="button" class="option-cart__btn go-on">Tiếp tục mua sắm</button>
-                <button type="button" class="option-cart__btn">Tiến hành thanh toán</button>
+                <button onclick="moveToPaymentpage()" type="button" class="option-cart__btn">Tiến hành thanh toán</button>
             `
         }
     }
@@ -348,14 +339,17 @@ function carryOnShopping() {
     window.location.href = "../index.html"
 }
 
-function displayConfirmDelete(productId) {
-    const confirmDeletePanel = document.querySelector(".annouce-delete-product")
-    const yesConfirm = document.querySelector(".annouce-delete-product__body-text")
-    const noConfirm = document.querySelector(".annouce-delete-product__footer-text")
+function moveToPaymentpage() {
+    window.location.href = "../payment.html"
+}
 
+const confirmDeletePanel = document.querySelector(".annouce-delete-product")
+const yesConfirm = document.querySelector(".annouce-delete-product__body-text")
+const noConfirm = document.querySelector(".annouce-delete-product__footer-text")
+function displayConfirmDelete(productId) {
     confirmDeletePanel.style.display = "block"
     overlay.style.display = "block"
-
+    confirmDeletePanel.addEventListener("click", e => e.stopPropagation())
     if (yesConfirm) {
         yesConfirm.addEventListener("click", () => {
             confirmDeletePanel.style.display = "none"
@@ -363,7 +357,6 @@ function displayConfirmDelete(productId) {
             removeProduct(productId)
         })
     }
-
     if (noConfirm) {
         noConfirm.addEventListener("click", () => {
             confirmDeletePanel.style.display = "none"
@@ -385,26 +378,113 @@ function removeProduct(productId) {
     updateCartCount()
 }
 
-// ============================================ CATEGORY ============================================
+// ============================================ ADDITIONAL PRODUCTS ============================================
 const menuIcon = document.querySelector(".header-nav__menu-icon")
 const menuPanel = document.querySelector(".nav")
-menuIcon.addEventListener("click", (e) => {
-    e.stopPropagation()
-    menuPanel.style.transform = "translateX(0)"
-    menuPanel.style.opacity = "1"
-    overlay.style.display = "block"
-})
+if (menuIcon) {
+    menuIcon.addEventListener("click", (e) => {
+        e.stopPropagation()
+        menuPanel.style.transform = "translateX(0)"
+        menuPanel.style.opacity = "1"
+        overlay.style.display = "block"
+    })
+}
+if (overlay) {
+    overlay.addEventListener("click", (e) => {
+        if (e.target !== menuPanel && e.target !== menuIcon) {
+            menuPanel.style.transform = "translateX(-100%)"
+            menuPanel.style.opacity = "0"
+            overlay.style.display = "none"
+            confirmDeletePanel.style.display = "none"
+        }
+    })
+}
+if (menuPanel) {
+    // prevent capturing phase in the Propagation event
+    menuPanel.addEventListener("click", (e) => {
+        e.stopPropagation()
+    })
+}
 
-document.body.addEventListener("click", (e) => {
-    if (e.target !== menuPanel && e.target !== menuIcon) {
-        menuPanel.style.transform = "translateX(-100%)"
-        menuPanel.style.opacity = "0"
-        overlay.style.display = "none"
+// ============================================ PAYMENT PAGE ============================================
+function loadPaymentPage() {
+    const paymentQuantity = document.querySelector(".payment-right-header")
+    const paymentContainProducts = document.querySelector(".payment-right-body-contain-products")
+    // Set the total of product quantity
+    let totalQuantity = cart.reduce((accumulate, item) => {
+        return accumulate + item.quantity;
+    }, 0)
+    paymentQuantity.innerText = `Đơn hàng (${totalQuantity} sản phẩm)`
+    // The delivery fee is 40.000đ
+    const deliveryFee = 40000
+    // Calculate total of all products in the cart
+    let totalPrice = cart.reduce((accumulate, item) => {
+        return accumulate + item.totalPrice
+    }, 0)
+    // Calculate the price customer has to pay (include the delivery fee)
+    const finalTotalPrice = new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(totalPrice + deliveryFee)
+    let html = ""
+    cart.forEach((item) => {
+        const { title, image, price, quantity } = item
+        const formattedPrice = new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(price)
+        html += `
+        <div class="payment-right-body__products">
+            <div class="payment-right-body__products-wrap">
+                <img src="${image}" alt="Image" class="payment-right-body__products-image">
+                <p class="payment-right-body__products-name">${title} (${quantity})</p>
+            </div>
+            <p class="payment-right-body__products-price">${formattedPrice}</p>
+        </div>
+        `
+    })
+    if (paymentContainProducts) {
+        paymentContainProducts.innerHTML = html
     }
-})
+    document.querySelector(".payment-right-body__estimate-delivery p:last-child").textContent = new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(deliveryFee)
+    document.querySelector(".payment-right-body__estimate-price p:last-child").textContent = new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(totalPrice)
+    document.querySelector(".payment-right-body__total p:last-child").textContent = finalTotalPrice
+}
 
-// prevent capturing phase in the Propagation event
-menuPanel.addEventListener("click", (e) => {
-    e.stopPropagation()
-})
+loadPaymentPage()
 
+// ============================================ CUSTOMER FORM VALIDATION ============================================
+function validate(inputValue, error, message, emailRegex) {
+    if (inputValue) {
+        inputValue.addEventListener("blur", () => {
+            const getValue = inputValue.value.trim()
+            if (!getValue) {
+                error.textContent = message
+                error.classList.add("invalid")
+                inputValue.classList.add("input-error")
+            } else if (emailRegex && !emailRegex.test(getValue)) {
+                error.textContent = "Email không đúng định dạng!"
+                error.classList.add("invalid")
+                inputValue.classList.add("input-error")
+                return; // Exit early if email is invalid
+            } else {
+                error.textContent = ""
+                error.classList.remove("invalid")
+                inputValue.classList.remove("input-error")
+            }
+        })
+        // If the user goes on typing 
+        inputValue.addEventListener("input", () => {
+            error.textContent = ""
+            error.classList.remove("invalid")
+            inputValue.classList.remove("input-error")
+        })
+    }
+}
+
+function validateInput() {
+    const customerEmail = document.querySelector("input[name='email']")
+    const customerName = document.querySelector("input[name='name']")
+    const errorMessage = document.querySelectorAll(".error-message")
+    const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/
+
+    validate(customerEmail, errorMessage[0], "Vui lòng điền email", emailRegex)
+    validate(customerName, errorMessage[1], "Vui lòng điền họ và tên", null)
+}
+
+// Make sure the document is fully loaded
+document.addEventListener("DOMContentLoaded", validateInput)
