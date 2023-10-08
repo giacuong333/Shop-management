@@ -5,7 +5,7 @@
 }
 
 .grid.wide {
-    /* by default width is 100%, if screen resolution is greater than 1200px, max-width: 1200px will be applied */
+    /* by default width is 100%, if the screen resolution is greater than 1200px, max-width: 1200px will be applied */
     max-width: 1200px;
     margin: 0 auto;
 }

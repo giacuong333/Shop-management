@@ -343,6 +343,17 @@ function moveToPaymentpage() {
     window.location.href = "../payment.html"
 }
 
+// Move to the login and signin page
+function loginPage() {
+    const loginLink = document.querySelector(".btn.btn--sign-in")
+    window.location.href = "../login/dean1.html"
+}
+
+function registerPage() {
+    const registerLink = document.querySelector(".btn.btn--sign-out")
+    window.location.href = "../login/dean2.html"
+}
+
 const confirmDeletePanel = document.querySelector(".annouce-delete-product")
 const yesConfirm = document.querySelector(".annouce-delete-product__body-text")
 const noConfirm = document.querySelector(".annouce-delete-product__footer-text")
@@ -378,6 +389,10 @@ function removeProduct(productId) {
     updateCartCount()
 }
 
+function removeAllProduct() {
+    localStorage.removeItem("cart")
+}
+
 // ============================================ ADDITIONAL PRODUCTS ============================================
 const menuIcon = document.querySelector(".header-nav__menu-icon")
 const menuPanel = document.querySelector(".nav")
@@ -410,19 +425,25 @@ if (menuPanel) {
 function loadPaymentPage() {
     const paymentQuantity = document.querySelector(".payment-right-header")
     const paymentContainProducts = document.querySelector(".payment-right-body-contain-products")
+
     // Set the total of product quantity
     let totalQuantity = cart.reduce((accumulate, item) => {
         return accumulate + item.quantity;
     }, 0)
-    paymentQuantity.innerText = `Đơn hàng (${totalQuantity} sản phẩm)`
+    if (paymentQuantity) {
+        paymentQuantity.innerText = `Đơn hàng (${totalQuantity} sản phẩm)`
+    }
+
     // The delivery fee is 40.000đ
     const deliveryFee = 40000
     // Calculate total of all products in the cart
     let totalPrice = cart.reduce((accumulate, item) => {
         return accumulate + item.totalPrice
     }, 0)
+
     // Calculate the price customer has to pay (include the delivery fee)
     const finalTotalPrice = new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(totalPrice + deliveryFee)
+
     let html = ""
     cart.forEach((item) => {
         const { title, image, price, quantity } = item
@@ -437,9 +458,11 @@ function loadPaymentPage() {
         </div>
         `
     })
+
     if (paymentContainProducts) {
         paymentContainProducts.innerHTML = html
     }
+
     document.querySelector(".payment-right-body__estimate-delivery p:last-child").textContent = new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(deliveryFee)
     document.querySelector(".payment-right-body__estimate-price p:last-child").textContent = new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(totalPrice)
     document.querySelector(".payment-right-body__total p:last-child").textContent = finalTotalPrice
@@ -450,23 +473,23 @@ loadPaymentPage()
 // ============================================ CUSTOMER FORM VALIDATION ============================================
 function validate(inputValue, error, message, emailRegex) {
     if (inputValue) {
-        inputValue.addEventListener("blur", () => {
-            const getValue = inputValue.value.trim()
-            if (!getValue) {
-                error.textContent = message
-                error.classList.add("invalid")
-                inputValue.classList.add("input-error")
-            } else if (emailRegex && !emailRegex.test(getValue)) {
-                error.textContent = "Email không đúng định dạng!"
-                error.classList.add("invalid")
-                inputValue.classList.add("input-error")
-                return; // Exit early if email is invalid
-            } else {
-                error.textContent = ""
-                error.classList.remove("invalid")
-                inputValue.classList.remove("input-error")
-            }
-        })
+        const getValue = inputValue.value.trim()
+        if (!getValue) {
+            error.textContent = message
+            error.classList.add("invalid")
+            inputValue.classList.add("input-error")
+        } else if (emailRegex && !emailRegex.test(getValue)) {
+            error.textContent = "Email không đúng định dạng!"
+            error.classList.add("invalid")
+            inputValue.classList.add("input-error")
+            return; // Exit early if email is invalid
+        } else {
+            error.textContent = ""
+            error.classList.remove("invalid")
+            inputValue.classList.remove("input-error")
+            return true
+        }
+
         // If the user goes on typing 
         inputValue.addEventListener("input", () => {
             error.textContent = ""
@@ -476,14 +499,77 @@ function validate(inputValue, error, message, emailRegex) {
     }
 }
 
+function validateInputCheck(inputValue, error) {
+    if (inputValue.checked) {
+        error.style.display = "none"
+    } else {
+        error.style.display = "block"
+    }
+}
+
 function validateInput() {
     const customerEmail = document.querySelector("input[name='email']")
     const customerName = document.querySelector("input[name='name']")
+    const customerAddress = document.querySelector("input[name='province']")
+    const deliveryMethod = document.querySelector("#radio-delivery-method")
+    const deliveryMethodError = document.querySelector(".payment-customer-delivery-method-error")
     const errorMessage = document.querySelectorAll(".error-message")
+    const orderBtn = document.querySelector(".payment-right-body__footer-order-btn")
     const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/
 
-    validate(customerEmail, errorMessage[0], "Vui lòng điền email", emailRegex)
-    validate(customerName, errorMessage[1], "Vui lòng điền họ và tên", null)
+    function areAllFieldsValid() {
+        const isValidEmail = validate(customerEmail, errorMessage[0], "Vui lòng điền email", emailRegex)
+        const isValidName = validate(customerName, errorMessage[1], "Vui lòng điền họ và tên", null)
+        const isValidAddress = validate(customerAddress, errorMessage[2], "Vui lòng điền địa chỉ", null)
+        const isValidDeliveryMethod = deliveryMethod.checked || validateInputCheck(deliveryMethod, deliveryMethodError)
+
+        return isValidEmail && isValidName && isValidAddress && isValidDeliveryMethod
+    }
+
+    // Check if the user is logged in before allowing them to place an order
+    if (orderBtn) {
+        orderBtn.addEventListener("click", e => {
+            e.preventDefault()
+
+            const user = JSON.parse(localStorage.getItem("currentUser"))
+            if (!user) {
+                alert("Please log in to place an order")
+            } else {
+                if (areAllFieldsValid()) {
+                    alert("Your order is placed successfully!")
+                    removeAllProduct()
+                    window.location.href = "../"
+                }
+            }
+        })
+    }
+
+    customerEmail.addEventListener("blur", () => {
+        validate(customerEmail, errorMessage[0], "Vui lòng điền email", emailRegex)
+    })
+
+    customerName.addEventListener("blur", () => {
+        validate(customerName, errorMessage[1], "Vui lòng điền họ và tên", null)
+    })
+
+    customerAddress.addEventListener("blur", () => {
+        validate(customerAddress, errorMessage[2], "Vui lòng điền địa chỉ", null)
+    })
+
+    deliveryMethod.addEventListener("change", () => {
+        validateInputCheck(deliveryMethod, deliveryMethodError)
+    })
+
+    // Check the input fields when the order button is clicked
+    if (orderBtn) {
+        orderBtn.addEventListener("click", e => {
+            e.preventDefault()
+            validateInputCheck(deliveryMethod, deliveryMethodError)
+            validate(customerEmail, errorMessage[0], "Vui lòng điền email", emailRegex)
+            validate(customerName, errorMessage[1], "Vui lòng điền họ và tên", null)
+            validate(customerAddress, errorMessage[2], "Vui lòng điền địa chỉ", null)
+        })
+    }
 }
 
 // Make sure the document is fully loaded

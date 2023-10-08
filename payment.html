@@ -20,12 +20,12 @@
             <a href="./index.html">Shop Five Guys</a>
           </div>
           <div class="row">
-            <div class="col l-6 m-3 c-12">
+            <div class="col l-6 m-12 c-12">
               <div class="payment-customer-info">
                 <div class="payment-customer-info__head">
                   <span>Thông tin nhận hàng</span>
                   <i class="ti-user">
-                    <span>Đăng nhập</span>
+                    <a href="./login/dean1.html">Đăng nhập</a>
                   </i>
                 </div>
                 <div class="form-group">
@@ -46,7 +46,7 @@
                 <input type="text" name="note" id="" placeholder="Ghi chú (tùy chọn)" />
               </div>
             </div>
-            <div class="col l-6 m-3 c-12 payment-customer-delivery">
+            <div class="col l-6 m-12 c-12 payment-customer-delivery">
               <div class="payment-customer-delivery__info">
                 <span>Vận chuyển</span>
               </div>
@@ -54,6 +54,7 @@
               <div class="payment-customer-delivery__pay">
                 <span>Thanh toán</span>
               </div>
+              <div class="payment-customer-delivery-method-error">Bạn cần chọn phương thức thanh toán</div>
               <div class="payment-customer-delivery__method">
                 <input type="radio" name="" id="radio-delivery-method" />
                 <label for="radio-delivery-method">Thanh toán khi nhận hàng</label>
@@ -106,6 +107,8 @@
         </div>
       </div>
     </div>
+    <script src="./js/login.js" type="module"></script>
     <script src="./js/products.js" defer></script>
+    <script src="./js/log-out.js" type="module"></script>
   </body>
 </html>

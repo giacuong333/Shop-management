@@ -41,5 +41,5 @@ function renderAdditionalProducts() {
           document.querySelector(".list-items").innerHTML = html;
 }
 
-// setAdditionalProducts("Phụ kiện");
+setAdditionalProducts("Phụ kiện");
 renderAdditionalProducts();

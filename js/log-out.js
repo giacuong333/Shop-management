@@ -3,15 +3,19 @@ import Accounts from "./local-storage.js"
 let account = new Accounts()
 account.init()
 
+function logOut() {
+          account.removeCurrentUser()
+          alert("Log out successfully!")
+          window.location.href = "../"
+}
+
 document.addEventListener("DOMContentLoaded", () => {
           let logout = document.querySelector("#dangxuat")
           let page = document.querySelector(".pagesLoginOut")
 
           if (logout !== null) {
                     // log out
-                    account.removeCurrentUser()
-                    alert("Log out successfully!")
-                    window.location.href = "../"
+                    logOut()
           }
 
           if (page !== null) {
