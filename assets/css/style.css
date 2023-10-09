@@ -753,10 +753,94 @@ input[type="radio"]:checked {
 /* ======================================================================================================== */
 .invalid {
   color: rgb(227, 93, 93);
-  font-size: 1.4rem;
+  font-size: 1.6rem;
+  margin: 6px 0;
   text-align: left;
 }
 
 .input-error {
   border: rgb(227, 93, 93) 3px solid !important;
+}
+
+/* ============================================== PAGE ACCOUNT =================================================== */
+#form-1 {
+  padding: 0 20px 20px 20px;
+}
+
+.wrap-page-account {
+  padding: 30px;
+}
+
+.page-account {}
+
+.page-account-header {
+  font-size: 2rem;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+.page-account-list {
+  list-style-type: none;
+  cursor: pointer;
+}
+
+.page-account-list__item, .page-account-info__item {
+  text-align: left;
+  margin-top: 30px;
+  line-height: 2.2rem;
+}
+
+.page-account-list__item, .page-account-info__item, .form-input label {
+  font-size: 1.8rem;
+}
+
+.page-account-list__item--active {
+  color: var(--primary-color);
+}
+
+.page-account-info {}
+
+.page-account-info__item {
+  font-weight: 700;
+}
+
+.page-account-info__item span {
+  font-weight: 400;
+}
+
+.form-input, .change-password-btn {
+  margin-top: 20px;
+}
+
+.form-input label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.form-input label:hover {
+  color: var(--text-color);
+}
+
+.old-password, .new-password, .verify-password {
+  font-size: 1.6rem;
+  width: 100%;
+  padding: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc !important;
+  background-color: #fafafa;
+}
+
+.new-password {}
+
+.verify-password {}
+
+.change-password-btn {
+  margin-left: 0;
+  border-radius: 6px;
+  padding: 10px;
+  line-height: 1.6rem;
+}
+
+.change-password-btn:hover {
+  opacity: .8;
 }

@@ -5,12 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Đăng nhập</title>
-    <link rel="stylesheet" href="../assets/css/main.css" />
-    <link rel="stylesheet" href="../assets/css/style.css" />
-    <link rel="stylesheet" href="../assets/css/grid.css" />
-    <link rel="stylesheet" href="../assets/fonts/themify-icons/themify-icons.css" />
-    <link rel="stylesheet" href="../assets/css/resposive_home.css" />
-    <link rel="stylesheet" href="../assets/css/responsive_login.css" />
+    <link rel="stylesheet" href="./assets/css/main.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/grid.css" />
+    <link rel="stylesheet" href="./assets/css/cart.css" />
+    <link rel="stylesheet" href="./assets/fonts/themify-icons/themify-icons.css" />
+    <link rel="stylesheet" href="./assets/css/resposive_home.css" />
+    <link rel="stylesheet" href="./assets/css/responsive_login.css" />
     <style>
       * {
         box-sizing: border-box;
@@ -228,6 +229,10 @@
       input[type="email"]:focus {
         border: 1px #ddd solid;
       }
+
+      .content {
+        padding: 0;
+      }
     </style>
   </head>
 
@@ -238,41 +243,65 @@
         <div class="header-nav__menu">
           <i class="header-nav__menu-icon ti-align-justify"></i>
         </div>
-        <a href="../index.html" target="_self" class="header-nav__name">Shop FIVE GUYS</a>
-        <a href="../cart.html" target="_self" class="header-nav__cart">
+        <a href="./index.html" target="_self" class="header-nav__name">Shop FIVE GUYS</a>
+        <a href="./cart.html" target="_self" class="header-nav__cart">
           <i class="header-nav__cart-icon ti-shopping-cart"></i>
           <h2 class="header-nav__cart-count">0</h2>
         </a>
       </div>
     </header>
 
-    <div id="main" class="grid wide">
-      <div class="container">
-        <form action="" class="container-wrap">
-          <h1 id="noidung">Đăng nhập</h1>
-          <input id="email" type="email" placeholder="Email" required />
-          <input id="pw" type="password" placeholder="Mật khẩu" required />
-          <div class="container-wrap__forgot-save">
-            <div class="container-wrap__forgot-save-check">
-              <input type="checkbox" id="checked" />
-              <label for="checked">Lưu mật khẩu</label>
-              <span id="forgot-pw"> <a href="./dean3.html">Quên mật khẩu </a></span>
+    <div class="content">
+      <div class="content-navigation">
+        <div class="grid wide">
+          <div class="content-naviation__wrap">
+            <a href="./index.html" target="_self" class="content-navigation__link">Trang chủ</a>
+            <span style="font-size: 1.8rem; margin: 0 4px; color: #adadad">/</span>
+            <a href="#" class="content-navigation__link content-navigation__link--active">Trang khách hàng</a>
+          </div>
+
+          <div class="row wrap-page-account">
+            <div class="col l-4 m-6 c12 page-account">
+              <p class="page-account-header">TRANG TÀI KHOẢN</p>
+              <ul class="page-account-list">
+                <li class="page-account-list__item page-account-list__item--active">Thông tin tài khoản</li>
+                <li class="page-account-list__item">Đơn hàng của bạn</li>
+                <li class="page-account-list__item">Đổi mật khẩu</li>
+                <li class="page-account-list__item">Sổ địa chỉ (3)</li>
+              </ul>
             </div>
-            <div class="wrap-login">
-              <input id="dangnhap" type="submit" name="btn_login" value="Đăng nhập" />
-              <p id="b1">Chưa có tài khoản? <a href="./dean2.html">Đăng ký</a></p>
+            <div class="col l-5 m-6 c12 page-account">
+              <!-- Thông tin tài khoản -->
+              <!-- <p class="page-account-header">THÔNG TIN TÀI KHOẢN</p>
+              <div class="page-account-info">
+                <div class="page-account-info__item">Họ tên: <span>Gia Cường</span></div>
+                <div class="page-account-info__item">Email: <span>legiacuong789@gmail.com</span></div>
+                <div class="page-account-info__item">Điện thoại: <span>0948800917</span></div>
+                <div class="page-account-info__item">Địa chỉ: <span>Quận Bình Thạnh, Việt Nam</span></div>
+              </div> -->
+              <!-- Đổi mật khẩu -->
+              <form action="" method="get" id="form-1">
+                <p class="page-account-header">ĐỔI MẬT KHẨU</p>
+                <div class="page-account-list__item">Để đảm bảo tính bảo mật bạn vui lòng đặt lại mật khẩu với ít nhất 8 kí tự</div>
+                <div class="form-input">
+                  <label for="opassword">Mật khẩu cũ *</label>
+                  <input id="opassword" class="old-password" type="password" placeholder="Nhập mật khẩu cũ" />
+                  <span class="error-message"></span>
+                </div>
+                <div class="form-input">
+                  <label for="npassword">Mật khẩu mới *</label>
+                  <input id="npassword" class="new-password" type="password" placeholder="Nhập mật khẩu mới" />
+                  <span class="error-message"></span>
+                </div>
+                <div class="form-input">
+                  <label for="vpassword">Xác nhận lại mật khẩu *</label>
+                  <input id="vpassword" class="verify-password" type="password" placeholder="Xác nhận mật khẩu mới" />
+                  <span class="error-message"></span>
+                </div>
+                <button type="button" class="change-password-btn btn btn--active">Đặt lại mật khẩu</button>
+              </form>
             </div>
           </div>
-        </form>
-      </div>
-
-      <p id="b2">Hoặc đăng nhập bằng</p>
-      <div id="main2">
-        <div id="facebook">
-          <a class="main2-icon" href="https://fb.com"> <i class="ti-facebook"></i>Facebook</a>
-        </div>
-        <div id="google">
-          <a class="main2-icon" href="https://accounts.google.com"><i class="ti-google"></i>Google</a>
         </div>
       </div>
     </div>
@@ -357,7 +386,7 @@
       <!-- menu -->
       <ul class="nav-list">
         <li class="nav-list__item">
-          <a href="../index.html" class="nav-list__item-link">Trang chủ</a>
+          <a href="./index.html" class="nav-list__item-link">Trang chủ</a>
         </li>
         <li class="nav-list__item">
           <a href="" class="nav-list__item-link">Sản phẩm</a>
@@ -379,10 +408,10 @@
               </ul>
             </li>
             <li class="nav-list__item">
-              <a href="../male-product/index.html" class="nav-list__item-link">Thời trang nam</a>
+              <a href="./male-product/index.html" class="nav-list__item-link">Thời trang nam</a>
             </li>
             <li class="nav-list__item">
-              <a href="../accessory-product/index.html" class="nav-list__item-link">Phụ kiện</a>
+              <a href="./accessory-product/index.html" class="nav-list__item-link">Phụ kiện</a>
             </li>
           </ul>
         </li>
@@ -393,9 +422,9 @@
     </nav>
     <!-- end overlay -->
 
-    <script src="../js/login.js" type="module"></script>
-    <script src="../js/log-out.js" type="module"></script>
-    <script src="../js/registration.js" type="module"></script>
-    <script src="../js/products.js" defer></script>
+    <script src="./js/login.js" type="module"></script>
+    <script src="./js/log-out.js" type="module"></script>
+    <script src="./js/registration.js" type="module"></script>
+    <script src="./js/products.js" defer></script>
   </body>
 </html>
