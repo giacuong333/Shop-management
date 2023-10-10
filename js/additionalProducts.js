@@ -4,31 +4,31 @@ const male = JSON.parse(localStorage.getItem("male")) || [];
 
 let additionalProducts = [];
 function setAdditionalProducts(categoryName) {
-          if (categoryName.toUpperCase() === "THỜI TRANG NAM") {
-                    additionalProducts = male;
-          } else if (categoryName.toUpperCase() === "PHỤ KIỆN") {
-                    additionalProducts = accessories;
-          }
+  if (categoryName.toUpperCase() === "THỜI TRANG NAM") {
+    additionalProducts = male;
+  } else if (categoryName.toUpperCase() === "PHỤ KIỆN") {
+    additionalProducts = accessories;
+  }
 }
-const listAdditionalItem = document.querySelectorAll(".nav-list__item-link")
+const listAdditionalItem = document.querySelectorAll(".nav-list__item-link");
 listAdditionalItem.forEach((element) => {
-          element.addEventListener("click", function (event) {
-                    // Prevent the default behavior of the anchor tag
-                    event.preventDefault();
+  element.addEventListener("click", function (event) {
+    // Prevent the default behavior of the anchor tag
+    event.preventDefault();
 
-                    // Get the category name from the text content of the clicked link
-                    const getCategoryName = this.textContent ? this.textContent.trim() : "";
-                    setAdditionalProducts(getCategoryName);
-                    renderAdditionalProducts();
-          });
+    // Get the category name from the text content of the clicked link
+    const getCategoryName = this.textContent ? this.textContent.trim() : "";
+    setAdditionalProducts(getCategoryName);
+    renderAdditionalProducts();
+  });
 });
 
 // Render products based on additionalProducts
 function renderAdditionalProducts() {
-          let html = "";
-          additionalProducts.forEach((item) => {
-                    const { id, image, title, price } = item;
-                    html += `
+  let html = "";
+  additionalProducts.forEach((item) => {
+    const { id, image, title, price } = item;
+    html += `
                     <div onclick="goToDetailsPage(${id})" class="col l-4 m-6 c-12 item">
                               <a href="../details.html?productId=${id}" target="_self" class="product product--space">
                               <img src="${image}" alt="Image" class="product-img"/>
@@ -37,8 +37,8 @@ function renderAdditionalProducts() {
                               </a>
                     </div>
                     `;
-          });
-          document.querySelector(".list-items").innerHTML = html;
+  });
+  document.querySelector(".list-items").innerHTML = html;
 }
 
 setAdditionalProducts("Phụ kiện");

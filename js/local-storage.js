@@ -9,6 +9,7 @@ export default function Accounts() {
       {
         email: "legiacuong789@gmail.com",
         password: "121003",
+        phoneNumber: "0948800917",
       },
     ];
     localStorage.setItem("users", JSON.stringify(users));

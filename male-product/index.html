@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -13,7 +12,7 @@
     <link rel="stylesheet" href="../assets/css/main.css" />
     <link rel="stylesheet" href="../assets/css/responsive_cart.css" />
     <link rel="stylesheet" href="../assets/css/store.css" />
-    <link rel="stylesheet" href="../assets/css/resposive_home.css">
+    <link rel="stylesheet" href="../assets/css/resposive_home.css" />
   </head>
 
   <body>
@@ -62,8 +61,7 @@
           <div class="grid wide">
             <div class="content-cart__wrap">
               <h2 class="content-cart__heading">THỜI TRANG NAM</h2>
-              <span class="content-cart__quantity">Tìm thấy <b style="color: var(--black-color)">37</b> sản
-                phẩm</span>
+              <span class="content-cart__quantity">Tìm thấy <b style="color: var(--black-color)">37</b> sản phẩm</span>
             </div>
 
             <!-- products -->
@@ -182,7 +180,6 @@
                           <div class="content-cart__pagination-num">3</div>
                           <a href="" class="content-cart__pagination-after">Trang sau</a> -->
             </div>
-
           </div>
         </div>
       </div>
@@ -214,13 +211,8 @@
           </div>
 
           <div class="footer__contact">
-            <h3 class="footer__contact-heading">
-              ĐĂNG KÝ NHẬN TIN MỚI TỪ SHOP FIVE GUYS
-            </h3>
-            <p class="footer__contact-subheading">
-              Nhập vào email của bạn và bạn sẽ nhận được sớm nhất những thông
-              tin khuyến mại từ chúng tôi
-            </p>
+            <h3 class="footer__contact-heading">ĐĂNG KÝ NHẬN TIN MỚI TỪ SHOP FIVE GUYS</h3>
+            <p class="footer__contact-subheading">Nhập vào email của bạn và bạn sẽ nhận được sớm nhất những thông tin khuyến mại từ chúng tôi</p>
             <form action="" method="get" class="footer__contact-form">
               <input type="text" placeholder="Email của bạn" class="footer__contact-form-input" />
             </form>
@@ -247,9 +239,7 @@
         </div>
 
         <div class="footer__copyright">
-          <p class="footer__copyright-desc">
-            Bản quyền thuộc về Five Guys team
-          </p>
+          <p class="footer__copyright-desc">Bản quyền thuộc về Five Guys team</p>
         </div>
       </div>
     </div>
@@ -266,13 +256,15 @@
         </div>
       </form>
       <div class="nav-sign">
-        <div class="row">
-          <div class="col l-6 m-6 c-12">
+        <!-- Use for logout -->
+        <div class="pagesLoginOut"></div>
+        <div class="row wrap-login-logout">
+          <div class="col l-6 m-6 c-12 login-button">
             <div class="nav-sign-btn">
               <a href="../login/dean1.html" class="btn btn--sign-in">Đăng nhập</a>
             </div>
           </div>
-          <div class="col l-6 m-6 c-12">
+          <div class="col l-6 m-6 c-12 logout-button">
             <div class="nav-sign-btn">
               <a href="../login/dean2.html" class="btn btn--sign-out">Đăng ký</a>
             </div>
@@ -318,9 +310,10 @@
       </ul>
     </nav>
     <!-- end overlay -->
+    <script src="../js/login.js" type="module"></script>
+    <script src="../js/log-out.js" type="module"></script>
     <script src="../js/toggle.js" defer></script>
     <script src="../js/products.js" defer></script>
     <script src="../js/additionalProducts.js"></script>
   </body>
-
 </html>

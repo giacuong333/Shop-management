@@ -823,7 +823,7 @@ input[type="radio"]:checked {
 
 .old-password, .new-password, .verify-password {
   font-size: 1.6rem;
-  width: 100%;
+  width: 70%;
   padding: 14px;
   border-radius: 6px;
   border: 1px solid #ccc !important;
@@ -843,4 +843,29 @@ input[type="radio"]:checked {
 
 .change-password-btn:hover {
   opacity: .8;
+}
+
+.table-row {
+  font-size: 2rem;
+  background-color: var(--primary-color);
+  color: var(--white-color);
+}
+
+.table-row__head {
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.table-row__body {
+  text-align: left;
+  font-size: 1.6rem;
+  color: var(--text-color);
+  border: 1px solid #a6a6ad;
+  font-weight: 450;
+  padding: 4px;
+}
+
+.table-row__body--id {
+  color: var(--primary-color);
 }

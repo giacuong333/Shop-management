@@ -1,4 +1,4 @@
-// ============================================ GET PRODUCTS FROM THE JSON FILES ============================================
+// ============================================ GET PRODUCTS FROM THE JSON FILES ===========================================
 async function fetchDataAndParse(url, key) {
   try {
     const response = await fetch(url);
@@ -354,10 +354,14 @@ function registerPage() {
 const confirmDeletePanel = document.querySelector(".annouce-delete-product");
 const yesConfirm = document.querySelector(".annouce-delete-product__body-text");
 const noConfirm = document.querySelector(".annouce-delete-product__footer-text");
+
 function displayConfirmDelete(productId) {
-  confirmDeletePanel.style.display = "block";
-  overlay.style.display = "block";
-  confirmDeletePanel.addEventListener("click", (e) => e.stopPropagation());
+  if (confirmDeletePanel || overlay || confirmDeletePanel) {
+    confirmDeletePanel.style.display = "block";
+    overlay.style.display = "block";
+    confirmDeletePanel.addEventListener("click", (e) => e.stopPropagation());
+  }
+
   if (yesConfirm) {
     yesConfirm.addEventListener("click", () => {
       confirmDeletePanel.style.display = "none";
@@ -437,6 +441,9 @@ function loadPaymentPage() {
   const deliveryFee = 40000;
   // Calculate total of all products in the cart
   let totalPrice = cart.reduce((accumulate, item) => {
+    if (item.totalPrice === "Liên Hệ") {
+      return accumulate + 0;
+    }
     return accumulate + item.totalPrice;
   }, 0);
 
@@ -446,7 +453,12 @@ function loadPaymentPage() {
   let html = "";
   cart.forEach((item) => {
     const { title, image, price, quantity } = item;
-    const formattedPrice = new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(price);
+    var formattedPrice;
+    if (price === "Liên Hệ") {
+      formattedPrice = "Liên Hệ";
+    } else {
+      formattedPrice = new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(price);
+    }
     html += `
         <div class="payment-right-body__products">
             <div class="payment-right-body__products-wrap">
@@ -462,9 +474,15 @@ function loadPaymentPage() {
     paymentContainProducts.innerHTML = html;
   }
 
-  document.querySelector(".payment-right-body__estimate-delivery p:last-child").textContent = new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(deliveryFee);
-  document.querySelector(".payment-right-body__estimate-price p:last-child").textContent = new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(totalPrice);
-  document.querySelector(".payment-right-body__total p:last-child").textContent = finalTotalPrice;
+  if (document.querySelector(".payment-right-body__estimate-delivery p:last-child")) {
+    document.querySelector(".payment-right-body__estimate-delivery p:last-child").textContent = new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(deliveryFee);
+  }
+  if (document.querySelector(".payment-right-body__estimate-price p:last-child")) {
+    document.querySelector(".payment-right-body__estimate-price p:last-child").textContent = new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(totalPrice);
+  }
+  if (document.querySelector(".payment-right-body__total p:last-child")) {
+    document.querySelector(".payment-right-body__total p:last-child").textContent = finalTotalPrice;
+  }
 }
 
 loadPaymentPage();
@@ -506,6 +524,7 @@ function validateInputCheck(inputValue, error) {
   }
 }
 
+// Validate and verify order for the customer
 function validateInput() {
   const customerEmail = document.querySelector("input[name='email']");
   const customerName = document.querySelector("input[name='name']");
@@ -535,29 +554,32 @@ function validateInput() {
         alert("Please log in to place an order");
       } else {
         if (areAllFieldsValid()) {
+          placeOrder();
+          localStorage.removeItem("cart");
           alert("Your order is placed successfully!");
-          removeAllProduct();
           window.location.href = "../";
         }
       }
     });
   }
 
-  customerEmail.addEventListener("blur", () => {
-    validate(customerEmail, errorMessage[0], "Vui lòng điền email", emailRegex);
-  });
+  if (customerEmail || customerName || customerAddress || deliveryMethod) {
+    customerEmail.addEventListener("blur", () => {
+      validate(customerEmail, errorMessage[0], "Vui lòng điền email", emailRegex);
+    });
 
-  customerName.addEventListener("blur", () => {
-    validate(customerName, errorMessage[1], "Vui lòng điền họ và tên", null);
-  });
+    customerName.addEventListener("blur", () => {
+      validate(customerName, errorMessage[1], "Vui lòng điền họ và tên", null);
+    });
 
-  customerAddress.addEventListener("blur", () => {
-    validate(customerAddress, errorMessage[2], "Vui lòng điền địa chỉ", null);
-  });
+    customerAddress.addEventListener("blur", () => {
+      validate(customerAddress, errorMessage[2], "Vui lòng điền địa chỉ", null);
+    });
 
-  deliveryMethod.addEventListener("change", () => {
-    validateInputCheck(deliveryMethod, deliveryMethodError);
-  });
+    deliveryMethod.addEventListener("change", () => {
+      validateInputCheck(deliveryMethod, deliveryMethodError);
+    });
+  }
 
   // Check the input fields when the order button is clicked
   if (orderBtn) {
@@ -570,6 +592,273 @@ function validateInput() {
     });
   }
 }
+// =================================================== PLACED ORDERS ======================================================
+function getLastOrderId() {
+  const lastOrderId = JSON.parse(localStorage.getItem("lastOrderId"));
+  return lastOrderId ? parseInt(lastOrderId, 10) : 0;
+}
+
+function setLastOrderId(lastOrderId) {
+  localStorage.setItem("lastOrderId", lastOrderId.toString());
+}
+
+// Get the order information
+function gatherOrderInfo() {
+  const date = new Date();
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+  const year = date.getFullYear();
+  const dateAndTime = day + "-" + month + "-" + year;
+  const customerAddress = document.querySelector("input[name='province']").value;
+  const finalTotalPrice = document.querySelector(".payment-right-body__total p:last-child").textContent;
+  const paymentStatus = "Chưa thu tiền";
+  const deliveryStatus = "Chưa vận chuyển";
+
+  return {
+    dateAndTime,
+    customerAddress,
+    finalTotalPrice,
+    paymentStatus,
+    deliveryStatus,
+  };
+}
+
+function placeOrder() {
+  const user = JSON.parse(localStorage.getItem("currentUser"));
+  const order = gatherOrderInfo();
+  if (order && user) {
+    addPlaceOrder(user.email, order);
+  }
+}
+
+function addPlaceOrder(userEmail, order) {
+  // const placedOrders = JSON.parse(localStorage.getItem("placedOrders")) || [];
+  const lastOrderId = getLastOrderId();
+  const userPlacedOrdersKey = `placedOrders_${userEmail}`;
+  const userPlacedOrders = JSON.parse(localStorage.getItem(userPlacedOrdersKey)) || [];
+
+  // Increase the order id by one when the user clicks on the payment button
+  const newOrderId = lastOrderId + 1;
+  order.id = newOrderId;
+
+  // Add new order ID by incrementing the last order id
+  userPlacedOrders.push(order);
+  localStorage.setItem(userPlacedOrdersKey, JSON.stringify(userPlacedOrders));
+
+  // Update the last order id
+  setLastOrderId(newOrderId);
+}
+
+function displayPlacedOrdersTable(userEmail) {
+  // const placedOrders = JSON.parse(localStorage.getItem("placedOrders")) || [];
+  const userPlacedOrdersKey = `placedOrders_${userEmail}`;
+  const userPlacedOrders = JSON.parse(localStorage.getItem(userPlacedOrdersKey)) || [];
+  const tableBody = document.getElementById("placed-order-list");
+
+  if (tableBody) {
+    userPlacedOrders.forEach((order) => {
+      const newRow = tableBody.insertRow();
+
+      // Create cells for each column
+      const placedOrderId = newRow.insertCell(0);
+      const placedOrderDate = newRow.insertCell(1);
+      const placedOrderAddress = newRow.insertCell(2);
+      const placedOrderPrice = newRow.insertCell(3);
+      const placedOrderGetMoney = newRow.insertCell(4);
+      const placedOrderDelivery = newRow.insertCell(5);
+
+      placedOrderId.textContent = "#" + order.id;
+      placedOrderDate.textContent = order.dateAndTime;
+      placedOrderAddress.textContent = order.customerAddress;
+      placedOrderPrice.textContent = order.finalTotalPrice;
+      placedOrderGetMoney.textContent = order.paymentStatus;
+      placedOrderDelivery.textContent = order.deliveryStatus;
+
+      placedOrderId.classList.add("table-row__body");
+      placedOrderId.classList.add("table-row__body--id");
+      placedOrderDate.classList.add("table-row__body");
+      placedOrderAddress.classList.add("table-row__body");
+      placedOrderPrice.classList.add("table-row__body");
+      placedOrderGetMoney.classList.add("table-row__body");
+      placedOrderDelivery.classList.add("table-row__body");
+    });
+  }
+}
 
 // Make sure the document is fully loaded
-document.addEventListener("DOMContentLoaded", validateInput);
+document.addEventListener("DOMContentLoaded", () => {
+  validateInput();
+  convertInfo();
+});
+
+// ============================================ CHANGE PASSWORD FORM ============================================
+function changePassword() {
+  const formInputGroup = document.querySelectorAll(".form-input");
+  const oldPasswordInput = document.getElementById("opassword");
+  const newPasswordInput = document.getElementById("npassword");
+  const verifyPasswordInput = document.getElementById("vpassword");
+  const changePasswordBtn = document.querySelector(".change-password-btn");
+  const errorMessage = document.querySelectorAll(".error-message");
+
+  if (changePasswordBtn) {
+    changePasswordBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      const oldPassword = oldPasswordInput.value.trim();
+      const newPassword = newPasswordInput.value.trim();
+      const verifyPassword = verifyPasswordInput.value.trim();
+
+      // Clear previous error messages
+      errorMessage.forEach((message) => {
+        message.textContent = "";
+        message.classList.remove("invalid");
+      });
+
+      let isValid = true;
+
+      if (!updatePassword(oldPassword, newPassword, verifyPassword)) {
+        errorMessage[0].textContent = "Mật khẩu cũ không tồn tại";
+        errorMessage[0].classList.add("invalid");
+        isValid = false;
+      }
+
+      if (newPassword === "") {
+        errorMessage[1].textContent = "Vui lòng nhập mật khẩu mới!";
+        errorMessage[1].classList.add("invalid");
+        isValid = false;
+      }
+
+      if (verifyPassword === "") {
+        errorMessage[2].textContent = "Vui lòng xác nhận mật khẩu mới!";
+        errorMessage[2].classList.add("invalid");
+        isValid = false;
+      } else if (verifyPassword !== newPassword) {
+        errorMessage[2].textContent = "Xác nhận mật khẩu không khớp";
+        errorMessage[2].classList.add("invalid");
+        isValid = false;
+      }
+
+      if (isValid) {
+        updatePassword(oldPassword, newPassword, verifyPassword);
+      }
+    });
+  }
+
+  // If the user goes on typing, hide the error message
+  formInputGroup.forEach((form) => {
+    form.querySelector("input").addEventListener("input", () => {
+      form.querySelector(".error-message").textContent = "";
+      form.querySelector(".error-message").classList.remove("invalid");
+    });
+  });
+}
+
+function updatePassword(oldPassword, newPassword, verifyPassword) {
+  const users = JSON.parse(localStorage.getItem("users"));
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+  const userToUpDate = users.find((user) => user.email === currentUser.email && user.password === oldPassword);
+
+  if (userToUpDate) {
+    for (let i = 0; i < users.length; i++) {
+      const user = users[i];
+      if (user.email === currentUser.email && user.password === oldPassword) {
+        // Check if newPassword is not an empty string before updating
+        if (newPassword.trim() !== "" && verifyPassword === newPassword) {
+          user.password = newPassword;
+          localStorage.setItem("users", JSON.stringify(users));
+          alert("Đổi mật khẩu thành công. Vui lòng đăng nhập lại!");
+          // Logout when changing password successfully
+          localStorage.removeItem("currentUser");
+          alert("Log out successfully!");
+          window.location.href = "../";
+        }
+        return true; // Password updated successfully
+      }
+    }
+  }
+
+  return false; // password updated failed
+}
+
+// ============================================ ACCOUNT INFORMATION ============================================
+function convertInfo() {
+  const customerInfoList = document.querySelectorAll(".page-account-list__item");
+  const customerContainer = document.querySelector(".page-account-right");
+  const getCustomerInfo = JSON.parse(localStorage.getItem("currentUser"));
+
+  customerInfoList.forEach((info) => {
+    // Remove active class from all items
+    info.addEventListener("click", () => {
+      customerInfoList.forEach((item) => item.classList.remove("page-account-list__item--active"));
+
+      // Add active class to the clicked item
+      info.classList.add("page-account-list__item--active");
+
+      // Clear the container
+      customerContainer.innerHTML = "";
+
+      if (info === customerInfoList[0]) {
+        const html = `
+        <p class="page-account-header">THÔNG TIN TÀI KHOẢN</p>
+        <div class="page-account-info">
+          <div class="page-account-info__item">Email: <span>${getCustomerInfo.email}</span></div>
+          <div class="page-account-info__item">Phone number: <span>${getCustomerInfo.phoneNumber}</span></div>
+        </div>
+      `;
+        customerContainer.innerHTML = html;
+      } else if (info === customerInfoList[1]) {
+        const html = `
+          <table>
+
+            <thead>
+              <tr class="table-row">
+                <th class="table-row__head">Đơn hàng</th>
+                <th class="table-row__head">Ngày</th>
+                <th class="table-row__head">Địa chỉ</th>
+                <th class="table-row__head">Giá trị đơn hàng</th>
+                <th class="table-row__head">Thanh toán</th>
+                <th class="table-row__head">Vận chuyển</th>
+              </tr>
+            </thead>
+            <tbody id="placed-order-list">
+            </tbody>
+          </table>
+        `;
+        customerContainer.innerHTML = html;
+        // displayPlacedOrdersTable();
+        const user = JSON.parse(localStorage.getItem("currentUser"));
+        if (user) {
+          displayPlacedOrdersTable(user.email);
+        }
+      } else if (info === customerInfoList[2]) {
+        const html = `
+        <form action="" method="get" id="form-1">
+          <p class="page-account-header">ĐỔI MẬT KHẨU</p>
+          <div class="page-account-list__item">Để đảm bảo tính bảo mật bạn vui lòng đặt lại mật khẩu với ít nhất 8 kí tự</div>
+          <div class="form-input">
+            <label for="opassword">Mật khẩu cũ *</label>
+            <input id="opassword" class="old-password" type="password" placeholder="Nhập mật khẩu cũ" />
+            <div class="error-message"></div>
+          </div>
+          <div class="form-input">
+            <label for="npassword">Mật khẩu mới *</label>
+            <input id="npassword" class="new-password" type="password" placeholder="Nhập mật khẩu mới" />
+            <div class="error-message"></div>
+          </div>
+          <div class="form-input">
+            <label for="vpassword">Xác nhận lại mật khẩu *</label>
+            <input id="vpassword" class="verify-password" type="password" placeholder="Xác nhận mật khẩu mới" />
+            <div class="error-message"></div>
+          </div>
+          <button type="button" class="change-password-btn btn btn--active">Đặt lại mật khẩu</button>
+        </form>
+      `;
+        customerContainer.innerHTML = html;
+        changePassword();
+      }
+    });
+  });
+}
+
+convertInfo();
