@@ -1,315 +1,315 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dăng ký</title>
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/grid.css" />
+    <link rel="stylesheet" href="../assets/fonts/themify-icons/themify-icons.css" />
+    <link rel="stylesheet" href="../assets/css/resposive_home.css" />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Dăng ký</title>
-        <link rel="stylesheet" href="../assets/css/main.css">
-        <link rel="stylesheet" href="../assets/css/style.css">
-        <link rel="stylesheet" href="../assets/css/grid.css">
-        <link rel="stylesheet" href="../assets/fonts/themify-icons/themify-icons.css">
-        <link rel="stylesheet" href="../assets/css/resposive_home.css">
-        <style>
-            * {
-                box-sizing: border-box;
-            }
+      input {
+        padding: 8px;
+        font-size: 20px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        outline: none;
+      }
 
-            input {
-                padding: 8px;
-                font-size: 20px;
-                border-radius: 6px;
-                border: 1px solid #ccc;
-                outline: none;
-            }
+      #main {
+        margin: 30px auto;
+        font-size: 20px;
+      }
 
-            #main {
-                margin: 30px auto;
-                font-size: 20px;
-            }
+      #main #dangky {
+        padding: 10px 0;
+        width: 100%;
+        border-radius: 4px;
+        cursor: pointer;
+        background-color: #1e87d2;
+        color: #fff;
+        margin: 0 0 20px;
+      }
 
-            #main #dangky {
-                padding: 10px 0;
-                width: 100%;
-                border-radius: 4px;
-                cursor: pointer;
-                background-color: #1e87d2;
-                color: #fff;
-                margin: 0 0 20px;
-            }
+      #main #email,
+      #main #sdt,
+      #main #matkhau {
+        width: 100%;
+        margin-bottom: 10px;
+      }
 
-            #main #email,
-            #main #sdt,
-            #main #matkhau {
-                width: 100%;
-                margin-bottom: 10px;
-            }
+      #main #b5,
+      #b2 {
+        text-align: center;
+        margin-bottom: 15px;
+      }
 
-            #main #b5,
-            #b2 {
-                text-align: center;
-                margin-bottom: 15px;
-            }
+      #main2 {
+        width: fit-content;
+        margin: 0 auto;
+      }
 
-            #main2 {
-                width: fit-content;
-                margin: 0 auto;
-            }
+      #main2 div {
+        display: inline-block;
+        margin: 0 auto;
+        text-align: center;
+        color: white;
+        padding: 15px;
+      }
 
-            #main2 div {
-                display: inline-block;
-                margin: 0 auto;
-                text-align: center;
-                color: white;
-                padding: 15px;
-            }
+      #main2 #facebook {
+        background-color: #1e87d2;
+      }
 
-            #main2 #facebook {
-                background-color: #1e87d2;
-            }
+      #main2 #google {
+        background-color: #ff7348;
+      }
 
-            #main2 #google {
-                background-color: #ff7348;
-            }
+      #main #noidung {
+        text-align: center;
+        font-size: 30px;
+        margin: 0 0 10px;
+      }
 
-            #main #noidung {
-                text-align: center;
-                font-size: 30px;
-                margin: 0 0 10px;
-            }
+      .container {
+        background-color: rgb(248, 248, 255);
+        border-radius: 6px;
+        max-width: 700px;
+        padding: 30px;
+        margin: auto;
+      }
 
-            .container {
-                background-color: rgb(248, 248, 255);
-                border-radius: 6px;
-                max-width: 700px;
-                padding: 30px;
-                margin: auto;
-            }
+      #header {
+        font-size: 30px;
+        text-align: center;
+        background: rgb(0, 167, 230);
+        color: White;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 60px;
+      }
 
-            #header {
-                font-size: 30px;
-                text-align: center;
-                background: rgb(0, 167, 230);
-                color: White;
-                box-sizing: border-box;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                height: 60px;
-            }
+      .search {
+        background: #dfe6e9;
+        padding: 10px 0 0 0;
+      }
 
-            .search {
-                background: #dfe6e9;
-                padding: 10px 0 0 0;
-            }
+      .form-search {
+        width: 98%;
+        margin-bottom: 0;
+        margin-left: 10px;
+        border-radius: 5px;
+      }
 
-            .form-search {
-                width: 98%;
-                margin-bottom: 0;
-                margin-left: 10px;
-                border-radius: 5px;
-            }
+      #modau {
+        margin: 10px;
+        background: rgb(248, 248, 255);
+        padding: 10px;
+        font-size: 18px;
+        border-radius: 4px;
+      }
 
-            #modau {
-                margin: 10px;
-                background: rgb(248, 248, 255);
-                padding: 10px;
-                font-size: 18px;
-                border-radius: 4px;
-            }
+      #modau a {
+        text-decoration: none;
+        color: #000;
+        opacity: 0.7;
+      }
 
-            #modau a {
-                text-decoration: none;
-                color: #000;
-                opacity: .7;
-            }
+      #modau a:hover {
+        color: #1e87d2;
+        transition: all ease 0.4s;
+      }
 
-            #modau a:hover {
-                color: #1e87d2;
-                transition: all ease .4s;
-            }
+      #main2 #facebook,
+      #main2 #google {
+        border-radius: 4px;
+        min-width: 140px;
+        cursor: pointer;
+      }
 
-            #main2 #facebook,
-            #main2 #google {
-                border-radius: 4px;
-                min-width: 140px;
-                cursor: pointer;
-            }
+      #main2 #facebook:hover,
+      #main2 #google:hover,
+      #main #dangky:hover {
+        background-color: #607d8b;
+        transition: all ease 0.3s;
+      }
 
-            #main2 #facebook:hover,
-            #main2 #google:hover,
-            #main #dangky:hover {
-                background-color: #607d8b;
-                transition: all ease .3s;
-            }
+      .input-form {
+        width: 100%;
+        padding: 10px 20px;
+        border-style: none;
+        font-size: 25px;
+        letter-spacing: 1px;
+        color: #607d8b;
+        background: transparent;
+        display: block;
+        background-color: white;
+      }
 
-            .input-form {
-                width: 100%;
-                padding: 10px 20px;
-                border-style: none;
-                font-size: 25px;
-                letter-spacing: 1px;
-                color: #607d8b;
-                background: transparent;
-                display: block;
-                background-color: white;
-            }
+      #error {
+        min-height: 50px;
+      }
 
-            #error {
-                min-height: 50px;
-            }
+      #error > p {
+        padding: 15px 0;
+      }
 
-            #error>p {
-                padding: 15px 0;
-            }
+      .main2-icon {
+        color: #fff;
+        text-decoration: none;
+        line-height: 20px;
+      }
 
-            .main2-icon {
-                color: #fff;
-                text-decoration: none;
-                line-height: 20px;
-            }
+      .header-nav__link {
+        text-decoration: none;
+        display: block;
+        color: var(--white-color);
+        font-weight: 500;
+        font-size: 2rem;
+        padding-left: 14px;
+      }
 
-            .header-nav__link {
-                text-decoration: none;
-                display: block;
-                color: var(--white-color);
-                font-weight: 500;
-                font-size: 2rem;
-                padding-left: 14px;
-            }
+      .wrap-noidung {
+        padding: 20px 0;
+      }
 
-            .wrap-noidung {
-                padding: 20px 0;
-            }
+      input[type="text"],
+      input[type="password"],
+      input[type="email"] {
+        border: none;
+      }
 
-            input[type=text],
-            input[type=password],
-            input[type=email] {
-                border: none;
-            }
+      input[type="text"]:focus,
+      input[type="password"]:focus,
+      input[type="email"]:focus {
+        border: 1px #ddd solid;
+      }
 
-            input[type=text]:focus,
-            input[type=password]:focus,
-            input[type=email]:focus {
-                border: 1px #ddd solid;
-            }
-        </style>
-    </head>
+      #first-name,
+      #last-name {
+        width: 49%;
+        margin-bottom: 10px;
+      }
 
-    <body>
-        <form id="frm_login" name="frm_login" action="">
-            <div class="header-nav">
-                <a href="../index.html" class="header-nav__link">Trang chủ</a>
-                <a href="../index.html" target="_self" class="header-nav__name">Shop FIVE GUYS</a>
-                <a href="../cart.html" target="_self" class="header-nav__cart"><i
-                        class="header-nav__cart-icon ti-shopping-cart"></i></a>
+      #last-name {
+        margin-left: 6px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <form id="frm_login" name="frm_login" action="">
+      <div class="header-nav">
+        <a href="../index.html" class="header-nav__link">Trang chủ</a>
+        <a href="../index.html" target="_self" class="header-nav__name">Shop FIVE GUYS</a>
+        <a href="../cart.html" target="_self" class="header-nav__cart"><i class="header-nav__cart-icon ti-shopping-cart"></i></a>
+      </div>
+
+      <div id="main" class="grid wide">
+        <div class="container">
+          <div class="container-wrap">
+            <div class="wrap-noidung">
+              <h1 id="noidung">Tạo tài khoản</h1>
             </div>
-
-            <div id="main" class="grid wide">
-                <div class="container">
-                    <div class="container-wrap">
-                        <div class="wrap-noidung">
-                            <h1 id="noidung">Tạo tài khoản</h1>
-                        </div>
-                        <div>
-                            <input id="email" data-type="email" type="email" placeholder="Email" required>
-                            <input id="sdt" data-type="phoneNumber" type="text" placeholder="Số điện thoại" required>
-                            <input id="matkhau" data-type="password" type="password" name="txt_pass"
-                                placeholder="Mật khẩu" required>
-                        </div>
-                        <div>
-                            <input id="dangky" type="submit" name="btn_login" value="Đăng Ký">
-                        </div>
-                        <div>
-                            <p id="b5">Hoặc đăng nhập bằng</p>
-                        </div>
-                    </div>
-                </div>
-
-                <br>
-
-                <div id="main2">
-                    <div id="facebook">
-                        <a class="main2-icon" href="https://fb.com">
-                            <i class="ti-facebook"></i>Facebook</a>
-
-                    </div>
-                    <div id="google">
-                        <a class="main2-icon" href="https://accounts.google.com"><i class="ti-google"></i>Google</a>
-                    </div>
-                </div>
+            <div>
+              <input id="first-name" data-type="firstName" type="text" placeholder="Họ" required />
+              <input id="last-name" data-type="lastName" type="text" placeholder="Tên" required />
+              <input id="email" data-type="email" type="email" placeholder="Email" required />
+              <input id="sdt" data-type="phoneNumber" type="text" placeholder="Số điện thoại" required />
+              <input id="matkhau" data-type="password" type="password" name="txt_pass" placeholder="Mật khẩu" required />
             </div>
-
-            <!-- Footer -->
-            <div class="footer">
-                <div class="grid wide">
-                    <div class="footer__social">
-                        <div class="row">
-                            <div class="col l-6 m-6 c-12">
-                                <div class="info">
-                                    <h2 class="info__heading">THEO DÕI CHÚNG TÔI</h2>
-                                    <div class="info__subinfo">
-                                        <a href="" class="info__subinfo-icon info__subinfo-icon--space ti-facebook"></a>
-                                        <a href="" class="info__subinfo-icon info__subinfo-icon--space ti-twitter"></a>
-                                        <a href="" class="info__subinfo-icon info__subinfo-icon--space ti-google"></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col l-6 m-6 c-12">
-                                <div class="info">
-                                    <h2 class="info__heading">HOTLINE</h2>
-                                    <div class="info__subinfo">
-                                        <a href="tel: 0948800918" class="info__subinfo-icon">0948 800 918</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="footer__contact">
-                        <h3 class="footer__contact-heading">
-                            ĐĂNG KÝ NHẬN TIN MỚI TỪ SHOP FIVE GUYS
-                        </h3>
-                        <p class="footer__contact-subheading">
-                            Nhập vào email của bạn và bạn sẽ nhận được sớm nhất những thông tin khuyến mại từ chúng tôi
-                        </p>
-                        <form action="" method="get" class="footer__contact-form">
-                            <input type="text" placeholder="Email của bạn" class="footer__contact-form-input">
-                        </form>
-                    </div>
-
-                    <div class="footer__policy">
-                        <div class="footer__policy-content">
-                            <span class="footer__policy-account">Tài khoản</span>
-                            <a href="" class="footer__policy-content-link ti-plus"></a>
-                        </div>
-                        <div class="footer__policy-content">
-                            <span class="footer__policy-account">Hướng dẫn</span>
-                            <a href="" class="footer__policy-content-link ti-plus"></a>
-                        </div>
-                        <div class="footer__policy-content">
-                            <span class="footer__policy-account">Chính sách</span>
-                            <a href="" class="footer__policy-content-link ti-plus"></a>
-                        </div>
-                        <div class="footer__policy-content">
-                            <span class="footer__policy-account">Liên hệ</span>
-                            <a href="" class="footer__policy-content-link ti-plus"></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="footer__copyright">
-                    <p class="footer__copyright-desc">
-                        Bản quyền thuộc về Five Guys team
-                    </p>
-                </div>
+            <div>
+              <input id="dangky" type="submit" name="btn_login" value="Đăng Ký" />
             </div>
-        </form>
+            <div>
+              <p id="b5">Hoặc đăng nhập bằng</p>
+            </div>
+          </div>
+        </div>
 
-        <script src="../js/registration.js" type="module"></script>
-        <script src="../js/login.js" type="module"></script>
-        <script src="../js/log-out.js" type="module"></script>
-    </body>
+        <br />
 
+        <div id="main2">
+          <div id="facebook">
+            <a class="main2-icon" href="https://fb.com"> <i class="ti-facebook"></i>Facebook</a>
+          </div>
+          <div id="google">
+            <a class="main2-icon" href="https://accounts.google.com"><i class="ti-google"></i>Google</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <div class="grid wide">
+          <div class="footer__social">
+            <div class="row">
+              <div class="col l-6 m-6 c-12">
+                <div class="info">
+                  <h2 class="info__heading">THEO DÕI CHÚNG TÔI</h2>
+                  <div class="info__subinfo">
+                    <a href="" class="info__subinfo-icon info__subinfo-icon--space ti-facebook"></a>
+                    <a href="" class="info__subinfo-icon info__subinfo-icon--space ti-twitter"></a>
+                    <a href="" class="info__subinfo-icon info__subinfo-icon--space ti-google"></a>
+                  </div>
+                </div>
+              </div>
+              <div class="col l-6 m-6 c-12">
+                <div class="info">
+                  <h2 class="info__heading">HOTLINE</h2>
+                  <div class="info__subinfo">
+                    <a href="tel: 0948800918" class="info__subinfo-icon">0948 800 918</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer__contact">
+            <h3 class="footer__contact-heading">ĐĂNG KÝ NHẬN TIN MỚI TỪ SHOP FIVE GUYS</h3>
+            <p class="footer__contact-subheading">Nhập vào email của bạn và bạn sẽ nhận được sớm nhất những thông tin khuyến mại từ chúng tôi</p>
+            <form action="" method="get" class="footer__contact-form">
+              <input type="text" placeholder="Email của bạn" class="footer__contact-form-input" />
+            </form>
+          </div>
+
+          <div class="footer__policy">
+            <div class="footer__policy-content">
+              <span class="footer__policy-account">Tài khoản</span>
+              <a href="" class="footer__policy-content-link ti-plus"></a>
+            </div>
+            <div class="footer__policy-content">
+              <span class="footer__policy-account">Hướng dẫn</span>
+              <a href="" class="footer__policy-content-link ti-plus"></a>
+            </div>
+            <div class="footer__policy-content">
+              <span class="footer__policy-account">Chính sách</span>
+              <a href="" class="footer__policy-content-link ti-plus"></a>
+            </div>
+            <div class="footer__policy-content">
+              <span class="footer__policy-account">Liên hệ</span>
+              <a href="" class="footer__policy-content-link ti-plus"></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer__copyright">
+          <p class="footer__copyright-desc">Bản quyền thuộc về Five Guys team</p>
+        </div>
+      </div>
+    </form>
+
+    <script src="../js/registration.js" type="module"></script>
+    <script src="../js/login.js" type="module"></script>
+    <script src="../js/log-out.js" type="module"></script>
+  </body>
 </html>

@@ -7,6 +7,8 @@ export default function Accounts() {
   this.initUsers = () => {
     let users = [
       {
+        firstName: "Gia",
+        lastName: "Cường",
         email: "legiacuong789@gmail.com",
         password: "121003",
         phoneNumber: "0948800917",

@@ -1,21 +1,22 @@
 // Initialize products arrays
 const accessories = JSON.parse(localStorage.getItem("accessory")) || [];
 const male = JSON.parse(localStorage.getItem("male")) || [];
-
+const bag = JSON.parse(localStorage.getItem("bag")) || [];
 let additionalProducts = [];
+
 function setAdditionalProducts(categoryName) {
   if (categoryName.toUpperCase() === "THỜI TRANG NAM") {
     additionalProducts = male;
   } else if (categoryName.toUpperCase() === "PHỤ KIỆN") {
     additionalProducts = accessories;
+  } else if (categoryName.toUpperCase() === "TÚI XÁCH") {
+    additionalProducts = bag;
   }
 }
+
 const listAdditionalItem = document.querySelectorAll(".nav-list__item-link");
 listAdditionalItem.forEach((element) => {
-  element.addEventListener("click", function (event) {
-    // Prevent the default behavior of the anchor tag
-    event.preventDefault();
-
+  element.addEventListener("click", function () {
     // Get the category name from the text content of the clicked link
     const getCategoryName = this.textContent ? this.textContent.trim() : "";
     setAdditionalProducts(getCategoryName);

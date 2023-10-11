@@ -869,3 +869,15 @@ input[type="radio"]:checked {
 .table-row__body--id {
   color: var(--primary-color);
 }
+
+.content-cart__descript {
+  font-size: 2rem;
+  line-height: 3rem;
+  border-bottom: 1px #ddd solid;
+  display: block;
+  color: var(--text-color);
+  padding: 10px 0;
+  background-color: var(--white-color);
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+}

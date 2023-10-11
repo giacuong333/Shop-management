@@ -22,13 +22,15 @@ fetchDataAndParse("../JSON/outstandingProduct.json", "outstanding");
 fetchDataAndParse("../JSON/bestsellerProduct.json", "bestseller");
 fetchDataAndParse("../JSON/accessoryProduct.json", "accessory");
 fetchDataAndParse("../JSON/maleProduct.json", "male");
+fetchDataAndParse("../JSON/bagProduct.json", "bag");
 
 const products = JSON.parse(localStorage.getItem("products")) || [];
 const outstandingProducts = JSON.parse(localStorage.getItem("outstanding")) || [];
 const bestsellerProducts = JSON.parse(localStorage.getItem("bestseller")) || [];
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
 const accessoryProduct = JSON.parse(localStorage.getItem("accessory")) || [];
 const maleProducts = JSON.parse(localStorage.getItem("male")) || [];
+const bagProducts = JSON.parse(localStorage.getItem("bag")) || [];
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 // ============================================ RENDER PRODUCTS ============================================
 
@@ -152,9 +154,11 @@ allProducts.push(...outstandingProducts);
 allProducts.push(...bestsellerProducts);
 allProducts.push(...accessoryProduct);
 allProducts.push(...maleProducts);
+allProducts.push(...bagProducts);
 
 function addItemsToCart(product, quantity, totalPrice, image) {
   const existingItem = cart.findIndex((item) => item.id === product.id);
+  console.log(existingItem);
 
   // If products already exist in the cart, update their quantity
   if (existingItem !== -1) {
@@ -220,23 +224,22 @@ function displayInformation(productId) {
 
   const html = `
           <div class="annouce-head">
-                    <div class="annouce-head__heading">
-                              <p class="annouce-head__title">
-                                        <i class="ti-check annouce-head__check-icon"></i>
-                              Thêm vào giỏ hàng thành công
-                              </p>
-                              <i onclick="hideInformation()" class="ti-close annouce-head__close-icon"></i>
-                    </div>
-                    <div class="annouce-head__body">
-                              <div class="annouce-head__body-img">
-                                        <img src="${product.image}" alt="Image">
-                              </div>
-                              <div class="annouce-head__body-content">
-                                        <div class="annouce-head__body-name">${product.title}</div>
-                                        <div class="annouce-head__body-amount">Số lượng: <span class="quantity">${quantity}</span></div>
-                                        <div class="annouce-head__body-total">Tổng tiền: <span class="total">${totalPrice}</span></div>
-                              </div>
-                    </div>
+              <div class="annouce-head__heading">
+                <p class="annouce-head__title">
+                  <i class="ti-check annouce-head__check-icon"></i>Thêm vào giỏ hàng thành công
+                </p>
+                <i onclick="hideInformation()" class="ti-close annouce-head__close-icon"></i>
+              </div>
+          <div class="annouce-head__body">
+            <div class="annouce-head__body-img">
+              <img src="${product.image}" alt="Image">
+            </div>
+            <div class="annouce-head__body-content">
+              <div class="annouce-head__body-name">${product.title}</div>
+              <div class="annouce-head__body-amount">Số lượng: <span class="quantity">${quantity}</span></div>
+              <div class="annouce-head__body-total">Tổng tiền: <span class="total">${totalPrice}</span></div>
+            </div>
+          </div>
           </div>
           <div class="annouce-middle">
                     <button onclick="hideInformation()" type="button" class="annouce-middle__content">Tiếp tục mua hàng</button>
@@ -351,29 +354,31 @@ function registerPage() {
   window.location.href = "../login/dean2.html";
 }
 
-const confirmDeletePanel = document.querySelector(".annouce-delete-product");
-const yesConfirm = document.querySelector(".annouce-delete-product__body-text");
-const noConfirm = document.querySelector(".annouce-delete-product__footer-text");
-
 function displayConfirmDelete(productId) {
-  if (confirmDeletePanel || overlay || confirmDeletePanel) {
-    confirmDeletePanel.style.display = "block";
-    overlay.style.display = "block";
-    confirmDeletePanel.addEventListener("click", (e) => e.stopPropagation());
-  }
+  const confirmDeletePanel = document.querySelector(".annouce-delete-product");
+  const yesConfirm = document.querySelector(".annouce-delete-product__body-text");
+  const noConfirm = document.querySelector(".annouce-delete-product__footer-text");
 
-  if (yesConfirm) {
-    yesConfirm.addEventListener("click", () => {
-      confirmDeletePanel.style.display = "none";
-      overlay.style.display = "none";
-      removeProduct(productId);
-    });
-  }
-  if (noConfirm) {
-    noConfirm.addEventListener("click", () => {
-      confirmDeletePanel.style.display = "none";
-      overlay.style.display = "none";
-    });
+  if (confirmDeletePanel && yesConfirm && noConfirm) {
+    if (confirmDeletePanel || overlay || confirmDeletePanel) {
+      confirmDeletePanel.style.display = "block";
+      overlay.style.display = "block";
+      confirmDeletePanel.addEventListener("click", (e) => e.stopPropagation());
+    }
+
+    if (yesConfirm) {
+      yesConfirm.addEventListener("click", () => {
+        confirmDeletePanel.style.display = "none";
+        overlay.style.display = "none";
+        removeProduct(productId);
+      });
+    }
+    if (noConfirm) {
+      noConfirm.addEventListener("click", () => {
+        confirmDeletePanel.style.display = "none";
+        overlay.style.display = "none";
+      });
+    }
   }
 }
 
@@ -523,6 +528,22 @@ function validateInputCheck(inputValue, error) {
     error.style.display = "block";
   }
 }
+
+// Auto fill phone number, email, name
+function autoFillInfo() {
+  const user = JSON.parse(localStorage.getItem("currentUser"));
+  const customerEmail = document.querySelector("input[name='email']");
+  const customerName = document.querySelector("input[name='name']");
+  const customerPhoneNumber = document.querySelector("input[name='phone-number']");
+
+  if (user && customerEmail && customerName && customerPhoneNumber) {
+    customerEmail.value = user.email;
+    customerName.value = user.firstName + " " + user.lastName;
+    customerPhoneNumber.value = user.phoneNumber;
+  }
+}
+
+document.addEventListener("DOMContentLoaded", autoFillInfo);
 
 // Validate and verify order for the customer
 function validateInput() {
@@ -802,6 +823,7 @@ function convertInfo() {
         const html = `
         <p class="page-account-header">THÔNG TIN TÀI KHOẢN</p>
         <div class="page-account-info">
+          <div class="page-account-info__item">Họ tên: <span>${getCustomerInfo.firstName + " " + getCustomerInfo.lastName}</span></div>
           <div class="page-account-info__item">Email: <span>${getCustomerInfo.email}</span></div>
           <div class="page-account-info__item">Phone number: <span>${getCustomerInfo.phoneNumber}</span></div>
         </div>
