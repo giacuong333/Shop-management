@@ -36,7 +36,7 @@ function listPage() {
   }
 
   // Move page when clicking on the button
-  for (i = 1; i <= count; i++) {
+  for (let i = 1; i <= count; i++) {
     let newPage = document.createElement("div");
     newPage.classList.add("content-cart__pagination-num");
     newPage.innerText = i;

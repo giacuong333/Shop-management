@@ -22,15 +22,14 @@ fetchDataAndParse("../JSON/outstandingProduct.json", "outstanding");
 fetchDataAndParse("../JSON/bestsellerProduct.json", "bestseller");
 fetchDataAndParse("../JSON/accessoryProduct.json", "accessory");
 fetchDataAndParse("../JSON/maleProduct.json", "male");
-fetchDataAndParse("../JSON/bagProduct.json", "bag");
 
 const products = JSON.parse(localStorage.getItem("products")) || [];
 const outstandingProducts = JSON.parse(localStorage.getItem("outstanding")) || [];
 const bestsellerProducts = JSON.parse(localStorage.getItem("bestseller")) || [];
 const accessoryProduct = JSON.parse(localStorage.getItem("accessory")) || [];
 const maleProducts = JSON.parse(localStorage.getItem("male")) || [];
-const bagProducts = JSON.parse(localStorage.getItem("bag")) || [];
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let placedOrder = JSON.parse(localStorage.getItem("placedOrder")) || [];
 
 // ============================================ RENDER PRODUCTS ============================================
 
@@ -149,16 +148,10 @@ const noProductsPanel = document.querySelector(".content-cart__desc");
 const productQuantityInCart = document.querySelector(".content-cart__amount-number");
 
 const allProducts = [];
-allProducts.push(...products);
-allProducts.push(...outstandingProducts);
-allProducts.push(...bestsellerProducts);
-allProducts.push(...accessoryProduct);
-allProducts.push(...maleProducts);
-allProducts.push(...bagProducts);
+allProducts.push(...products, ...outstandingProducts, ...bestsellerProducts, ...accessoryProduct, ...maleProducts);
 
 function addItemsToCart(product, quantity, totalPrice, image) {
   const existingItem = cart.findIndex((item) => item.id === product.id);
-  console.log(existingItem);
 
   // If products already exist in the cart, update their quantity
   if (existingItem !== -1) {
@@ -418,7 +411,10 @@ if (overlay) {
       menuPanel.style.transform = "translateX(-100%)";
       menuPanel.style.opacity = "0";
       overlay.style.display = "none";
-      confirmDeletePanel.style.display = "none";
+      const confirmDeletePanel = document.querySelector(".annouce-delete-product");
+      if (confirmDeletePanel) {
+        confirmDeletePanel.style.display = "none";
+      }
     }
   });
 }
@@ -576,9 +572,6 @@ function validateInput() {
       } else {
         if (areAllFieldsValid()) {
           placeOrder();
-          localStorage.removeItem("cart");
-          alert("Your order is placed successfully!");
-          window.location.href = "../";
         }
       }
     });
@@ -629,7 +622,7 @@ function gatherOrderInfo() {
   const day = date.getDate();
   const month = date.getMonth() + 1;
   const year = date.getFullYear();
-  const dateAndTime = day + "-" + month + "-" + year;
+  const dateAndTime = day + "/" + month + "/" + year;
   const customerAddress = document.querySelector("input[name='province']").value;
   const finalTotalPrice = document.querySelector(".payment-right-body__total p:last-child").textContent;
   const paymentStatus = "Chưa thu tiền";
@@ -646,14 +639,14 @@ function gatherOrderInfo() {
 
 function placeOrder() {
   const user = JSON.parse(localStorage.getItem("currentUser"));
-  const order = gatherOrderInfo();
-  if (order && user) {
+  if (user) {
+    const order = gatherOrderInfo();
+
     addPlaceOrder(user.email, order);
   }
 }
 
 function addPlaceOrder(userEmail, order) {
-  // const placedOrders = JSON.parse(localStorage.getItem("placedOrders")) || [];
   const lastOrderId = getLastOrderId();
   const userPlacedOrdersKey = `placedOrders_${userEmail}`;
   const userPlacedOrders = JSON.parse(localStorage.getItem(userPlacedOrdersKey)) || [];
@@ -662,12 +655,21 @@ function addPlaceOrder(userEmail, order) {
   const newOrderId = lastOrderId + 1;
   order.id = newOrderId;
 
+  // Push the cart items into the order
+  order.items = [...cart];
+
   // Add new order ID by incrementing the last order id
   userPlacedOrders.push(order);
   localStorage.setItem(userPlacedOrdersKey, JSON.stringify(userPlacedOrders));
 
   // Update the last order id
   setLastOrderId(newOrderId);
+
+  // Clear the cart
+  localStorage.removeItem("cart");
+
+  alert("Your order is placed successfully!");
+  window.location.href = "../account.html";
 }
 
 function displayPlacedOrdersTable(userEmail) {
@@ -829,10 +831,11 @@ function convertInfo() {
         </div>
       `;
         customerContainer.innerHTML = html;
+        document.querySelector(".content-navigation__link.content-navigation__link--active").textContent = "Thông tin khách hàng";
       } else if (info === customerInfoList[1]) {
         const html = `
+          <p class="page-account-header">ĐƠN HÀNG CỦA BẠN</p>
           <table>
-
             <thead>
               <tr class="table-row">
                 <th class="table-row__head">Đơn hàng</th>
@@ -853,6 +856,8 @@ function convertInfo() {
         if (user) {
           displayPlacedOrdersTable(user.email);
         }
+        document.querySelector(".content-navigation__link.content-navigation__link--active").textContent = "Đơn hàng";
+        renderPlacedOrdersDetails();
       } else if (info === customerInfoList[2]) {
         const html = `
         <form action="" method="get" id="form-1">
@@ -878,9 +883,140 @@ function convertInfo() {
       `;
         customerContainer.innerHTML = html;
         changePassword();
+        document.querySelector(".content-navigation__link.content-navigation__link--active").textContent = "Thay đổi mật khẩu";
+      } else if (info === customerInfoList[3]) {
+        const html = `
+        <p class="page-account-header">SỔ ĐỊA CHỈ</p>
+        `;
+        customerContainer.innerHTML = html;
+        document.querySelector(".content-navigation__link.content-navigation__link--active").textContent = "Sổ địa chỉ";
       }
     });
   });
 }
 
 convertInfo();
+
+// ============================================================ THE PLACED ORDERS DETAILS ============================================================
+
+function renderPlacedOrdersDetails() {
+  const placedProductsId = document.querySelectorAll(".table-row__body--id");
+  const pageRightPanel = document.querySelector(".page-account-right");
+  const user = JSON.parse(localStorage.getItem("currentUser"));
+  const currentUser = `placedOrders_${user.email}`;
+  const placedOrdersList = JSON.parse(localStorage.getItem(currentUser));
+  let elementId;
+
+  if (pageRightPanel) {
+    placedProductsId.forEach((element) => {
+      element.addEventListener("click", () => {
+        elementId = parseInt(element.textContent.slice(1));
+
+        const placedOrderedClicked = placedOrdersList.find((product) => product.id === elementId);
+
+        // Reset right panel before rendering
+        pageRightPanel.textContent = "";
+        const html = `
+        <div class="page-account-right-details">
+                
+              <div class="row header-date-wrap">
+                <div class="header-date header-common">Chi tiết đơn hàng: <span>${element.textContent}</span></div>
+                <div class="placed-order-date header-common">Ngày tạo: <span>${placedOrderedClicked.dateAndTime}</span></div>
+              </div>
+              <div class="row wrap-status">
+                <div class="payment-status not-status">Trạng thái thanh toán: <span>Chưa thanh toán</span></div>
+                <div class="delivery-status not-status">Trạng thái vận chuyển: <span>Chưa vận chuyển</span></div>
+              </div>
+              <div class="row wrap-info">
+                <div class="col l-6">
+                  <div class="header-info">ĐỊA CHỈ GIAO HÀNG</div>
+                  <div class="header-info__box">
+                    <div class="header-info__box-content">
+                      <div class="header-info__box-name">${user.firstName + " " + user.lastName}</div>
+                      <div class="header-info__box-address">
+                        Địa chỉ: <span>${placedOrderedClicked.customerAddress}</span>
+                      </div>
+                      <div class="header-info__box-phone">
+                        Số điện thoại: <span>${user.phoneNumber}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col l-3">
+                  <div class="header-info">THANH TOÁN</div>
+                    <div class="header-info__box">
+                        <div class="header-info__box-method">Thanh toán khi giao hàng</div> 
+                    </div>
+                </div>
+                <div class="col l-3">
+                  <div class="header-info">GHI CHÚ</div>
+                  <div class="header-info__box">
+                    <div class="header-info__box-note">Không có ghi chú</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- THE PLACED ORDERS -->
+              <div class="wrap-placed-products">
+                <div class="row wrap-placed-products__row">
+                  <div class="col l-5">Sản phẩm</div>
+                  <div class="col l-3">Đơn giá</div>
+                  <div class="col l-1">Số lượng</div>
+                  <div class="col l-3">Tổng</div>
+                </div>
+                
+                
+                
+              </div>
+              <div class="row  placed-products-footer-wrap">
+                <div class="col l-12 placed-products-footer">
+                  <div class="placed-products-footer__top">
+                    <div class="placed-products-footer__top-discount">Khuyến mại</div>
+                    <div class="placed-products-footer__common-price">0đ</div>
+                  </div>
+                  <div class="placed-products-footer__middle">
+                    <div class="placed-products-footer__middle-delivery">Phí vận chuyển</div>
+                    <div class="placed-products-footer__common-price">40.000đ (Giao hàng tận nơi)</div>
+                  </div>
+                  <div class="placed-products-footer__bottom">
+                    <div class="placed-products-footer__bottom-total">Tổng tiền</div>
+                    <div class="placed-products-footer__common-price placed-products-footer__common-price--modify">${placedOrderedClicked.finalTotalPrice}</div>
+                  </div>
+                </div>
+              </div>
+              
+              </div>
+        `;
+        pageRightPanel.innerHTML = html;
+
+        const htmlProducts = placedOrderedClicked.items
+          .map((product) => {
+            return `
+          <div class="row wrap-product-list">
+            <div class="col l-5">
+              <div class="placed-products">
+                <div class="placed-products_info">
+                  <img src="${product.image}" alt="" class="placed-products_info-img">
+                  <span class="placed-products_info-name">${product.title}</span>
+                </div>
+              </div>
+            </div>
+            <div class="col l-3">
+              <div class="placed-products-price">${product.price}</div>
+            </div>
+            <div class="col l-1">
+              <div class="placed-products-quantity">${product.quantity}</div>
+            </div>
+            <div class="col l-3">
+              <div class="placed-products-total">${product.totalPrice}</div>
+            </div>
+          </div>
+          `;
+          })
+          .join("");
+
+        document.querySelector(".wrap-placed-products").innerHTML = htmlProducts;
+      });
+    });
+  }
+}
