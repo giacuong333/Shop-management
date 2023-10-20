@@ -29,21 +29,31 @@
                   </i>
                 </div>
                 <div class="form-group">
-                  <input type="email" name="email" id="" placeholder="Email" />
+                  <input type="email" name="email" id="" placeholder="Email*" />
                   <div class="error-message"></div>
                 </div>
                 <div class="form-group">
-                  <input type="text" name="name" id="" placeholder="Họ và tên" />
+                  <input type="text" name="name" id="" placeholder="Họ và tên*" />
                   <div class="error-message"></div>
                 </div>
-                <input type="tel" name="phone-number" id="" placeholder="Số điện thoại" />
-                <input type="text" name="address" id="" placeholder="Địa chỉ (tùy chọn)" />
+                <input type="tel" name="phone-number" id="" placeholder="Số điện thoại*" />
+                <input type="text" name="address" id="" placeholder="Địa chỉ" />
                 <div class="form-group">
-                  <input type="text" name="province" id="" placeholder="Tỉnh thành" />
+                  <label for="provinces">Tỉnh thành</label>
+                  <select name="provinces" id="provinces"></select>
                   <div class="error-message"></div>
                 </div>
-                <input type="text" name="district" id="" placeholder="Quận huyện (tùy chọn)" />
-                <input type="text" name="note" id="" placeholder="Ghi chú (tùy chọn)" />
+                <div class="form-group">
+                  <label for="provinces">Quận huyện</label>
+                  <select name="districts" id="districts"></select>
+                  <div class="error-message"></div>
+                </div>
+                <div class="form-group">
+                  <label for="provinces">Phường xã</label>
+                  <select name="wards" id="wards"></select>
+                  <div class="error-message"></div>
+                </div>
+                <input type="text" name="note" id="" placeholder="Ghi chú" />
               </div>
             </div>
             <div class="col l-6 m-12 c-12 payment-customer-delivery">
@@ -104,5 +114,6 @@
     <script src="./js/login.js" type="module"></script>
     <script src="./js/products.js" defer></script>
     <script src="./js/log-out.js" type="module"></script>
+    <script src="./js/handleAddress.js" defer></script>
   </body>
 </html>

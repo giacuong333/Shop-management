@@ -492,6 +492,7 @@ loadPaymentPage();
 function validate(inputValue, error, message, emailRegex) {
   if (inputValue) {
     const getValue = inputValue.value.trim();
+
     if (!getValue) {
       error.textContent = message;
       error.classList.add("invalid");
@@ -545,7 +546,9 @@ document.addEventListener("DOMContentLoaded", autoFillInfo);
 function validateInput() {
   const customerEmail = document.querySelector("input[name='email']");
   const customerName = document.querySelector("input[name='name']");
-  const customerAddress = document.querySelector("input[name='province']");
+  const customerProvince = document.querySelector("select[name='provinces']");
+  const customerDistrict = document.querySelector("select[name='districts']");
+  const customerWard = document.querySelector("select[name=wards]");
   const deliveryMethod = document.querySelector("#radio-delivery-method");
   const deliveryMethodError = document.querySelector(".payment-customer-delivery-method-error");
   const errorMessage = document.querySelectorAll(".error-message");
@@ -555,39 +558,42 @@ function validateInput() {
   function areAllFieldsValid() {
     const isValidEmail = validate(customerEmail, errorMessage[0], "Vui lòng điền email", emailRegex);
     const isValidName = validate(customerName, errorMessage[1], "Vui lòng điền họ và tên", null);
-    const isValidAddress = validate(customerAddress, errorMessage[2], "Vui lòng điền địa chỉ", null);
+    const isProvince = validate(customerProvince, errorMessage[2], "Vui lòng chọn Tỉnh/Thành phố", null);
+    const isDistrict = validate(customerDistrict, errorMessage[3], "Vui lòng chọn Quận/Huyện", null);
+    const isWard = validate(customerWard, errorMessage[4], "Vui lòng chọn Phường/Xã", null);
     const isValidDeliveryMethod = deliveryMethod.checked || validateInputCheck(deliveryMethod, deliveryMethodError);
 
-    return isValidEmail && isValidName && isValidAddress && isValidDeliveryMethod;
+    return isValidEmail && isValidName && isProvince && isDistrict && isWard && isValidDeliveryMethod;
   }
 
   // Check if the user is logged in before allowing them to place an order
   if (orderBtn) {
     orderBtn.addEventListener("click", (e) => {
-      e.preventDefault();
+      if (cart.length !== 0) {
+        e.preventDefault();
 
-      const user = JSON.parse(localStorage.getItem("currentUser"));
-      if (!user) {
-        alert("Please log in to place an order");
-      } else {
-        if (areAllFieldsValid()) {
-          placeOrder();
+        const user = JSON.parse(localStorage.getItem("currentUser"));
+        if (!user) {
+          alert("Please log in to place an order");
+        } else {
+          if (areAllFieldsValid()) {
+            placeOrder();
+          }
         }
+      } else {
+        alert("Sorry, your cart is empty!");
+        return;
       }
     });
   }
 
-  if (customerEmail || customerName || customerAddress || deliveryMethod) {
+  if (customerEmail && customerName && deliveryMethod) {
     customerEmail.addEventListener("blur", () => {
       validate(customerEmail, errorMessage[0], "Vui lòng điền email", emailRegex);
     });
 
     customerName.addEventListener("blur", () => {
       validate(customerName, errorMessage[1], "Vui lòng điền họ và tên", null);
-    });
-
-    customerAddress.addEventListener("blur", () => {
-      validate(customerAddress, errorMessage[2], "Vui lòng điền địa chỉ", null);
     });
 
     deliveryMethod.addEventListener("change", () => {
@@ -602,7 +608,6 @@ function validateInput() {
       validateInputCheck(deliveryMethod, deliveryMethodError);
       validate(customerEmail, errorMessage[0], "Vui lòng điền email", emailRegex);
       validate(customerName, errorMessage[1], "Vui lòng điền họ và tên", null);
-      validate(customerAddress, errorMessage[2], "Vui lòng điền địa chỉ", null);
     });
   }
 }
@@ -623,10 +628,12 @@ function gatherOrderInfo() {
   const month = date.getMonth() + 1;
   const year = date.getFullYear();
   const dateAndTime = day + "/" + month + "/" + year;
-  const customerAddress = document.querySelector("input[name='province']").value;
+  const customerAddress = `${document.querySelector("select[name='wards']").value}, ${document.querySelector("select[name='districts']").value}, ${document.querySelector("select[name='provinces']").value}`;
+  console.log(customerAddress);
   const finalTotalPrice = document.querySelector(".payment-right-body__total p:last-child").textContent;
   const paymentStatus = "Chưa thu tiền";
   const deliveryStatus = "Chưa vận chuyển";
+  const customerNote = document.querySelector("input[name='note']").value ? document.querySelector("input[name='note']").value : "Không có ghi chú";
 
   return {
     dateAndTime,
@@ -634,6 +641,7 @@ function gatherOrderInfo() {
     finalTotalPrice,
     paymentStatus,
     deliveryStatus,
+    customerNote,
   };
 }
 
@@ -951,7 +959,7 @@ function renderPlacedOrdersDetails() {
                 <div class="col l-3">
                   <div class="header-info">GHI CHÚ</div>
                   <div class="header-info__box">
-                    <div class="header-info__box-note">Không có ghi chú</div>
+                    <div class="header-info__box-note">${placedOrderedClicked.customerNote}</div>
                   </div>
                 </div>
               </div>
@@ -989,6 +997,9 @@ function renderPlacedOrdersDetails() {
         `;
         pageRightPanel.innerHTML = html;
 
+        const divElement = document.createElement("div");
+        divElement.classList.add("wrap-placed-products__body");
+
         const htmlProducts = placedOrderedClicked.items
           .map((product) => {
             return `
@@ -997,25 +1008,25 @@ function renderPlacedOrdersDetails() {
               <div class="placed-products">
                 <div class="placed-products_info">
                   <img src="${product.image}" alt="" class="placed-products_info-img">
-                  <span class="placed-products_info-name">${product.title}</span>
+                  <a href="../details.html?productId=${product.id}" class="placed-products_info-name">${product.title}</a>
                 </div>
               </div>
             </div>
             <div class="col l-3">
-              <div class="placed-products-price">${product.price}</div>
+              <div class="placed-products-price">${!isNaN(product.price) ? new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(product.price) : "Liên hệ"}</div>
             </div>
             <div class="col l-1">
               <div class="placed-products-quantity">${product.quantity}</div>
             </div>
             <div class="col l-3">
-              <div class="placed-products-total">${product.totalPrice}</div>
+              <div class="placed-products-total">${!isNaN(product.price) ? new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(product.totalPrice) : "Liên hệ"}</div>
             </div>
           </div>
           `;
           })
           .join("");
-
-        document.querySelector(".wrap-placed-products").innerHTML = htmlProducts;
+        divElement.innerHTML = htmlProducts;
+        document.querySelector(".wrap-placed-products").appendChild(divElement);
       });
     });
   }
