@@ -29,7 +29,7 @@ const $$ = document.querySelectorAll.bind(document);
 
   const html = productsPlaced.map((item) => {
     const { id, title, image, price, quantity, totalPrice } = item;
-    const finalTotalPrice = new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(price);
+    const finalTotalPrice = price.toLowerCase() != "Liên hệ".toLowerCase() ? new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(price) : "Liên hệ";
 
     return `
           <div class="info-products-placed__item">
@@ -44,6 +44,9 @@ const $$ = document.querySelectorAll.bind(document);
   productsPlacedContainer.innerHTML = html.join("");
 
   let tempPriceCaculate = productsPlaced.reduce((accum, item) => {
+    if (item.price.toLowerCase() == "Liên hệ".toLowerCase()) {
+      return accum + 0;
+    }
     const temp = item.quantity * parseInt(item.price);
     return accum + temp;
   }, 0);
