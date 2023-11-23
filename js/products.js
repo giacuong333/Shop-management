@@ -624,16 +624,13 @@ function setLastOrderId(lastOrderId) {
 // Get the order information
 function gatherOrderInfo() {
   const date = new Date();
-  const day = date.getDate();
-  const month = date.getMonth() + 1;
-  const year = date.getFullYear();
-  const dateAndTime = day + "/" + month + "/" + year;
-  const customerAddress = `${document.querySelector("select[name='wards']").value}, ${document.querySelector("select[name='districts']").value}, ${document.querySelector("select[name='provinces']").value}`;
-  console.log(customerAddress);
+  const dateAndTime = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+  const customerAddress = `${document.querySelector("input[name='address']").value}, ${document.querySelector("select[name='wards']").value}, ${document.querySelector("select[name='districts']").value}, ${document.querySelector("select[name='provinces']").value}`;
   const finalTotalPrice = document.querySelector(".payment-right-body__total p:last-child").textContent;
   const paymentStatus = "Chưa thu tiền";
   const deliveryStatus = "Chưa vận chuyển";
   const customerNote = document.querySelector("input[name='note']").value ? document.querySelector("input[name='note']").value : "Không có ghi chú";
+  const customerPhone = document.querySelector("input[type='tel']").value;
 
   return {
     dateAndTime,
@@ -642,6 +639,7 @@ function gatherOrderInfo() {
     paymentStatus,
     deliveryStatus,
     customerNote,
+    customerPhone,
   };
 }
 
@@ -676,8 +674,7 @@ function addPlaceOrder(userEmail, order) {
   // Clear the cart
   localStorage.removeItem("cart");
 
-  alert("Your order is placed successfully!");
-  window.location.href = "../account.html";
+  window.location.href = "../ordered.html";
 }
 
 function displayPlacedOrdersTable(userEmail) {
